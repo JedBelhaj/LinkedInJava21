@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.PersonalProfileController">
+   <left>
+      <VBox prefHeight="500.0" prefWidth="221.0" spacing="50.0" stylesheets="@../../../application.css" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" prefHeight="173.0" prefWidth="222.0" spacing="15.0">
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+               <children>
+                  <ImageView fx:id="profilePicture" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
+                     <image>
+                        <Image url="@../../../imgs/jasseurimage.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="ProfileName" text="jasseur" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="230.0" prefWidth="222.0" spacing="10.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="35.0" prefWidth="226.0" spacing="15.0">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../imgs/edit.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="editprofile" mnemonicParsing="false" onAction="#editprofile" prefHeight="26.0" prefWidth="101.0" text="Edit Profile" textFill="WHITE" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="80.0" prefHeight="35.0" prefWidth="226.0" spacing="15.0">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../imgs/settings.png" />
+                           </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="101.0" text="Settings" textFill="WHITE" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="116.0" prefHeight="35.0" prefWidth="226.0" spacing="15.0">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../imgs/insurance.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="privacypolicy" mnemonicParsing="false" onAction="#privacypolicy" prefHeight="26.0" prefWidth="101.0" text="Privacy policy" textFill="WHITE" />
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </VBox>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="secondary-color" stylesheets="@../../../application.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label contentDisplay="CENTER" prefHeight="110.0" prefWidth="737.0" styleClass="secondary-color" stylesheets="@../../../application.css" text="     Profile informations" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" styleClass="secondary-color">
+               <children>
+                  <Label contentDisplay="CENTER" prefHeight="0.0" prefWidth="648.0" styleClass="secondary-color" stylesheets="@../../../application.css" text="     Profile Details" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="648.0" styleClass="secondary-color">
+                     <children>
+                        <Label contentDisplay="CENTER" prefHeight="27.0" prefWidth="216.0" styleClass="secondary-color" stylesheets="@../../../application.css" text="     Name" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets left="20.0" />
+                           </opaqueInsets>
+                        </Label>
+                        <Pane prefHeight="30.0" prefWidth="120.0" styleClass="secondary-color" />
+                        <Label fx:id="firstName" prefHeight="20.0" prefWidth="250.0" text="ur name" textFill="WHITE" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets left="20.0" />
+                     </opaqueInsets>
+                  </HBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" styleClass="secondary-color">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="648.0" styleClass="secondary-color">
+                           <children>
+                              <Label contentDisplay="CENTER" prefHeight="27.0" prefWidth="216.0" styleClass="secondary-color" stylesheets="@../../../application.css" text="     Last Name" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets left="20.0" />
+                                 </opaqueInsets>
+                              </Label>
+                              <Pane prefHeight="30.0" prefWidth="120.0" styleClass="secondary-color" />
+                              <Label fx:id="lastName" prefHeight="20.0" prefWidth="250.0" text="ur last name" textFill="WHITE" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets left="20.0" />
+                           </opaqueInsets>
+                        </HBox>
+                     </children>
+                     <opaqueInsets>
+                        <Insets left="20.0" />
+                     </opaqueInsets>
+                  </VBox>
+                  <Label contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="78.0" prefWidth="648.0" styleClass="secondary-color" stylesheets="@../../../application.css" text="     Profile Details" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="648.0" styleClass="secondary-color">
+                     <children>
+                        <Label contentDisplay="CENTER" prefHeight="27.0" prefWidth="216.0" styleClass="secondary-color" stylesheets="@../../../application.css" text="     E-mail Address" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets left="20.0" />
+                           </opaqueInsets>
+                        </Label>
+                        <Pane prefHeight="30.0" prefWidth="120.0" styleClass="secondary-color" />
+                        <Label fx:id="email" prefHeight="20.0" prefWidth="250.0" text="ur e-mail address" textFill="WHITE" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets left="20.0" />
+                     </opaqueInsets>
+                  </HBox>
+                  <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="125.0" prefHeight="200.0" prefWidth="100.0" spacing="30.0" styleClass="secondary-color">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="648.0" styleClass="secondary-color">
+                           <children>
+                              <Label contentDisplay="CENTER" prefHeight="27.0" prefWidth="216.0" styleClass="secondary-color" stylesheets="@../../../application.css" text="     Phone Number" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets left="20.0" />
+                                 </opaqueInsets>
+                              </Label>
+                              <Pane prefHeight="30.0" prefWidth="120.0" styleClass="secondary-color" />
+                              <Label fx:id="phoneNumber" prefHeight="20.0" prefWidth="250.0" text="ur phone number" textFill="WHITE" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets left="20.0" />
+                           </opaqueInsets>
+                        </HBox>
+                     </children>
+                     <opaqueInsets>
+                        <Insets left="20.0" />
+                     </opaqueInsets>
+                  </VBox>
+               </children>
+               <opaqueInsets>
+                  <Insets left="20.0" />
+               </opaqueInsets>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="secondary-color" />
+         </children>
+         <padding>
+            <Insets left="30.0" />
+         </padding>
+      </VBox>
+   </center>
+</BorderPane>

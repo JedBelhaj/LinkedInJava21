@@ -1,0 +1,21 @@
+*{
+    -fx-background-color: #13123A;
+}
+.secondary-color{
+    -fx-background-color: #003399;
+}
+.button{
+    -fx-background-color: #242551;
+    -fx-background-radius: 50;
+}
+.image{
+    -fx-background-radius: 50;
+}
+.label{
+    -fx-back:0;
+}
+.text-input{
+    -fx-background-color:#003399;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #242551;
+}

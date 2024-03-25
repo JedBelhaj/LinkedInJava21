@@ -186,7 +186,6 @@ public class AccountDAO {
                 account.setGender(rs.getString("gender"));
                 account.setCountry(rs.getString("country"));
                 account.setProfilePicture(rs.getBytes("profilePicture"));
-                System.out.println("in dao"+Arrays.toString(rs.getBytes("videoCV")));
                 account.setVideoCV(rs.getBytes("videoCV"));
             }
         } catch (SQLException ex) {
@@ -266,5 +265,28 @@ public class AccountDAO {
             System.out.println(e.getMessage());
         }
         return false;
+    }
+
+    public static void editProfile(String email, String phoneNumber, String firstName, String lastName,String newEmail){
+        int id = loadUserID(email);
+        if (id != -1) {
+            String sql = "UPDATE accounts SET phone_number = ?, first_name = ?, last_name = ?, email = ? WHERE email = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1, phoneNumber);
+                statement.setString(2, firstName);
+                statement.setString(3, lastName);
+                statement.setString(4, newEmail);
+                statement.setString(5, email);
+                statement.executeUpdate();
+                System.out.println("Profile updated successfully.");
+                AccountDAO.loadUser(newEmail);
+
+            } catch (SQLException e) {
+                System.err.println("Error updating profile: " + e.getMessage());
+            }
+        }
+        else {
+            System.err.println("User not found.");
+        }
     }
 }

@@ -3,6 +3,7 @@ package com.fsb.linkedin;
 import com.fsb.linkedin.DAO.AccountDAO;
 import com.fsb.linkedin.entities.PersonalAccount;
 import com.fsb.linkedin.utils.FieldVerifier;
+import com.fsb.linkedin.utils.SceneSwitcher;
 import com.fsb.linkedin.utils.VideoConverter;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -33,7 +34,8 @@ public class testController {
                 MediaPlayer mediaPlayer = new MediaPlayer(media);
                 video.setMediaPlayer(mediaPlayer);
                 mediaPlayer.play();
-
+                SceneSwitcher.setSaveHistory(false);
+                SceneSwitcher.goTo(getClass(),"PersonalProfile",login);
             }
         }
     }

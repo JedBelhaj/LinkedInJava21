@@ -13,12 +13,17 @@ import java.util.Objects;
 import java.util.Stack;
 
 public class SceneSwitcher {
+    public static boolean saveHistory = true;
     private static final int MAX_STACK_SIZE = 10;
     private static Stack<Scene> previousStack = new Stack<>();
     private static Stack<Scene> nextStack = new Stack<>();
 
+    public static void setSaveHistory(boolean on){
+        saveHistory = on;
+    }
+
     public static void goTo(Class<?> c, String destination, Button button) throws IOException {
-        if (nextStack.isEmpty()) {
+        if (nextStack.isEmpty() || !saveHistory) {
             FXMLLoader loader = new FXMLLoader(c.getResource(destination + ".fxml"));
             Parent root = loader.load();
 
@@ -30,7 +35,7 @@ public class SceneSwitcher {
             }
 
             if (previousStack.size() >= MAX_STACK_SIZE) {
-                previousStack.remove(0);
+                previousStack.removeFirst();
             }
 
             previousStack.push(stage.getScene());
