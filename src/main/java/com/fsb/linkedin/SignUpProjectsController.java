@@ -8,6 +8,7 @@ import com.fsb.linkedin.utils.SceneSwitcher;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -53,12 +54,12 @@ public class SignUpProjectsController {
         SceneSwitcher.previous(back);
     }
 
-    public void onNext() {
+    public void onNext() throws IOException {
 
         PersonalAccount p = PersonalAccount.getInstance();
         p.setProjects(projects);
         PersonalAccount.setInstance(p);
-
+        SceneSwitcher.goTo(getClass(),"signUpVideo",next);
 
     }
 

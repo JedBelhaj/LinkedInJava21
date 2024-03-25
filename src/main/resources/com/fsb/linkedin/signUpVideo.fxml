@@ -20,12 +20,12 @@
             <MediaView fx:id="video" fitHeight="200.0" fitWidth="200.0" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="playpause" mnemonicParsing="false" text="Play">
+                  <Button fx:id="playpause" mnemonicParsing="false" onAction="#onPlayPause" text="Play">
                      <HBox.margin>
                         <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="reset" mnemonicParsing="false" text="Reset">
+                  <Button fx:id="reset" mnemonicParsing="false" onAction="#onReset" text="Reset">
                      <HBox.margin>
                         <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                      </HBox.margin>
@@ -40,15 +40,15 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </VBox>
-      <Button fx:id="upload" mnemonicParsing="false" text="Upload" />
+      <Button fx:id="upload" mnemonicParsing="false" onAction="#onUpload" text="Upload" />
       <HBox alignment="CENTER" prefHeight="60.0" prefWidth="593.0">
          <children>
-            <Button fx:id="back" mnemonicParsing="false" text="Back">
+            <Button fx:id="back" mnemonicParsing="false" onAction="#onBack" text="Back">
                <HBox.margin>
                   <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="done" mnemonicParsing="false" text="Done">
+            <Button fx:id="done" mnemonicParsing="false" onAction="#onNext" text="Done">
                <HBox.margin>
                   <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                </HBox.margin>
