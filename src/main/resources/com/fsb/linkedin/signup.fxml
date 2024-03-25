@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="662.0" prefWidth="912.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.SignUpController">
+   <children>
+      <Label alignment="CENTER" prefHeight="18.0" prefWidth="446.0" text="Sign Up">
+         <font>
+            <Font size="51.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="243.0" layoutY="103.0" prefHeight="18.0" prefWidth="446.0" text="- Personal Info -">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <GridPane hgap="20.0" maxWidth="700.0" prefHeight="538.0" prefWidth="700.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="351.2000244140625" minWidth="10.0" prefWidth="349.59998779296876" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="536.4000244140625" minWidth="10.0" prefWidth="351.2000122070312" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="107.60000839233399" minHeight="10.0" prefHeight="66.4000244140625" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="130.19998779296876" minHeight="2.0000045537948665" prefHeight="55.199981689453125" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="158.79999544620514" minHeight="0.0" prefHeight="57.40001220703127" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="264.7999977111816" minHeight="0.0" prefHeight="53.800006103515614" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="253.40005798339843" minHeight="10.0" prefHeight="64.60001831054686" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="253.40005798339843" minHeight="10.0" prefHeight="57.00001220703126" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="234.2" minHeight="10.0" prefHeight="146.7999755859375" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="234.2" minHeight="10.0" prefHeight="49.200024414062455" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+               <children>
+                  <Label text="First Name">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="firstName" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+               <children>
+                  <Label text="Last Name">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="lastName" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="73.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Label text="Phone Number">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="phoneNumber" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER_LEFT" layoutX="368.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <Label text="Date of Birth">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="dateOfBirth" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER_LEFT" layoutX="368.0" layoutY="72.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
+               <children>
+                  <Label text="E-mail address">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="email" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <Label text="Gender">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="gender" prefWidth="150.0" />
+               </children>
+            </VBox>
+            <Button fx:id="back" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onBack" text="Back" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
+            <Button fx:id="next" mnemonicParsing="false" onAction="#onNext" text="Next" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
+               <children>
+                  <Label text="Create Password">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="password" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <children>
+                  <Label text="Confirm Password">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="confirmPassword" />
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2">
+               <children>
+                  <Label fx:id="messageLabel" textAlignment="CENTER" textFill="RED" />
+               </children>
+            </HBox>
+            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="5">
+               <children>
+                  <Label text="Country of Residence">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="country" prefWidth="150.0" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER_LEFT" prefHeight="204.0" prefWidth="342.0" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.rowSpan="2">
+               <children>
+                  <Label text="Profile Picture">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="uploadImg" mnemonicParsing="false" onAction="#onUploadImg" text="Upload Image" />
+                  <ImageView fx:id="profileImg" fitHeight="130.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </children>
+      </GridPane>
+   </children>
+</VBox>

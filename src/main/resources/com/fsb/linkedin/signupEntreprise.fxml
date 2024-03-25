@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="662.0" prefWidth="912.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.SignUpEntrepriseController">
+    <children>
+        <Label alignment="CENTER" prefHeight="18.0" prefWidth="446.0" text="Sign Up">
+            <font>
+                <Font size="51.0" />
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="243.0" layoutY="103.0" prefHeight="18.0" prefWidth="446.0" text="- Company Info -">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <GridPane hgap="20.0" maxWidth="700.0" prefHeight="538.0" prefWidth="700.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="351.2000244140625" minWidth="10.0" prefWidth="349.59998779296876" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="536.4000244140625" minWidth="10.0" prefWidth="351.2000122070312" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="107.60000839233399" minHeight="10.0" prefHeight="107.60000839233399" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="130.19998779296876" minHeight="2.0000045537948665" prefHeight="65.79997558593749" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="158.79999544620514" minHeight="0.0" prefHeight="65.0000244140625" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="264.7999977111816" minHeight="0.0" prefHeight="59.19998779296873" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="253.40005798339843" minHeight="10.0" prefHeight="76.19999389648439" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="234.2" minHeight="10.0" prefHeight="163.40000610351558" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+                    <children>
+                        <Label text="Company name">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="companyName" />
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+                    <children>
+                        <Label text="Industry">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="Industry" />
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="73.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <children>
+                        <Label text="Company Website">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="websiteURL" />
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER_LEFT" layoutX="368.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <children>
+                        <Label text="Date of Foundation">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <DatePicker fx:id="dateOfFoundation" />
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER_LEFT" layoutX="368.0" layoutY="72.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
+                    <children>
+                        <Label text="E-mail address">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="email" />
+                    </children>
+                </VBox>
+                <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                          <Label text="Country of Origin">
+                              <font>
+                                  <Font size="14.0" />
+                              </font>
+                          </Label>
+                  <ComboBox fx:id="country" prefWidth="150.0" />
+               </children>
+                </VBox>
+                <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                    <children>
+                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" />
+                    </children>
+                </VBox>
+                <Button fx:id="back" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onBack" text="Back" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+                <Button fx:id="next" mnemonicParsing="false" onAction="#onNext" text="Next" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            </children>
+        </GridPane>
+    </children>
+</VBox>

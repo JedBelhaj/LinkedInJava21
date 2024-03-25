@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<TilePane alignment="CENTER" prefHeight="486.0" prefWidth="842.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.LogInController">
+   <children>
+      <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="903.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="266.8" minHeight="10.0" prefHeight="266.8" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane alignment="CENTER_RIGHT" maxHeight="400.0" maxWidth="600.0" minHeight="388.0" minWidth="388.0" prefHeight="400.0" prefWidth="600.0">
+               <columnConstraints>
+                  <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="ALWAYS" maxWidth="383.19997787475586" minWidth="10.0" prefWidth="383.19997787475586" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="132.79999008178712" minHeight="10.0" prefHeight="132.00000228881837" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="95.60001220703126" minHeight="10.0" prefHeight="60.400000000000006" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="139.5999816894531" minHeight="10.0" prefHeight="62.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="179.2000030517578" minHeight="10.0" prefHeight="145.59996032714847" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Welcome to Name" textAlignment="CENTER">
+                     <font>
+                        <Font name="Raleway Medium" size="37.0" />
+                     </font>
+                  </Label>
+                  <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <children>
+                        <Label text="Email / Phone Number" />
+                        <TextField id="user" fx:id="user" alignment="TOP_LEFT" minWidth="164.0" prefHeight="26.0" prefWidth="164.0" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets right="20.0" />
+                     </GridPane.margin>
+                  </VBox>
+                  <VBox alignment="CENTER_LEFT" layoutX="110.0" layoutY="109.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+                     <children>
+                        <Label text="Password" />
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <PasswordField id="pass" fx:id="pass" alignment="TOP_LEFT" minWidth="163.0" prefHeight="26.0" prefWidth="163.0" />
+                              <ImageView id="showPassword" fx:id="showPassword" accessibleRole="BUTTON" fitHeight="16.0" fitWidth="16.0" onMouseClicked="#onShowPassword" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../imgs/eyebrow.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <effect>
+                                    <Lighting bumpInput="$null">
+                                       <light>
+                                          <Light.Distant />
+                                       </light>
+                                    </Lighting>
+                                 </effect>
+                                 <HBox.margin>
+                                    <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" layoutX="110.0" layoutY="203.0" prefHeight="146.0" prefWidth="418.0" GridPane.rowIndex="3">
+                     <children>
+                        <Label fx:id="messageLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="316.0" textAlignment="CENTER" textFill="RED" />
+                        <Label id="forgot" fx:id="forgot" alignment="TOP_CENTER" text="Forgot Credentials?" textFill="#3a8cff" underline="true">
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
+                        <Button id="loginSubmit" fx:id="login" mnemonicParsing="false" onAction="#onSubmit" text="Login">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Label id="signUp" fx:id="signup" alignment="TOP_CENTER" layoutX="152.0" layoutY="20.0" onMouseClicked="#onSignUp" text="Sign up?" textFill="#3a8cff" underline="true">
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </GridPane>
+            <ImageView fx:id="image" fitHeight="270.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../../../imgs/login.png" />
+               </image>
+            </ImageView>
+         </children>
+      </GridPane>
+   </children>
+</TilePane>
