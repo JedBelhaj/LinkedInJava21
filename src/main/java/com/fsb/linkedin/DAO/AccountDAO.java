@@ -9,6 +9,7 @@ import com.fsb.linkedin.utils.DataBaseConnection;
 import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class AccountDAO {
@@ -185,6 +186,8 @@ public class AccountDAO {
                 account.setGender(rs.getString("gender"));
                 account.setCountry(rs.getString("country"));
                 account.setProfilePicture(rs.getBytes("profilePicture"));
+                System.out.println("in dao"+Arrays.toString(rs.getBytes("videoCV")));
+                account.setVideoCV(rs.getBytes("videoCV"));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -264,5 +267,4 @@ public class AccountDAO {
         }
         return false;
     }
-
 }

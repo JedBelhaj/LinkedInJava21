@@ -13,35 +13,41 @@ import java.util.Objects;
 import java.util.Stack;
 
 public class SceneSwitcher {
-    /*TODO add a functionality that saves the previous next page
-       meaning if u do next(save) and back(load) and next (load)*/
     private static final int MAX_STACK_SIZE = 10;
-    private static Stack<Scene> sceneStack = new Stack<>();
+    private static Stack<Scene> previousStack = new Stack<>();
+    private static Stack<Scene> nextStack = new Stack<>();
 
     public static void goTo(Class<?> c, String destination, Button button) throws IOException {
-        FXMLLoader loader = new FXMLLoader(c.getResource(destination + ".fxml"));
-        Parent root = loader.load();
+        if (nextStack.isEmpty()) {
+            FXMLLoader loader = new FXMLLoader(c.getResource(destination + ".fxml"));
+            Parent root = loader.load();
 
-        Scene scene = new Scene(root);
+            Scene scene = new Scene(root);
 
-        Stage stage = (Stage) button.getScene().getWindow();
-        if (!sceneStack.isEmpty() && Objects.equals(scene, sceneStack.peek())){
-            System.out.println("I ALREADY VISITED THIS!");
+            Stage stage = (Stage) button.getScene().getWindow();
+            if (!previousStack.isEmpty() && Objects.equals(scene, previousStack.peek())) {
+                System.out.println("I ALREADY VISITED THIS!");
+            }
+
+            if (previousStack.size() >= MAX_STACK_SIZE) {
+                previousStack.remove(0);
+            }
+
+            previousStack.push(stage.getScene());
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            Stage stage = (Stage) button.getScene().getWindow();
+            previousStack.push(button.getScene());
+            stage.setScene(nextStack.pop());
         }
-
-        if (sceneStack.size() >= MAX_STACK_SIZE) {
-            sceneStack.remove(0);
-        }
-
-        sceneStack.push(stage.getScene());
-        stage.setScene(scene);
-        stage.show();
     }
 
     public static void previous(Button button) {
-        if (!sceneStack.isEmpty()) {
+        if (!previousStack.isEmpty()) {
             Stage stage = (Stage) button.getScene().getWindow();
-            stage.setScene(sceneStack.pop());
+            nextStack.push(button.getScene());
+            stage.setScene(previousStack.pop());
         }
     }
 

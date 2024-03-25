@@ -31,7 +31,15 @@ public class PersonalAccount {
     private List<Project> projects = new ArrayList<>();
     private byte[] profilePicture;
 
-    // Constructor, getters, setters, etc.
+    private byte[] videoCV;
+
+    public byte[] getVideoCV() {
+        return videoCV;
+    }
+
+    public void setVideoCV(byte[] videoCV) {
+        this.videoCV = videoCV;
+    }
 
     public byte[] getProfilePicture() {
         return profilePicture;

@@ -43,7 +43,8 @@ public class SignUpController implements Initializable {
     }
     @FXML
     protected void onNext() throws IOException {
-        SceneSwitcher.goTo(getClass(),"signUpVideo",next);
+        //for testing
+        //SceneSwitcher.goTo(getClass(),"signUpVideo",next);
 
 
         //check validity of all fields
