@@ -3,10 +3,7 @@ package com.fsb.linkedin.controllers.signup;
 import com.fsb.linkedin.DAO.AccountDAO;
 import com.fsb.linkedin.controllers.login.LogInController;
 import com.fsb.linkedin.entities.PersonalAccount;
-import com.fsb.linkedin.utils.ComboUtils;
-import com.fsb.linkedin.utils.FieldVerifier;
-import com.fsb.linkedin.utils.ImageConverter;
-import com.fsb.linkedin.utils.SceneSwitcher;
+import com.fsb.linkedin.utils.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -98,14 +95,9 @@ public class SignUpController implements Initializable {
     }
     @FXML
     protected void onUploadImg(){
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choose an Image");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")+ "/Desktop"));
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JPEG Image","*.jpg"), new FileChooser.ExtensionFilter("PNG Image", "*.png"), new FileChooser.ExtensionFilter("All image files","*.jpg","*.png"));
-        profilePicture = fileChooser.showOpenDialog(uploadImg.getScene().getWindow());
+        profilePicture = ImageUploader.getImageAsFile(uploadImg);
         if (profilePicture!=null){
-            Image image = new Image(profilePicture.toURI().toString());
-            profileImg.setImage(image);
+            profileImg.setImage(ImageUploader.getImage(profilePicture));
         }
     }
 }

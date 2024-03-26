@@ -135,13 +135,6 @@ public class PostController{
             caption.setManaged(false);
         }
 
-        if(post.getImage() != null && !post.getImage().isEmpty()){
-            img = new Image(Objects.requireNonNull(getClass().getResourceAsStream(post.getImage())));
-            imgPost.setImage(img);
-        }else{
-            imgPost.setVisible(false);
-            imgPost.setManaged(false);
-        }
 
         nbReactions.setText(String.valueOf(post.getTotalReactions()));
         nbComments.setText(post.getNbComments() + " comments");

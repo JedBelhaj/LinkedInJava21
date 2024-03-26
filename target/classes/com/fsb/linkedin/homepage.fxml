@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1000.0" styleClass="body-background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.home.HomePageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1000.0" styleClass="body-background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.home.HomePageController">
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="200.0" styleClass="white-background" BorderPane.alignment="CENTER">
          <children>
@@ -114,7 +107,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="250.0" spacing="20.0">
                      <children>
-                        <ImageView fitHeight="54.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="profilePicture" fitHeight="54.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../imgs/jedimage.jpg" />
                            </image>
@@ -122,7 +115,7 @@
                               <Insets bottom="5.0" left="20.0" top="5.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="35.0" prefWidth="168.0" text="Jed Belhaj Mohamed ">
+                        <Label fx:id="profileName" prefHeight="35.0" prefWidth="168.0" text="Jed Belhaj Mohamed ">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -387,7 +380,7 @@
    <right>
       <ScrollPane prefHeight="694.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <content>
-            <VBox fx:id="offercontainer" onMouseClicked="#getoffer" prefHeight="730.0" prefWidth="400.0">
+            <VBox fx:id="offerContainer" onMouseClicked="#getoffer" prefHeight="730.0" prefWidth="400.0">
                <children>
                   <Label prefHeight="58.0" prefWidth="202.0" text="Job offers:">
                      <font>
@@ -404,18 +397,18 @@
          <children>
             <ScrollPane>
                <content>
-                  <VBox fx:id="postcontainer" prefHeight="684.0" prefWidth="446.0">
+                  <VBox fx:id="postContainer" prefHeight="684.0" prefWidth="446.0">
                      <children>
                         <VBox alignment="CENTER" prefHeight="139.0" prefWidth="406.0" styleClass="post-background" stylesheets="@../../../style.css">
                            <children>
                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <ImageView fitHeight="54.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="postProfilePicture" fitHeight="54.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../../../imgs/jedimage.jpg" />
                                        </image>
                                     </ImageView>
-                                    <TextField prefHeight="26.0" prefWidth="327.0" promptText="what is in your mind ..." styleClass="text-field" stylesheets="@../../../style.css">
+                                    <TextField fx:id="postField" prefHeight="26.0" prefWidth="327.0" promptText="what is in your mind ..." styleClass="text-field" stylesheets="@../../../style.css">
                                        <font>
                                           <Font name="Segoe UI Light" size="12.0" />
                                        </font>
@@ -425,7 +418,7 @@
                               <Pane prefHeight="0.0" prefWidth="390.0" style="-fx-background-color: #242551;" />
                               <HBox alignment="CENTER" prefHeight="85.0" prefWidth="390.0" spacing="50.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <HBox prefHeight="150.0" prefWidth="107.0" spacing="5.0">
+                                    <HBox fx:id="uploadImage" onMouseClicked="#onUploadImage" prefHeight="150.0" prefWidth="107.0" spacing="5.0">
                                        <children>
                                           <ImageView fitHeight="29.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -438,7 +431,7 @@
                                              </HBox.margin></Label>
                                        </children>
                                     </HBox>
-                                    <HBox prefHeight="150.0" prefWidth="107.0" spacing="5.0">
+                                    <HBox fx:id="uploadVideo" onMouseClicked="#onUploadVideo" prefHeight="150.0" prefWidth="107.0" spacing="5.0">
                                        <children>
                                           <ImageView fitHeight="29.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -451,7 +444,7 @@
                                              </HBox.margin></Label>
                                        </children>
                                     </HBox>
-                                    <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="109.0" text="post">
+                                    <Button fx:id="postButton" mnemonicParsing="false" onAction="#onPost" prefHeight="26.0" prefWidth="109.0" text="post">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>

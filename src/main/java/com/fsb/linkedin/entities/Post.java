@@ -5,7 +5,16 @@ public class Post {
     private PostAudience audience;
     private String date;
     private String caption;
-    private String image;
+    private byte[] image;
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
     private int totalReactions;
 
     @Override
@@ -57,13 +66,7 @@ public class Post {
         this.caption = caption;
     }
 
-    public String getImage() {
-        return image;
-    }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
 
     public int getTotalReactions() {
         return totalReactions;

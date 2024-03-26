@@ -133,7 +133,7 @@ public class AccountDAO {
         retrieveExperiences(id);
         retrieveQualifications(id);
     }
-    private static int loadUserID(String email){
+    public static int loadUserID(String email){
         String sql = "SELECT account_id FROM accounts WHERE email = ?";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, email);
@@ -193,13 +193,6 @@ public class AccountDAO {
         }
     }
 
-    private static File writeByteArrayToFile(byte[] data) throws IOException {
-        File file = File.createTempFile("profile", ".jpg"); // Adjust file extension as needed
-        try (FileOutputStream fos = new FileOutputStream(file)) {
-            fos.write(data);
-        }
-        return file;
-    }
 
     private static void retrieveQualifications(int accountId) {
         if (accountId == -1) return;

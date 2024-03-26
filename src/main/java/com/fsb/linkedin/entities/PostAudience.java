@@ -34,5 +34,8 @@ public enum PostAudience {
     public String getImgSrc() {
         return imgSrc;
     }
+    public String getAudienceAsString() {
+        return this == PUBLIC ? "public" : "friends";
+    }
 }
 

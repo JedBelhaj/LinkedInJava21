@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Light.Distant?>
-<?import javafx.scene.effect.Lighting?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.TilePane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<TilePane alignment="CENTER" prefHeight="486.0" prefWidth="842.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.login.LogInController">
+<TilePane alignment="CENTER" prefHeight="486.0" prefWidth="842.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.login.LogInController">
    <children>
       <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="903.0">
         <columnConstraints>
@@ -48,7 +38,7 @@
                   <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <children>
                         <Label text="Email / Phone Number" />
-                        <TextField id="user" fx:id="user" alignment="TOP_LEFT" minWidth="164.0" prefHeight="26.0" prefWidth="164.0" />
+                        <TextField id="user" fx:id="user" alignment="TOP_LEFT" minWidth="164.0" prefHeight="26.0" prefWidth="164.0" text="gojosatoru@gmail.com" />
                      </children>
                      <GridPane.margin>
                         <Insets right="20.0" />
@@ -59,7 +49,7 @@
                         <Label text="Password" />
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <PasswordField id="pass" fx:id="pass" alignment="TOP_LEFT" minWidth="163.0" prefHeight="26.0" prefWidth="163.0" />
+                              <PasswordField id="pass" fx:id="pass" alignment="TOP_LEFT" minWidth="163.0" prefHeight="26.0" prefWidth="163.0" text="123456789" />
                               <ImageView id="showPassword" fx:id="showPassword" accessibleRole="BUTTON" fitHeight="16.0" fitWidth="16.0" onMouseClicked="#onShowPassword" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../imgs/eyebrow.png" />
