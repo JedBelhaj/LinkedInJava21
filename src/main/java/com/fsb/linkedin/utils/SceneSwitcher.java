@@ -1,5 +1,6 @@
 package com.fsb.linkedin.utils;
 
+import com.fsb.linkedin.MainApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,8 +16,8 @@ import java.util.Stack;
 public class SceneSwitcher {
     public static boolean saveHistory = true;
     private static final int MAX_STACK_SIZE = 10;
-    private static Stack<Scene> previousStack = new Stack<>();
-    private static Stack<Scene> nextStack = new Stack<>();
+    private static final Stack<Scene> previousStack = new Stack<>();
+    private static final Stack<Scene> nextStack = new Stack<>();
 
     public static void setSaveHistory(boolean on){
         saveHistory = on;
@@ -30,9 +31,6 @@ public class SceneSwitcher {
             Scene scene = new Scene(root);
 
             Stage stage = (Stage) button.getScene().getWindow();
-            if (!previousStack.isEmpty() && Objects.equals(scene, previousStack.peek())) {
-                System.out.println("I ALREADY VISITED THIS!");
-            }
 
             if (previousStack.size() >= MAX_STACK_SIZE) {
                 previousStack.removeFirst();

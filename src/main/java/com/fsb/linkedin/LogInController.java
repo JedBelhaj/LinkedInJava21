@@ -1,6 +1,7 @@
 package com.fsb.linkedin;
 
 import com.fsb.linkedin.DAO.AccountDAO;
+import com.fsb.linkedin.MainApplication;
 import com.fsb.linkedin.entities.PersonalAccount;
 import com.fsb.linkedin.utils.FieldVerifier;
 import com.fsb.linkedin.utils.ImageConverter;
@@ -69,6 +70,7 @@ public class LogInController {
     }
     @FXML
     protected void onSignUp() throws Exception {
-        SceneSwitcher.goTo(getClass(),"accountType",login);
+        SceneSwitcher.goTo(getClass(),"signup",login);
+
     }
 }

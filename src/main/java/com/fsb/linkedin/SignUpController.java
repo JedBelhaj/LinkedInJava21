@@ -101,10 +101,9 @@ public class SignUpController implements Initializable {
         fileChooser.setTitle("Choose an Image");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")+ "/Desktop"));
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JPEG Image","*.jpg"), new FileChooser.ExtensionFilter("PNG Image", "*.png"), new FileChooser.ExtensionFilter("All image files","*.jpg","*.png"));
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text file","*.txt"));
         profilePicture = fileChooser.showOpenDialog(uploadImg.getScene().getWindow());
         if (profilePicture!=null){
-            Image image = new Image(profilePicture.getPath());
+            Image image = new Image(profilePicture.toURI().toString());
             profileImg.setImage(image);
         }
     }
