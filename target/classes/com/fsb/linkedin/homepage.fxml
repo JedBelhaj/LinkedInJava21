@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1000.0" styleClass="body-background" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.HomePageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1000.0" styleClass="body-background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.HomePageController">
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="200.0" styleClass="white-background" BorderPane.alignment="CENTER">
          <children>
@@ -25,7 +25,7 @@
                   <Insets right="20.0" />
                </HBox.margin>
             </ImageView>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="round-button" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="round-button" stylesheets="@../../../style.css">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -39,7 +39,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="7.0">
                      <children>
-                        <Button fx:id="home" mnemonicParsing="false" onMouseClicked="#home" prefHeight="35.0" prefWidth="35.0" styleClass="round-button" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+                        <Button fx:id="home" mnemonicParsing="false" onMouseClicked="#home" prefHeight="35.0" prefWidth="35.0" styleClass="round-button" stylesheets="@../../../style.css">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -53,7 +53,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Button fx:id="profile" mnemonicParsing="false" onMouseClicked="#profile" prefHeight="35.0" prefWidth="35.0" styleClass="round-button" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+                        <Button fx:id="profile" mnemonicParsing="false" onMouseClicked="#profile" prefHeight="35.0" prefWidth="35.0" styleClass="round-button" stylesheets="@../../../style.css">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -67,7 +67,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Button fx:id="chatroom" mnemonicParsing="false" onMouseClicked="#chatroom" prefHeight="35.0" prefWidth="35.0" styleClass="round-button" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+                        <Button fx:id="chatroom" mnemonicParsing="false" onMouseClicked="#chatroom" prefHeight="35.0" prefWidth="35.0" styleClass="round-button" stylesheets="@../../../style.css">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -81,7 +81,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="66.0" prefWidth="67.0">
                      <children>
-                        <Button fx:id="notifications" mnemonicParsing="false" onMouseClicked="#notifications" prefHeight="35.0" prefWidth="35.0" styleClass="round-button" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+                        <Button fx:id="notifications" mnemonicParsing="false" onMouseClicked="#notifications" prefHeight="35.0" prefWidth="35.0" styleClass="round-button" stylesheets="@../../../style.css">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -139,7 +139,7 @@
                               <Font name="System Bold Italic" size="22.0" />
                            </font>
                         </Label>
-                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="57.0" styleClass="round-button" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="57.0" styleClass="round-button" stylesheets="@../../../style.css">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -400,13 +400,13 @@
       </ScrollPane>
    </right>
    <center>
-      <HBox prefHeight="1014.0" prefWidth="478.0" styleClass="post-background" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css" BorderPane.alignment="CENTER">
+      <HBox prefHeight="1014.0" prefWidth="478.0" styleClass="post-background" stylesheets="@../../../style.css" BorderPane.alignment="CENTER">
          <children>
             <ScrollPane>
                <content>
                   <VBox fx:id="postcontainer" prefHeight="684.0" prefWidth="446.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="139.0" prefWidth="406.0" styleClass="post-background" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+                        <VBox alignment="CENTER" prefHeight="139.0" prefWidth="406.0" styleClass="post-background" stylesheets="@../../../style.css">
                            <children>
                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
@@ -415,7 +415,7 @@
                                           <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/jedimage.jpg" />
                                        </image>
                                     </ImageView>
-                                    <TextField prefHeight="26.0" prefWidth="327.0" promptText="what is in your mind ..." styleClass="text-field" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+                                    <TextField prefHeight="26.0" prefWidth="327.0" promptText="what is in your mind ..." styleClass="text-field" stylesheets="@../../../style.css">
                                        <font>
                                           <Font name="Segoe UI Light" size="12.0" />
                                        </font>

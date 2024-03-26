@@ -25,7 +25,7 @@ public class SceneSwitcher {
 
     public static void goTo(Class<?> c, String destination, Button button) throws IOException {
         if (nextStack.isEmpty() || !saveHistory) {
-            FXMLLoader loader = new FXMLLoader(c.getResource(destination + ".fxml"));
+            FXMLLoader loader = new FXMLLoader(c.getResource("/com/fsb/linkedin/"+destination + ".fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);

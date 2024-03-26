@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="565.0" spacing="10.0" styleClass="post-background" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.OfferController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="565.0" spacing="10.0" styleClass="post-background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.OfferController">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="10.0">
          <children>
@@ -83,9 +83,9 @@
          </image>
       </ImageView>
       <StackPane alignment="CENTER_LEFT" />
-      <HBox maxWidth="1.7976931348623157E308" styleClass="top-border" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+      <HBox maxWidth="1.7976931348623157E308" styleClass="top-border" stylesheets="@../../../style.css">
          <children>
-            <Button fx:id="offerbutton" mnemonicParsing="false" onMouseClicked="#offerbutton" styleClass="white-background" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+            <Button fx:id="offerbutton" mnemonicParsing="false" onMouseClicked="#offerbutton" styleClass="white-background" stylesheets="@../../../style.css">
                <graphic>
                   <HBox alignment="CENTER" prefHeight="35.0" prefWidth="762.0" spacing="10.0">
                      <children>

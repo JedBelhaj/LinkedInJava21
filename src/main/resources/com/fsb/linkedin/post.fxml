@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="565.0" spacing="10.0" styleClass="post-background" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.PostController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="565.0" spacing="10.0" styleClass="post-background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.PostController">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="10.0">
          <children>
@@ -120,7 +120,7 @@
             </HBox>
          </children>
       </StackPane>
-      <HBox maxWidth="1.7976931348623157E308" styleClass="top-border" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+      <HBox maxWidth="1.7976931348623157E308" styleClass="top-border" stylesheets="@../../../style.css">
          <children>
             <HBox fx:id="likeContainer" alignment="CENTER" onMouseClicked="#onReactionImgPressed" spacing="10.0" HBox.hgrow="ALWAYS">
                <children>
@@ -136,7 +136,7 @@
                   </Label>
                </children>
             </HBox>
-            <Button fx:id="commentcontainer" mnemonicParsing="false" onMouseClicked="#commentsection" styleClass="white-background" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+            <Button fx:id="commentcontainer" mnemonicParsing="false" onMouseClicked="#commentsection" styleClass="white-background" stylesheets="@../../../style.css">
                <graphic>
                   <HBox alignment="CENTER" prefHeight="35.0" prefWidth="164.0" spacing="10.0">
                      <children>

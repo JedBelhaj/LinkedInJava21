@@ -34,6 +34,12 @@ public class PersonalAccount {
     private List<Project> projects = new ArrayList<>();
     private byte[] profilePicture;
 
+    private Image profileImage;
+
+    public void setProfileImage(Image profileImage) {
+        this.profileImage = profileImage;
+    }
+
     private byte[] videoCV;
 
     public byte[] getVideoCV() {

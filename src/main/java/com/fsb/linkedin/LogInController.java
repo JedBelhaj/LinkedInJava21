@@ -16,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class LogInController {
@@ -51,7 +52,7 @@ public class LogInController {
 
     }
     @FXML
-    protected void onSubmit(){
+    protected void onSubmit() throws IOException {
         boolean userIsValid = FieldVerifier.emailIsValid(user) || FieldVerifier.phoneIsValid(user);
         boolean passIsValid = FieldVerifier.isValid(pass);
         if (userIsValid && passIsValid){
@@ -61,7 +62,9 @@ public class LogInController {
                 System.out.println("valid login!");
                 AccountDAO.loadUser(user.getText());
                 System.out.println(PersonalAccount.getInstance());
-                image.setImage(new Image(ImageConverter.convertByteArrayToInputStream(PersonalAccount.getInstance().getProfilePicture())));
+                //image.setImage(PersonalAccount.getInstance().getProfileImage());
+                SceneSwitcher.setSaveHistory(false);
+                SceneSwitcher.goTo(getClass(),"homepage",login);
             }
             else {
                 messageLabel.setText("Incorrect Credentials!");
