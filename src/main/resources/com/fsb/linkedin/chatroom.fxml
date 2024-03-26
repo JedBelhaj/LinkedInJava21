@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1121.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.ChatRoomController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1121.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.home.ChatRoomController">
    <children>
       <AnchorPane fx:id="an_menu" prefHeight="710.0" prefWidth="360.0" style="-fx-background-color: #BA2E49;">
          <children>
@@ -23,7 +23,7 @@
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/chat.png" />
+                        <Image url="@../../../imgs/chat.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -36,7 +36,7 @@
                            <children>
                               <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                    <Image url="@../../../imgs/user.png" />
                                  </image>
                               </ImageView>
                               <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="200.0" spacing="30.0">
@@ -67,7 +67,7 @@
                            <children>
                               <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                    <Image url="@../../../imgs/user.png" />
                                  </image>
                               </ImageView>
                               <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="200.0" spacing="30.0">
@@ -98,7 +98,7 @@
                            <children>
                               <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                    <Image url="@../../../imgs/user.png" />
                                  </image>
                               </ImageView>
                               <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="200.0" spacing="30.0">
@@ -129,7 +129,7 @@
                            <children>
                               <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                    <Image url="@../../../imgs/user.png" />
                                  </image>
                               </ImageView>
                               <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="200.0" spacing="30.0">
@@ -160,7 +160,7 @@
                            <children>
                               <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                    <Image url="@../../../imgs/user.png" />
                                  </image>
                               </ImageView>
                               <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="200.0" spacing="30.0">
@@ -207,7 +207,7 @@
                            <children>
                               <ImageView fitHeight="32.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                    <Image url="@../../../imgs/user.png" />
                                  </image>
                               </ImageView>
                               <Label text="username" />
@@ -267,7 +267,7 @@
                            <children>
                               <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                    <Image url="@../../../imgs/user.png" />
                                  </image>
                               </ImageView>
                               <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="200.0" spacing="30.0">
@@ -298,7 +298,7 @@
                            <children>
                               <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                    <Image url="@../../../imgs/user.png" />
                                  </image>
                               </ImageView>
                               <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="200.0" spacing="30.0">
@@ -329,7 +329,7 @@
                            <children>
                               <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                    <Image url="@../../../imgs/user.png" />
                                  </image>
                               </ImageView>
                               <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="200.0" spacing="30.0">
@@ -360,7 +360,7 @@
                            <children>
                               <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                    <Image url="@../../../imgs/user.png" />
                                  </image>
                               </ImageView>
                               <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="200.0" spacing="30.0">
@@ -404,7 +404,7 @@
                      <children>
                         <ImageView fitHeight="54.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/jedimage.jpg" />
+                              <Image url="@../../../imgs/jedimage.jpg" />
                            </image>
                         </ImageView>
                         <TextField prefHeight="26.0" prefWidth="327.0" promptText="what is in your mind ..." styleClass="text-field" stylesheets="@../../../style.css">
@@ -426,7 +426,7 @@
                            <children>
                               <ImageView fitHeight="29.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/image-gallery.png" />
+                                    <Image url="@../../../imgs/image-gallery.png" />
                                  </image>
                               </ImageView>
                               <Label text="image">
@@ -440,7 +440,7 @@
                            <children>
                               <ImageView fitHeight="29.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/clapperboard.png" />
+                                    <Image url="@../../../imgs/clapperboard.png" />
                                  </image>
                               </ImageView>
                               <Label prefHeight="18.0" prefWidth="57.0" text="video">

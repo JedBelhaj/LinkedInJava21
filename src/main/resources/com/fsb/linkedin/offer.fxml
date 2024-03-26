@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="565.0" spacing="10.0" styleClass="post-background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.OfferController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="565.0" spacing="10.0" styleClass="post-background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.home.OfferController">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="10.0">
          <children>
             <ImageView fx:id="imgProfile" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                  <Image url="@../../../imgs/user.png" />
                </image>
             </ImageView>
             <VBox alignment="CENTER" prefHeight="60.0">
@@ -31,7 +31,7 @@
                         </Label>
                         <ImageView fx:id="imgVerified" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/ic_verified.png" />
+                              <Image url="@../../../imgs/ic_verified.png" />
                            </image>
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
@@ -48,7 +48,7 @@
                         </Label>
                         <ImageView fx:id="audience" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/ic_public.png" />
+                              <Image url="@../../../imgs/ic_public.png" />
                            </image>
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
@@ -61,7 +61,7 @@
             <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
             <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/ic_more.png" />
+                  <Image url="@../../../imgs/ic_more.png" />
                </image>
             </ImageView>
          </children>
@@ -79,7 +79,7 @@
       </Label>
       <ImageView fx:id="imgPost" fitHeight="535.0" fitWidth="535.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/img2.jpg" />
+            <Image url="@../../../imgs/img2.jpg" />
          </image>
       </ImageView>
       <StackPane alignment="CENTER_LEFT" />
@@ -91,7 +91,7 @@
                      <children>
                         <ImageView fitHeight="35.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/ic_comment.png" />
+                              <Image url="@../../../imgs/ic_comment.png" />
                            </image>
                         </ImageView>
                         <Label prefHeight="27.0" prefWidth="120.0" text="Send offer" textFill="#606266">

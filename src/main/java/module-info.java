@@ -4,11 +4,18 @@ module com.fsb.linkedin {
     requires java.sql;
     requires javafx.media;
 
-    opens com.fsb.linkedin.entities to javafx.fxml;
+
     opens com.fsb.linkedin.utils to javafx.fxml;
     opens com.fsb.linkedin to javafx.fxml;
     exports com.fsb.linkedin;
     exports com.fsb.linkedin.entities;
     exports com.fsb.linkedin.utils;
+    exports com.fsb.linkedin.controllers.login;
+    opens com.fsb.linkedin.controllers.login to javafx.fxml;
+    exports com.fsb.linkedin.controllers.home;
+    opens com.fsb.linkedin.controllers.home to javafx.fxml;
+    exports com.fsb.linkedin.controllers.signup;
+    opens com.fsb.linkedin.controllers.signup to javafx.fxml;
+
 
 }

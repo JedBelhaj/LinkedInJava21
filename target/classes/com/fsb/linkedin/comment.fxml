@@ -19,7 +19,7 @@
          <children>
             <ImageView fitHeight="40.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/jedimage.jpg" />
+                  <Image url="@../../../imgs/jedimage.jpg" />
                </image>
             </ImageView>
             <TextField prefHeight="26.0" prefWidth="454.0" promptText="What you want to comment ?" />
@@ -41,7 +41,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                    <Image url="@../../../imgs/user.png" />
                                  </image>
                               </ImageView>
                               <Label text="username">
@@ -66,7 +66,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                    <Image url="@../../../imgs/user.png" />
                                  </image>
                               </ImageView>
                               <Label text="username">
@@ -88,7 +88,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                    <Image url="@../../../imgs/user.png" />
                                  </image>
                               </ImageView>
                               <Label text="username">
@@ -110,7 +110,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                    <Image url="@../../../imgs/user.png" />
                                  </image>
                               </ImageView>
                               <Label text="username">
@@ -132,7 +132,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                    <Image url="@../../../imgs/user.png" />
                                  </image>
                               </ImageView>
                               <Label text="username">
@@ -154,7 +154,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                    <Image url="@../../../imgs/user.png" />
                                  </image>
                               </ImageView>
                               <Label text="username">
@@ -176,7 +176,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                    <Image url="@../../../imgs/user.png" />
                                  </image>
                               </ImageView>
                               <Label text="username">
@@ -198,7 +198,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                    <Image url="@../../../imgs/user.png" />
                                  </image>
                               </ImageView>
                               <Label text="username">
@@ -220,7 +220,7 @@
                            <children>
                               <ImageView fitHeight="40.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                    <Image url="@../../../imgs/user.png" />
                                  </image>
                               </ImageView>
                               <Label text="username">
