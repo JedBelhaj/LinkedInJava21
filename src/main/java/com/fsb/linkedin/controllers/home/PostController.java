@@ -1,6 +1,7 @@
 package com.fsb.linkedin.controllers.home;
 
 import com.fsb.linkedin.DAO.PostDAO;
+import com.fsb.linkedin.entities.PersonalAccount;
 import com.fsb.linkedin.entities.Post;
 import com.fsb.linkedin.entities.PostAudience;
 import com.fsb.linkedin.entities.Reactions;
@@ -140,7 +141,11 @@ public class PostController{
         nbComments.setText(post.getNbComments() + " comments");
         nbShares.setText(post.getNbShares()+" shares");
 
-        currentReaction = Reactions.NON;
+        if (PostDAO.likedBy(PersonalAccount.getInstance().getEmail(), post.getPostID()))
+            currentReaction = Reactions.LIKE;
+        else
+            currentReaction = Reactions.NON;
+        setReaction(currentReaction);
     }
 
 
