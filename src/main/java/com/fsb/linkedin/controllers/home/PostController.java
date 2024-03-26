@@ -1,8 +1,11 @@
 package com.fsb.linkedin.controllers.home;
 
+import com.fsb.linkedin.DAO.PostDAO;
 import com.fsb.linkedin.entities.Post;
 import com.fsb.linkedin.entities.PostAudience;
 import com.fsb.linkedin.entities.Reactions;
+import com.fsb.linkedin.utils.ImageConverter;
+import com.fsb.linkedin.utils.SceneSwitcher;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -70,17 +73,8 @@ public class PostController{
     private Post post;
 
     public void commentsection() throws IOException {
-        System.out.println("it is clicking");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("comment.fxml"));
-        Parent root = loader.load();
-
-        // Create a new stage for the comment scene
-        Stage commentStage = new Stage();
-        commentStage.setTitle("Comment");
-        commentStage.setScene(new Scene(root));
-
-        // Show the comment stage
-        commentStage.show();    }
+        SceneSwitcher.openNewWindow(getClass(),"comment","Comments");
+    }
     @FXML
     public void onReactionImgPressed(MouseEvent me){
         if(currentReaction==Reactions.LIKE){
@@ -99,21 +93,27 @@ public class PostController{
 
         if(currentReaction == Reactions.NON){
             post.setTotalReactions(post.getTotalReactions() + 1);
+            PostDAO.addLike(post.getPostID());
         }
 
         currentReaction = reaction;
 
         if(currentReaction == Reactions.NON){
             post.setTotalReactions(post.getTotalReactions() - 1);
+            PostDAO.removeLike(post.getPostID());
         }
 
         nbReactions.setText(String.valueOf(post.getTotalReactions()));
     }
     public void setData(Post post){
         this.post = post;
-        Image img;
-        img = new Image(Objects.requireNonNull(getClass().getResourceAsStream(post.getAccount().getProfileImg())));
+        Image img = new Image(ImageConverter.convertByteArrayToInputStream(post.getAccount().getProfileImg()));
         imgProfile.setImage(img);
+        if (post.getImage() == null){
+            imgPost.setScaleX(0);
+        }else {
+            imgPost.setImage(new Image(ImageConverter.convertByteArrayToInputStream(post.getImage())));
+        }
         username.setText(post.getAccount().getName());
         if(post.getAccount().isVerified()){
             imgVerified.setVisible(true);

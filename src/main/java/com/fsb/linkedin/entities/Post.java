@@ -1,6 +1,16 @@
 package com.fsb.linkedin.entities;
 
 public class Post {
+    private int postID;
+
+    public void setPostID(int postID) {
+        this.postID = postID;
+    }
+
+    public int getPostID() {
+        return postID;
+    }
+
     private Account account;
     private PostAudience audience;
     private String date;

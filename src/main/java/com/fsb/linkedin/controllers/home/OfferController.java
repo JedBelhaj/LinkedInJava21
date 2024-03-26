@@ -69,7 +69,7 @@ public class OfferController {
     private Offer offer;
 
 
-    public void setData(Offer offer){
+    /*public void setData(Offer offer){
         this.offer = offer;
         Image img;
         img = new Image(Objects.requireNonNull(getClass().getResourceAsStream(offer.getAccount().getProfileImg())));
@@ -94,7 +94,7 @@ public class OfferController {
             imgPost.setVisible(false);
             imgPost.setManaged(false);
         }
-    }
+    }*/
     public void offerbutton() throws IOException {
         System.out.println("it is clicking");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("comment.fxml"));

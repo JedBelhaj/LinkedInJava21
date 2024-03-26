@@ -54,13 +54,14 @@ public class SceneSwitcher {
         }
     }
 
-    public static void openNewWindow(Class<?> c, String destination, String priority) throws IOException {
-        FXMLLoader loader = new FXMLLoader(c.getResource(destination + ".fxml"));
+    public static void openNewWindow(Class<?> c, String destination,String title, String priority) throws IOException {
+        FXMLLoader loader = new FXMLLoader(c.getResource("/com/fsb/linkedin/"+destination + ".fxml"));
         Parent root = loader.load();
 
         Scene scene = new Scene(root);
 
         Stage newStage = new Stage();
+        newStage.setTitle(title);
         newStage.setScene(scene);
 
         // Set the modality of the new window if specified
@@ -70,13 +71,14 @@ public class SceneSwitcher {
 
         newStage.show();
     }
-    public static void openNewWindow(Class<?> c, String destination) throws IOException {
-        FXMLLoader loader = new FXMLLoader(c.getResource(destination + ".fxml"));
+    public static void openNewWindow(Class<?> c, String destination,String title) throws IOException {
+        FXMLLoader loader = new FXMLLoader(c.getResource("/com/fsb/linkedin/"+destination + ".fxml"));
         Parent root = loader.load();
 
         Scene scene = new Scene(root);
 
         Stage newStage = new Stage();
+        newStage.setTitle(title);
         newStage.setScene(scene);
 
         newStage.show();

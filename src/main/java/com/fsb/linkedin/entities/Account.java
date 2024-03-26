@@ -2,7 +2,7 @@ package com.fsb.linkedin.entities;
 
 public class Account {
     private String name;
-    private String profileImg;
+    private byte[] profileImg;
     private boolean isVerified;
 
     public String getName() {
@@ -13,11 +13,11 @@ public class Account {
         this.name = name;
     }
 
-    public String getProfileImg() {
+    public byte[] getProfileImg() {
         return profileImg;
     }
 
-    public void setProfileImg(String profileImg) {
+    public void setProfileImg(byte[] profileImg) {
         this.profileImg = profileImg;
     }
 
