@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="565.0" spacing="10.0" styleClass="post-background" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.OfferController">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="10.0">
+         <children>
+            <ImageView fx:id="imgProfile" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+               </image>
+            </ImageView>
+            <VBox alignment="CENTER" prefHeight="60.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT">
+                     <children>
+                        <Label fx:id="username" text="username">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="imgVerified" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/ic_verified.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT">
+                     <children>
+                        <Label fx:id="date" text="1 h" textFill="#616770">
+                           <font>
+                              <Font name="Segoe UI Historic" size="15.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="audience" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/ic_public.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/ic_more.png" />
+               </image>
+            </ImageView>
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+      </HBox>
+      <Label fx:id="caption" maxWidth="1.7976931348623157E308" text="Caption" wrapText="true">
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
+         <font>
+            <Font name="Segoe UI Historic" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imgPost" fitHeight="535.0" fitWidth="535.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/img2.jpg" />
+         </image>
+      </ImageView>
+      <StackPane alignment="CENTER_LEFT" />
+      <HBox maxWidth="1.7976931348623157E308" styleClass="top-border" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+         <children>
+            <Button fx:id="offerbutton" mnemonicParsing="false" onMouseClicked="#offerbutton" styleClass="white-background" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+               <graphic>
+                  <HBox alignment="CENTER" prefHeight="35.0" prefWidth="762.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/ic_comment.png" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="27.0" prefWidth="120.0" text="Send offer" textFill="#606266">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </graphic>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="10.0" top="10.0" />
+         </padding>
+      </HBox>
+   </children>
+</VBox>

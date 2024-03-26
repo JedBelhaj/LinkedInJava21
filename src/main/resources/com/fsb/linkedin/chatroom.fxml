@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1121.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.ChatRoomController">
+   <children>
+      <AnchorPane fx:id="an_menu" prefHeight="710.0" prefWidth="360.0" style="-fx-background-color: #BA2E49;">
+         <children>
+            <Pane prefHeight="40.0" prefWidth="230.0" />
+            <Button layoutX="5.0" layoutY="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="219.0" style="-fx-background-color: #BA2E49;" text="CONTACT INBOX" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/chat.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <ScrollPane layoutX="5.0" layoutY="80.0" prefHeight="630.0" prefWidth="352.0">
+               <content>
+                  <VBox prefHeight="630.0" prefWidth="336.0" spacing="5.0" style="-fx-background-color: #BA2E49;">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="72.0" prefWidth="246.0" styleClass="post-background" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+                           <children>
+                              <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="200.0" spacing="30.0">
+                                 <children>
+                                    <Label text="username">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="aaaaaaaaaaaaaaaaa" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="10.0" top="5.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="5.0" right="15.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="177.0" styleClass="post-background" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+                           <children>
+                              <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="200.0" spacing="30.0">
+                                 <children>
+                                    <Label text="username">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="aaaaaaaaaaaaaaaaa" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="10.0" top="5.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="5.0" right="15.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="92.0" prefHeight="75.0" prefWidth="177.0" styleClass="post-background" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+                           <children>
+                              <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="200.0" spacing="30.0">
+                                 <children>
+                                    <Label text="username">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="aaaaaaaaaaaaaaaaa" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="10.0" top="5.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="5.0" right="15.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="175.0" prefHeight="75.0" prefWidth="177.0" styleClass="post-background" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+                           <children>
+                              <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="200.0" spacing="30.0">
+                                 <children>
+                                    <Label text="username">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="aaaaaaaaaaaaaaaaa" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="10.0" top="5.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="5.0" right="15.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="257.0" prefHeight="75.0" prefWidth="177.0" styleClass="post-background" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+                           <children>
+                              <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="200.0" spacing="30.0">
+                                 <children>
+                                    <Label text="username">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="aaaaaaaaaaaaaaaaa" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="10.0" top="5.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="5.0" right="15.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="an_account" layoutX="810.0" layoutY="2.0" prefHeight="710.0" prefWidth="250.0" style="-fx-background-color: white;">
+         <children>
+            <Pane layoutY="2.0" prefHeight="32.0" prefWidth="306.0" style="-fx-background-color: #88124E;" />
+            <VBox layoutY="34.0" prefHeight="462.0" prefWidth="306.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="136.0" spacing="10.0">
+                           <children>
+                              <ImageView fitHeight="32.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                 </image>
+                              </ImageView>
+                              <Label text="username" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Label prefHeight="66.0" prefWidth="270.0" text="Contact info :">
+                     <font>
+                        <Font name="System Bold Italic" size="21.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="334.0" spacing="80.0">
+                     <children>
+                        <Label text="email" />
+                        <Label text="exemple@gamil.com" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" top="20.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="334.0" spacing="30.0">
+                     <children>
+                        <Label text="phone number" />
+                        <Label text="+21655548100" />
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" top="20.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="more informations" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="an_message" layoutX="360.0" prefHeight="578.0" prefWidth="446.0" style="-fx-background-color: #993333;">
+         <children>
+            <Pane prefHeight="40.0" prefWidth="446.0" style="-fx-background-color: #BA2E49;" />
+            <ScrollPane layoutY="142.0" prefHeight="443.0" prefWidth="446.0" style="-fx-background-color: #993333;" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+               <content>
+                  <VBox prefHeight="443.0" prefWidth="430.0" spacing="10.0" style="-fx-background-color: #993333;">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="177.0" styleClass="post-background" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+                           <children>
+                              <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="200.0" spacing="30.0">
+                                 <children>
+                                    <Label text="username">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="aaaaaaaaaaaaaaaaa" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="10.0" top="5.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="5.0" right="15.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="10.0" prefHeight="75.0" prefWidth="177.0" styleClass="post-background" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+                           <children>
+                              <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="200.0" spacing="30.0">
+                                 <children>
+                                    <Label text="you">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="bbbbbbbbbbbbbbb" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="10.0" top="5.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="5.0" right="15.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="92.0" prefHeight="75.0" prefWidth="177.0" styleClass="post-background" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+                           <children>
+                              <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="200.0" spacing="30.0">
+                                 <children>
+                                    <Label text="username">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="ccccccccccccccccccc" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="10.0" top="5.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="5.0" right="15.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="175.0" prefHeight="75.0" prefWidth="346.0" styleClass="post-background" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+                           <children>
+                              <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/user.png" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="200.0" spacing="30.0">
+                                 <children>
+                                    <Label text="you">
+                                       <font>
+                                          <Font name="Arial Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="ddddddddddddddddddddd" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="10.0" top="5.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="5.0" right="15.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="360.0" layoutY="586.0" prefHeight="127.0" prefWidth="446.0" style="-fx-background-color: #993333;">
+         <children>
+            <VBox alignment="CENTER" layoutX="1.0" layoutY="6.0" prefHeight="77.0" prefWidth="434.0" styleClass="post-background" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="54.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/jedimage.jpg" />
+                           </image>
+                        </ImageView>
+                        <TextField prefHeight="26.0" prefWidth="327.0" promptText="what is in your mind ..." styleClass="text-field" stylesheets="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/style.css">
+                           <font>
+                              <Font name="Segoe UI Light" size="12.0" />
+                           </font>
+                        </TextField>
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="109.0" text="send">
+                           <font>
+                              <Font name="System Bold Italic" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Pane prefHeight="0.0" prefWidth="390.0" style="-fx-background-color: #242551;" />
+                  <HBox alignment="CENTER" prefHeight="85.0" prefWidth="390.0" spacing="50.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <HBox prefHeight="150.0" prefWidth="107.0" spacing="5.0">
+                           <children>
+                              <ImageView fitHeight="29.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/image-gallery.png" />
+                                 </image>
+                              </ImageView>
+                              <Label text="image">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="150.0" prefWidth="107.0" spacing="5.0">
+                           <children>
+                              <ImageView fitHeight="29.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../Downloads/TestJavaFX/TestJavaFX/src/main/resources/imgs/clapperboard.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="18.0" prefWidth="57.0" text="video">
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets top="15.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" top="20.0" />
+               </padding>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
