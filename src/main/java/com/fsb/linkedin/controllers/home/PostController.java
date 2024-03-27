@@ -110,8 +110,8 @@ public class PostController{
         this.post = post;
         Image img = new Image(ImageConverter.convertByteArrayToInputStream(post.getAccount().getProfileImg()));
         imgProfile.setImage(img);
-        if (post.getImage() == null){
-            imgPost.setScaleX(0);
+        if (imgPost == null){
+            System.out.println("imageless post");
         }else {
             imgPost.setImage(new Image(ImageConverter.convertByteArrayToInputStream(post.getImage())));
         }

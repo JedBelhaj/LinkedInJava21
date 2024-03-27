@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.security.PublicKey;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -45,6 +46,7 @@ public class HomePageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        String postType;
         Image profileImage = PersonalAccount.getInstance().getProfileImage();
         profilePicture.setImage(profileImage);
         profileName.setText(PersonalAccount.getInstance().getFirstName()+ " " + PersonalAccount.getInstance().getLastName());
@@ -54,8 +56,14 @@ public class HomePageController implements Initializable {
         try {
             for (Post post : posts) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/post.fxml"));
+                System.out.println(Arrays.toString(post.getImage()).equals("null"));
+                if (Arrays.toString(post.getImage()).equals("null")) postType = "imagelessPost";
+                else postType = "post";
+                System.out.println(postType);
+                fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/"+postType+".fxml"));
                 VBox vBox=fxmlLoader.load();
+                System.out.println("im here");
+
                 PostController postController=fxmlLoader.getController();
                 postController.setData(post);
                 postContainer.getChildren().add(vBox);
@@ -101,6 +109,9 @@ public class HomePageController implements Initializable {
     public void onPost() throws IOException {
         if (FieldVerifier.isValid(postField)){
             createPost.setCaption(postField.getText());
+            postField.setText("");
+            createPostImage = null;
+            createPostVideo = null;
             createPost.setAudience(PostAudience.PUBLIC);
             if (createPostImage!=null) createPost.setImage(ImageConverter.convertFileToByteArray(createPostImage));
             //TODO add video uploading

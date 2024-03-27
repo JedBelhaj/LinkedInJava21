@@ -68,5 +68,12 @@ public class SignUpVideo {
             PersonalAccount.setInstance(p);
             AccountDAO.saveAccount(p);
         }
+        else {
+            System.out.println("this is a testing thing");
+            PersonalAccount p = PersonalAccount.getInstance();
+            //save video
+            PersonalAccount.setInstance(p);
+            AccountDAO.saveAccount(p);
+        }
     }
 }
