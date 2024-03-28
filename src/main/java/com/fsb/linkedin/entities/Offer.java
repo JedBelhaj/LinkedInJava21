@@ -15,7 +15,7 @@ public class Offer {
     private PostAudience audience;
     private String date;
     private String caption;
-    private String image;
+    private byte[] image;
     private int totalReactions;
 
     @Override
@@ -61,11 +61,11 @@ public class Offer {
         this.account = account;
     }
 
-    public String getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 }

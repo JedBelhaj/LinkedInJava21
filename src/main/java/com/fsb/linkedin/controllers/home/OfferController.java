@@ -1,7 +1,9 @@
 package com.fsb.linkedin.controllers.home;
 
+import com.fsb.linkedin.*;
 import com.fsb.linkedin.entities.Offer;
 import com.fsb.linkedin.entities.Reactions;
+import com.fsb.linkedin.utils.MediaConverter;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -69,10 +71,10 @@ public class OfferController {
     private Offer offer;
 
 
-    /*public void setData(Offer offer){
+    public void setData( Offer offer){
         this.offer = offer;
         Image img;
-        img = new Image(Objects.requireNonNull(getClass().getResourceAsStream(offer.getAccount().getProfileImg())));
+        img = MediaConverter.getImage(offer.getImage());
         imgProfile.setImage(img);
         username.setText(offer.getAccount().getName());
         if(offer.getAccount().isVerified()){
@@ -87,14 +89,14 @@ public class OfferController {
 
 
 
-        if(offer.getImage() != null && !offer.getImage().isEmpty()){
-            img = new Image(Objects.requireNonNull(getClass().getResourceAsStream(offer.getImage())));
+        if(offer.getImage() != null){
+            img = MediaConverter.getImage(offer.getImage());
             imgPost.setImage(img);
         }else{
             imgPost.setVisible(false);
             imgPost.setManaged(false);
         }
-    }*/
+    }
     public void offerbutton() throws IOException {
         System.out.println("it is clicking");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("comment.fxml"));
@@ -107,4 +109,6 @@ public class OfferController {
 
         // Show the comment stage
         commentStage.show();    }
+
+
 }
