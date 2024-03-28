@@ -1,10 +1,9 @@
 package com.fsb.linkedin.controllers.home;
 
+import com.fsb.linkedin.DAO.AccountDAO;
+import com.fsb.linkedin.DAO.OtherAccountDAO;
 import com.fsb.linkedin.DAO.PostDAO;
-import com.fsb.linkedin.entities.PersonalAccount;
-import com.fsb.linkedin.entities.Post;
-import com.fsb.linkedin.entities.PostAudience;
-import com.fsb.linkedin.entities.Reactions;
+import com.fsb.linkedin.entities.*;
 import com.fsb.linkedin.utils.MediaConverter;
 import com.fsb.linkedin.utils.SceneSwitcher;
 import javafx.fxml.FXML;
@@ -21,6 +20,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class PostController{
+    public HBox otherProfile;
+
     @FXML
     private ImageView imgProfile;
 
@@ -145,6 +146,10 @@ public class PostController{
     }
 
 
-
+    public void goToProfile() throws IOException {
+        OtherAccountDAO.loadUser(post.getAccount().getID());
+        OtherAccount o = OtherAccount.getInstance();
+        SceneSwitcher.goTo(getClass(),"profile",otherProfile);
     }
+}
 

@@ -45,6 +45,7 @@ public class HomePageDAO {
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 Post post = new Post();
+
                 post.setPostID(rs.getInt("post_id"));
                 post.setDate(rs.getString("date"));
                 post.setCaption(rs.getString("caption"));
@@ -54,6 +55,7 @@ public class HomePageDAO {
                 post.setNbShares(rs.getInt("nb_shares"));
 
                 Account account = new Account();
+                account.setID(rs.getInt("account_id"));
                 account.setName(rs.getString("account_name"));
                 account.setProfileImg(rs.getBytes("account_profile_img"));
                 account.setVerified(rs.getBoolean("account_verified"));

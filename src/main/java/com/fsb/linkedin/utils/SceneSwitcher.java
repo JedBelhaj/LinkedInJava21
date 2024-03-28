@@ -2,6 +2,7 @@ package com.fsb.linkedin.utils;
 
 import com.fsb.linkedin.MainApplication;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -23,7 +24,7 @@ public class SceneSwitcher {
         saveHistory = on;
     }
 
-    public static void goTo(Class<?> c, String destination, Button button) throws IOException {
+    public static void goTo(Class<?> c, String destination, Node button) throws IOException {
         if (nextStack.isEmpty() || !saveHistory) {
             FXMLLoader loader = new FXMLLoader(c.getResource("/com/fsb/linkedin/"+destination + ".fxml"));
             Parent root = loader.load();

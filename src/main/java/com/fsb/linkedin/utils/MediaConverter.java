@@ -1,5 +1,7 @@
 package com.fsb.linkedin.utils;
 
+import javafx.scene.image.Image;
+
 import java.io.*;
 import java.sql.Blob;
 import java.sql.SQLException;
@@ -28,5 +30,8 @@ public class MediaConverter {
             }
         }
         return file;
+    }
+    public static Image getImage(byte[] imageByteArray){
+        return new Image(convertByteArrayToInputStream(imageByteArray));
     }
 }

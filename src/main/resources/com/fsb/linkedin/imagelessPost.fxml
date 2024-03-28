@@ -13,7 +13,7 @@
 
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="565.0" spacing="10.0" styleClass="post-background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.home.PostController">
     <children>
-        <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="10.0">
+        <HBox fx:id="otherProfile" alignment="CENTER_LEFT" onMouseClicked="#goToProfile" prefHeight="60.0" spacing="10.0">
             <children>
                 <ImageView fx:id="imgProfile" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                     <image>

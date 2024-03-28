@@ -6,6 +6,7 @@ public class Experience extends Skill{
     String type;
     String mission;
 
+
     public Experience(String title, String technology, LocalDate dateStart, LocalDate dateFinish, String description, String type, String mission) {
         super(title, dateStart, dateFinish, description,technology);
         this.type = type;
@@ -13,7 +14,7 @@ public class Experience extends Skill{
     }
 
     public Experience() {
-        super();
+
     }
 
     public String getType() {

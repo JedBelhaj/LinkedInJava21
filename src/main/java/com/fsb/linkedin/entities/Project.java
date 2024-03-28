@@ -16,10 +16,15 @@ public class Project {
         Description = description;
     }
 
+    public Project(String title, String description) {
+
+        this.title = title;
+        Description = description;
+    }
+
     public Project() {
 
     }
-
 
     public String getTitle() {
         return title;

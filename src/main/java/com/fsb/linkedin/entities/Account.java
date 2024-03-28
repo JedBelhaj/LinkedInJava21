@@ -1,6 +1,16 @@
 package com.fsb.linkedin.entities;
 
 public class Account {
+    private int ID;
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
     private String name;
     private byte[] profileImg;
     private boolean isVerified;
