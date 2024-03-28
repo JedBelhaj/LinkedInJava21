@@ -79,8 +79,6 @@ public class PostController{
             setReaction(Reactions.NON);
         }else{
             setReaction(Reactions.LIKE);
-
-
     }}
 
     public void setReaction(Reactions reaction){

@@ -1,7 +1,9 @@
 package com.fsb.linkedin;
 
 import com.fsb.linkedin.DAO.AccountDAO;
+import com.fsb.linkedin.DAO.NotificationDAO;
 import com.fsb.linkedin.DAO.OtherAccountDAO;
+import com.fsb.linkedin.entities.OtherAccount;
 import com.fsb.linkedin.entities.PersonalAccount;
 import com.fsb.linkedin.utils.FieldVerifier;
 import com.fsb.linkedin.utils.MediaConverter;
@@ -35,7 +37,7 @@ public class testController {
             FieldVerifier.isValid(pass, n -> AccountDAO.loginIsValid(user.getText(),pass.getText()));
             if (loginIsValid){
                 AccountDAO.loadUser(user.getText());
-                OtherAccountDAO.loadUser("vid@gmail.com");
+                OtherAccountDAO.loadUser("gojosatoru@gmail.com");
                 SceneSwitcher.goTo(getClass(),"profile",login);
             }
         }

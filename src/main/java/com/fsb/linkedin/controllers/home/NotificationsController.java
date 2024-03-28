@@ -2,6 +2,7 @@ package com.fsb.linkedin.controllers.home;
 
 import com.fsb.linkedin.*;
 import com.fsb.linkedin.DAO.FriendRequestDAO;
+import com.fsb.linkedin.DAO.NotificationDAO;
 import com.fsb.linkedin.entities.Account;
 import com.fsb.linkedin.entities.Friendrequest;
 import com.fsb.linkedin.entities.Reactionnotif;
@@ -27,54 +28,18 @@ public class NotificationsController implements Initializable {
 
     @FXML
     private Label username;
-    public List<Friendrequest> getfriendrequestnotif(){
-        List<Friendrequest>ls=new ArrayList<>();
-        Friendrequest friendrequest;
-        for (int i=0;i<10;i++){
-            friendrequest=new Friendrequest();
-            Account account=new Account();
-            account.setName(" jed");
-            account.setProfileImg("/imgs/user.png".getBytes());
-            account.setVerified(true);
-            friendrequest.setAccount(account);
-            friendrequest.setDate("Feb 18, 2021 at 12:00 PM");
-            ls.add(friendrequest);
-        }
-        return ls;
-    }
-    public List<Reactionnotif> getreactionnotif(){
-        List<Reactionnotif> ls=new ArrayList<>();
-        Reactionnotif reactionnotif;
-        for(int i =1;i<=20;i++){
-
-            reactionnotif=new Reactionnotif();
-            Account account = new Account();
-            account.setName(" jed");
-            account.setProfileImg("/imgs/user.png".getBytes());
-            account.setVerified(true);
-            reactionnotif.setAccount(account);
-            reactionnotif.setDate("Feb 18, 2021 at 12:00 PM");
-            ls.add(reactionnotif);
-        }
-
-
-
-        return ls;
-    }
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println(FriendRequestDAO.getFriendRequests());
-        List<Reactionnotif> reactionnotifs=new ArrayList<>(getreactionnotif());
+        List<Reactionnotif> reactionnotifs= NotificationDAO.getReactionNotifications();
+        System.out.println(reactionnotifs);
         List<Friendrequest> friendrequests= FriendRequestDAO.getFriendRequests();
-        System.out.println("b");
         try {
-            System.out.println("a");
             for (Reactionnotif reactionnotif : reactionnotifs) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/reactionnotif.fxml"));
                 VBox vBox=fxmlLoader.load();
+                System.out.println("i loaded it");
                 ReactionnotifController reactionnotifController=fxmlLoader.getController();
                 reactionnotifController.setData(reactionnotif);
                 notificationcontainer.getChildren().add(vBox);
@@ -83,7 +48,6 @@ public class NotificationsController implements Initializable {
             e.printStackTrace();
         }
         try {
-            System.out.println("a");
             for (Friendrequest friendrequest : friendrequests) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/friendrequest.fxml"));
