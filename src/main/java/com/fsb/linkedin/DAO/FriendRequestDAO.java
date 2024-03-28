@@ -129,6 +129,7 @@ public class FriendRequestDAO {
         // Add sender as a friend
         addFriend(senderID);
 
+
         // Remove the friend request
         removeFriendRequest(senderID);
     }
