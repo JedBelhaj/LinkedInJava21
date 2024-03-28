@@ -5,12 +5,9 @@ import com.fsb.linkedin.entities.PersonalAccount;
 import com.fsb.linkedin.entities.Post;
 import com.fsb.linkedin.entities.PostAudience;
 import com.fsb.linkedin.entities.Reactions;
-import com.fsb.linkedin.utils.ImageConverter;
+import com.fsb.linkedin.utils.MediaConverter;
 import com.fsb.linkedin.utils.SceneSwitcher;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -18,7 +15,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 
 import java.io.IOException;
@@ -108,12 +104,12 @@ public class PostController{
     }
     public void setData(Post post){
         this.post = post;
-        Image img = new Image(ImageConverter.convertByteArrayToInputStream(post.getAccount().getProfileImg()));
+        Image img = new Image(MediaConverter.convertByteArrayToInputStream(post.getAccount().getProfileImg()));
         imgProfile.setImage(img);
         if (imgPost == null){
             System.out.println("imageless post");
         }else {
-            imgPost.setImage(new Image(ImageConverter.convertByteArrayToInputStream(post.getImage())));
+            imgPost.setImage(new Image(MediaConverter.convertByteArrayToInputStream(post.getImage())));
         }
         username.setText(post.getAccount().getName());
         if(post.getAccount().isVerified()){

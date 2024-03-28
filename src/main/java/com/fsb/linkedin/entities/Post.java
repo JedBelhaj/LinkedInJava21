@@ -16,7 +16,6 @@ public class Post {
     private String date;
     private String caption;
     private byte[] image;
-
     public byte[] getImage() {
         return image;
     }

@@ -186,7 +186,7 @@ public class AccountDAO {
                 account.setGender(rs.getString("gender"));
                 account.setCountry(rs.getString("country"));
                 account.setProfilePicture(rs.getBytes("profilePicture"));
-                account.setVideoCV(rs.getBytes("videoCV"));
+                account.setVideoCV(rs.getBlob("videoCV"));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

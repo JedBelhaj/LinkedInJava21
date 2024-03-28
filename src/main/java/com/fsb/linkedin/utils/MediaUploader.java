@@ -2,13 +2,14 @@ package com.fsb.linkedin.utils;
 
 import javafx.scene.Node;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.io.IOException;
 
-public class ImageUploader {
-    public static File getImageAsFile(Node uploadImg){
+public class MediaUploader {
+    public static File getMediaAsFile(Node uploadImg){
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose an Image");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")+ "/Desktop"));
@@ -19,6 +20,7 @@ public class ImageUploader {
         return new Image(imageFile.toURI().toString());
     }
     public static byte[] getImageAsByteArray(File imageFile) throws IOException {
-        return ImageConverter.convertFileToByteArray(imageFile);
+        return MediaConverter.convertFileToByteArray(imageFile);
     }
+    public  static Media getMedia(File mediaFile){ return new Media(mediaFile.toURI().toString()); }
 }

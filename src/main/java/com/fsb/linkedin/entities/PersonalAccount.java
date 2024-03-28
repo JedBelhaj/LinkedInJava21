@@ -1,9 +1,9 @@
 package com.fsb.linkedin.entities;
 
-import com.fsb.linkedin.utils.ImageConverter;
+import com.fsb.linkedin.utils.MediaConverter;
 import javafx.scene.image.Image;
 
-import java.io.File;
+import java.sql.Blob;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,15 +40,15 @@ public class PersonalAccount {
         this.profileImage = profileImage;
     }
 
-    private byte[] videoCV;
+    private Blob videoCV;
 
-    public byte[] getVideoCV() {
+    public Blob getVideoCV() {
         return videoCV;
     }
     public Image getProfileImage(){
-        return new Image(ImageConverter.convertByteArrayToInputStream(getProfilePicture()));
+        return new Image(MediaConverter.convertByteArrayToInputStream(getProfilePicture()));
     }
-    public void setVideoCV(byte[] videoCV) {
+    public void setVideoCV(Blob videoCV) {
         this.videoCV = videoCV;
     }
 

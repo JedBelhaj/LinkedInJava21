@@ -3,10 +3,10 @@ package com.fsb.linkedin.controllers.signup;
 import com.fsb.linkedin.DAO.AccountDAO;
 import com.fsb.linkedin.entities.PersonalAccount;
 import com.fsb.linkedin.utils.FieldVerifier;
+import com.fsb.linkedin.utils.MediaConverter;
 import com.fsb.linkedin.utils.SceneSwitcher;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -14,9 +14,10 @@ import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
 import java.io.File;
+import java.io.IOException;
 
 public class SignUpVideo {
-
+    File videoCV;
     public Button playpause;
     public Button reset;
     public Button upload;
@@ -47,7 +48,7 @@ public class SignUpVideo {
         fileChooser.setTitle("Choose a Video");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")+ "/Desktop"));
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("mp4 video","*.mp4"));
-        File videoCV = fileChooser.showOpenDialog(upload.getScene().getWindow());
+        videoCV = fileChooser.showOpenDialog(upload.getScene().getWindow());
         if (videoCV !=null){
             Media media = new Media(videoCV.toURI().toString());
             mediaPlayer = new MediaPlayer(media);
@@ -60,18 +61,10 @@ public class SignUpVideo {
         mediaPlayer.pause();
     }
 
-    @FXML protected void  onNext(){
+    @FXML protected void  onNext() throws IOException {
         if (FieldVerifier.isValid(upload,n -> mediaPlayer!=null)){
             mediaPlayer.pause();
             PersonalAccount p = PersonalAccount.getInstance();
-            //save video
-            PersonalAccount.setInstance(p);
-            AccountDAO.saveAccount(p);
-        }
-        else {
-            System.out.println("this is a testing thing");
-            PersonalAccount p = PersonalAccount.getInstance();
-            //save video
             PersonalAccount.setInstance(p);
             AccountDAO.saveAccount(p);
         }

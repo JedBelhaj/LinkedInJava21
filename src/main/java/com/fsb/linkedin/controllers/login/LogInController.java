@@ -1,10 +1,8 @@
 package com.fsb.linkedin.controllers.login;
 
 import com.fsb.linkedin.DAO.AccountDAO;
-import com.fsb.linkedin.MainApplication;
 import com.fsb.linkedin.entities.PersonalAccount;
 import com.fsb.linkedin.utils.FieldVerifier;
-import com.fsb.linkedin.utils.ImageConverter;
 import com.fsb.linkedin.utils.SceneSwitcher;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;

@@ -3,8 +3,8 @@ package com.fsb.linkedin.controllers.home;
 import com.fsb.linkedin.DAO.HomePageDAO;
 import com.fsb.linkedin.entities.*;
 import com.fsb.linkedin.utils.FieldVerifier;
-import com.fsb.linkedin.utils.ImageConverter;
-import com.fsb.linkedin.utils.ImageUploader;
+import com.fsb.linkedin.utils.MediaConverter;
+import com.fsb.linkedin.utils.MediaUploader;
 import com.fsb.linkedin.utils.SceneSwitcher;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,12 +16,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.FileChooser;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.security.PublicKey;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -113,7 +111,7 @@ public class HomePageController implements Initializable {
             createPostImage = null;
             createPostVideo = null;
             createPost.setAudience(PostAudience.PUBLIC);
-            if (createPostImage!=null) createPost.setImage(ImageConverter.convertFileToByteArray(createPostImage));
+            if (createPostImage!=null) createPost.setImage(MediaConverter.convertFileToByteArray(createPostImage));
             //TODO add video uploading
             System.out.println(createPost);
             HomePageDAO.createPost(createPost);
@@ -121,11 +119,13 @@ public class HomePageController implements Initializable {
     }
 
     public void onUploadImage() throws IOException {
-        createPostImage = ImageUploader.getImageAsFile(uploadImage);
+        createPostImage = MediaUploader.getMediaAsFile(uploadImage);
         System.out.println("got the image "+createPostImage.getPath());
-        createPost.setImage(ImageConverter.convertFileToByteArray(createPostImage));
+        createPost.setImage(MediaConverter.convertFileToByteArray(createPostImage));
     }
 
     public void onUploadVideo(MouseEvent mouseEvent) {
+        createPostVideo = MediaUploader.getMediaAsFile(uploadVideo);
+
     }
 }

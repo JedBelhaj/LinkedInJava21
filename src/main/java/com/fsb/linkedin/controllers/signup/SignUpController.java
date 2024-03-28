@@ -7,9 +7,7 @@ import com.fsb.linkedin.utils.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.io.IOException;
@@ -74,7 +72,7 @@ public class SignUpController implements Initializable {
             p.setGender(gender.getValue());
             p.setDateOfBirth(dateOfBirth.getValue());
             p.setPassword(password.getText());
-            p.setProfilePicture(ImageConverter.convertFileToByteArray(profilePicture));
+            p.setProfilePicture(MediaConverter.convertFileToByteArray(profilePicture));
             PersonalAccount.setInstance(p);
 
             SceneSwitcher.goTo(getClass(),"signupQualifications",next);
@@ -95,9 +93,9 @@ public class SignUpController implements Initializable {
     }
     @FXML
     protected void onUploadImg(){
-        profilePicture = ImageUploader.getImageAsFile(uploadImg);
+        profilePicture = MediaUploader.getMediaAsFile(uploadImg);
         if (profilePicture!=null){
-            profileImg.setImage(ImageUploader.getImage(profilePicture));
+            profileImg.setImage(MediaUploader.getImage(profilePicture));
         }
     }
 }

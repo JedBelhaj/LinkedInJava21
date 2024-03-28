@@ -3,6 +3,7 @@ package com.fsb.linkedin;
 import com.fsb.linkedin.DAO.AccountDAO;
 import com.fsb.linkedin.entities.PersonalAccount;
 import com.fsb.linkedin.utils.FieldVerifier;
+import com.fsb.linkedin.utils.MediaConverter;
 import com.fsb.linkedin.utils.SceneSwitcher;
 import com.fsb.linkedin.utils.VideoConverter;
 import javafx.fxml.FXML;
@@ -12,7 +13,10 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 
+import java.io.File;
 import java.io.IOException;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.Arrays;
 
 public class testController {
@@ -22,7 +26,7 @@ public class testController {
     public Button login;
     public MediaView video;
 
-    @FXML protected void onLogin() throws IOException {
+    @FXML protected void onLogin() throws IOException, SQLException {
         boolean userValid = FieldVerifier.emailIsValid(user);
         boolean passValid = FieldVerifier.isValid(pass);
         if (userValid && passValid){
@@ -30,12 +34,14 @@ public class testController {
             FieldVerifier.isValid(pass, n -> AccountDAO.loginIsValid(user.getText(),pass.getText()));
             if (loginIsValid){
                 AccountDAO.loadUser(user.getText());
-                Media media = VideoConverter.byteToMedia(PersonalAccount.getInstance().getVideoCV());
+                Blob videoBlob = PersonalAccount.getInstance().getVideoCV();
+                System.out.println("got the blob");
+                File videoFile = MediaConverter.convertBlobToFile(videoBlob);
+                Media media = new Media(videoFile.toURI().toString());
                 MediaPlayer mediaPlayer = new MediaPlayer(media);
                 video.setMediaPlayer(mediaPlayer);
                 mediaPlayer.play();
                 SceneSwitcher.setSaveHistory(false);
-                SceneSwitcher.goTo(getClass(),"PersonalProfile",login);
             }
         }
     }
