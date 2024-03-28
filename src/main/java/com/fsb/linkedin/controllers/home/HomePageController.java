@@ -85,7 +85,7 @@ public class HomePageController implements Initializable {
 
     }
     public void profile() throws IOException {
-        SceneSwitcher.goTo(getClass(),"PersonalProfile",profile);
+        SceneSwitcher.openNewWindow(getClass(),"PersonalProfile","Profile");
 
     }
     public void home() throws IOException {
@@ -93,11 +93,12 @@ public class HomePageController implements Initializable {
 
     }
     public void chatroom() throws IOException {
-        SceneSwitcher.goTo(getClass(),"chatroom",chatroom);
+        SceneSwitcher.openNewWindow(getClass(),"chatroom","Chatroom");
+
 
     }
     public void notifications() throws IOException {
-        SceneSwitcher.goTo(getClass(),"notifications",notifications);
+        SceneSwitcher.openNewWindow(getClass(),"notificationContainer","Notifications");
 
     }
 

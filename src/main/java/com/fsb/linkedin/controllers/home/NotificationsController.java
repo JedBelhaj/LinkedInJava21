@@ -65,16 +65,14 @@ public class NotificationsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Reactionnotif> reactionnotifs=new ArrayList<>(getreactionnotif());
-        List<Friendrequest>friendrequests=new ArrayList<>(getfriendrequestnotif());
+        List<Friendrequest> friendrequests=new ArrayList<>(getfriendrequestnotif());
         System.out.println("b");
         try {
             System.out.println("a");
             for (Reactionnotif reactionnotif : reactionnotifs) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/com/example/test/reactionnotif.fxml"));
-                System.out.println("a");
+                fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/reactionnotif.fxml"));
                 VBox vBox=fxmlLoader.load();
-                System.out.println("a");
                 ReactionnotifController reactionnotifController=fxmlLoader.getController();
                 reactionnotifController.setData(reactionnotif);
                 notificationcontainer.getChildren().add(vBox);
@@ -86,10 +84,8 @@ public class NotificationsController implements Initializable {
             System.out.println("a");
             for (Friendrequest friendrequest : friendrequests) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/com/example/test/friendrequest.fxml"));
-                System.out.println("a");
+                fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/friendrequest.fxml"));
                 VBox vBox=fxmlLoader.load();
-                System.out.println("a");
                 FriendrequestController friendrequestController=fxmlLoader.getController();
                 friendrequestController.setData(friendrequest);
                 notificationcontainer.getChildren().add(vBox);

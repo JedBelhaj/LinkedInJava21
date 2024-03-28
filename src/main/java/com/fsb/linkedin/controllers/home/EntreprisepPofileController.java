@@ -79,7 +79,7 @@ public class EntreprisepPofileController implements Initializable {
             for(Offer offer:offers){
                 System.out.println("a");
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/com/example/test/offer.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/offer.fxml"));
                 VBox hBox=fxmlLoader.load();
                 OfferController offerController=fxmlLoader.getController();
                 offerController.setData(offer);
@@ -91,7 +91,7 @@ public class EntreprisepPofileController implements Initializable {
         try {
             for (Offer offer : offers) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/com/example/test/offer.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/offer.fxml"));
                 VBox hBox = fxmlLoader.load();
                 OfferController offerController = fxmlLoader.getController();
                 offerController.setData(offer);
