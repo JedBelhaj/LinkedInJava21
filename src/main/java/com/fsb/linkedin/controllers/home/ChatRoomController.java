@@ -2,6 +2,7 @@ package com.fsb.linkedin.controllers.home;
 
 import com.fsb.linkedin.DAO.AccountDAO;
 import com.fsb.linkedin.DAO.ChatRoomDAO;
+import com.fsb.linkedin.DAO.OtherAccountDAO;
 import com.fsb.linkedin.entities.*;
 import com.fsb.linkedin.utils.FieldVerifier;
 import com.fsb.linkedin.utils.MediaConverter;
@@ -18,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -34,10 +36,11 @@ import java.util.ResourceBundle;
 
 public class ChatRoomController implements Initializable {
 
+    public ScrollPane scrollPane;
     private File createMessageImage;
     private File createMessageVideo;
     private Message createMessage = new Message();
-    private static int recieverID = 0;
+    private static int recieverID = -1;
 
 
     public VBox contactcontainer;
@@ -74,54 +77,12 @@ public class ChatRoomController implements Initializable {
         }
         return ls;
     }
-    public List<Post> getpost() {
-        List<Post> ls = new ArrayList<>();
-
-        Post post;
-
-        for (int i = 1; i <= 10; i = i + 2) {
-
-            post = new Post();
-            Account account = new Account();
-            account.setName(" jed");
-            account.setProfileImg("/imgs/user.png".getBytes());
-            account.setVerified(true);
-            post.setAccount(account);
-            post.setDate("Feb 18, 2021 at 12:00 PM");
-            post.setAudience(PostAudience.PUBLIC);
-            post.setCaption("i like kids .");
-            post.setImage("/imgs/img2.jpg".getBytes());
-            post.setTotalReactions(10);
-            post.setNbComments(2);
-            post.setNbShares(3);
-            ls.add(post);
-            System.out.println("post nb " + i);
-            System.out.println(account.toString());
-            System.out.println(post.toString());
-            post = new Post();
-            account = new Account();
-            account.setName(" jasseur");
-            account.setProfileImg("/imgs/user.png".getBytes());
-            account.setVerified(true);
-            post.setAccount(account);
-            post.setDate("Feb 18, 2021 at 12:00 PM");
-            post.setAudience(PostAudience.PUBLIC);
-            post.setCaption("so do i .");
-            post.setImage("/imgs/img2.jpg".getBytes());
-            post.setTotalReactions(10);
-            post.setNbComments(2);
-            post.setNbShares(3);
-            ls.add(post);
-            System.out.println("post nb " + (i + 1));
-
-
-        }
-        return ls;
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        userPic.setImage(MediaConverter.getImage(PersonalAccount.getInstance().getProfilePicture()));
+        email.setText("");
+        phoneNumber.setText("");
         List<Contact> contacts= ChatRoomDAO.getContacts();
-        List<Post> posts=new ArrayList<>(getpost());
         try {
             for (Contact contact : contacts) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
@@ -130,8 +91,8 @@ public class ChatRoomController implements Initializable {
                 vBox.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
+                        OtherAccountDAO.loadUser(recieverID);
                         recieverID = contact.getID();
-                        System.out.println(recieverID);
                         messagecontainer.getChildren().removeAll(messagecontainer.getChildren());
                         loadConversation();
                     }
@@ -145,8 +106,10 @@ public class ChatRoomController implements Initializable {
         }
     }
     public void moreinfo() throws IOException {
-        SceneSwitcher.goTo(getClass(),"chatroom",moreinfo);
-
+        if (recieverID!=-1) {
+            OtherAccountDAO.loadUser(recieverID);
+            SceneSwitcher.goTo(getClass(), "profile", moreinfo);
+        }
     }
 
     public void onSend() {
@@ -171,8 +134,13 @@ public class ChatRoomController implements Initializable {
 
     }
     public void loadConversation(){
+        OtherAccountDAO.loadUser(recieverID);
+        imgProfile.setImage(MediaConverter.getImage(OtherAccount.getInstance().getProfilePicture()));
+        username.setText(OtherAccount.getInstance().getFirstName()+" "+OtherAccount.getInstance().getLastName());
+        email.setText(OtherAccount.getInstance().getEmail());
+        phoneNumber.setText(OtherAccount.getInstance().getPhoneNumber());
         List<Message> messages = MessageDAO.loadConversation(MessageDAO.getConversationId(recieverID, AccountDAO.loadUserID(PersonalAccount.getInstance().getEmail())));
-
+        messagecontainer.getChildren().removeAll(messagecontainer.getChildren());
         try {
             for (Message message : messages) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
@@ -181,6 +149,7 @@ public class ChatRoomController implements Initializable {
                 MessageController messageController=fxmlLoader.getController();
                 messageController.setData(message);
                 messagecontainer.getChildren().add(hBox);
+                scrollPane.vvalueProperty().bind(messagecontainer.heightProperty());
             }
         }catch (IOException e){
             e.printStackTrace();
