@@ -3,6 +3,10 @@ package com.fsb.linkedin.entities;
 public class Post {
     private int postID;
 
+    public Post(Message m) {
+        setCaption(m.getCaption());
+    }
+    public Post(){}
     public void setPostID(int postID) {
         this.postID = postID;
     }

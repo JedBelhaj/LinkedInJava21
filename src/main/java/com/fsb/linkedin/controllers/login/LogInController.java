@@ -73,7 +73,7 @@ public class LogInController {
     }
     @FXML
     protected void onSignUp() throws Exception {
-        SceneSwitcher.goTo(getClass(),"signup",login);
+        SceneSwitcher.goTo(getClass(),"accountType",login);
 
     }
 }

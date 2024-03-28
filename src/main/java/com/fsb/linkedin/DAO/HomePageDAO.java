@@ -34,7 +34,7 @@ public class HomePageDAO {
                 "FROM posts p " +
                 "INNER JOIN accounts a ON p.account_id = a.account_id " +
                 "INNER JOIN friends f ON (a.account_id = f.account_id1 OR a.account_id = f.account_id2) " +
-                "WHERE (f.account_id1 = ? OR f.account_id2 = ?) " +
+                "WHERE ((f.account_id1 = ? OR f.account_id2 = ?) AND p.is_comment = false)" +
                 "AND (a.account_id != ?) " +
                 "ORDER BY p.date DESC";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {

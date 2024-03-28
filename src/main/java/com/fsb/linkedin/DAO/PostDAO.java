@@ -93,20 +93,5 @@ public class PostDAO {
         }
         return false;
     }
-    private static int getPostAuthorID(int postID) {
-        String sql = "SELECT account_id FROM posts WHERE post_id = ?";
-        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setInt(1, postID);
-            try (ResultSet rs = pstmt.executeQuery()) {
-                if (rs.next()) {
-                    return rs.getInt("account_id");
-                } else {
-                    System.out.println("Post with ID " + postID + " not found.");
-                }
-            }
-        } catch (SQLException ex) {
-            System.out.println("Error getting post author ID: " + ex.getMessage());
-        }
-        return -1; // Return -1 if there's an error or the post is not found
-    }
+
 }

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="565.0" spacing="10.0" styleClass="post-background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.home.MessageController">
+    <children>
+        <HBox fx:id="otherProfile" alignment="CENTER_LEFT" prefHeight="60.0" spacing="10.0">
+            <children>
+                <ImageView fx:id="imgProfile" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../imgs/user.png" />
+                    </image></ImageView>
+                <VBox alignment="CENTER" prefHeight="60.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT">
+                            <children>
+                                <Label fx:id="username" text="username">
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="18.0" />
+                                    </font>
+                                </Label>
+                                <ImageView fx:id="imgVerified" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../../imgs/ic_verified.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="5.0" right="5.0" />
+                                    </HBox.margin>
+                                </ImageView>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT">
+                            <children>
+                                <Label fx:id="date" text="1 h" textFill="#616770">
+                                    <font>
+                                        <Font name="Segoe UI Historic" size="15.0" />
+                                    </font>
+                                </Label>
+                                <ImageView fx:id="audience" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../../imgs/ic_public.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="5.0" right="5.0" />
+                                    </HBox.margin>
+                                </ImageView>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            </children>
+            <padding>
+                <Insets left="20.0" right="20.0" />
+            </padding>
+        </HBox>
+        <Label fx:id="caption" maxWidth="1.7976931348623157E308" text="Caption" wrapText="true">
+            <VBox.margin>
+                <Insets left="20.0" right="20.0" />
+            </VBox.margin>
+            <font>
+                <Font name="Segoe UI Historic" size="18.0" />
+            </font>
+        </Label>
+        <StackPane alignment="CENTER_LEFT" />
+    </children>
+</VBox>
