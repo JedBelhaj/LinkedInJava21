@@ -17,15 +17,12 @@ public class FriendrequestController {
     private Label username;
     @FXML
     private Label date;
-    private Friendrequest friendrequest;
 
     public void setData( Friendrequest friendrequest){
-        this.friendrequest=friendrequest;
         Image img;
         img = MediaConverter.getImage(friendrequest.getAccount().getProfileImg());
         imgProfile.setImage(img);
         username.setText(friendrequest.getAccount().getName());
-
-
+        date.setText(friendrequest.getDate());
     }
 }

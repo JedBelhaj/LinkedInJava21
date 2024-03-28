@@ -1,6 +1,7 @@
 package com.fsb.linkedin.controllers.home;
 
 import com.fsb.linkedin.*;
+import com.fsb.linkedin.DAO.FriendRequestDAO;
 import com.fsb.linkedin.entities.Account;
 import com.fsb.linkedin.entities.Friendrequest;
 import com.fsb.linkedin.entities.Reactionnotif;
@@ -64,8 +65,9 @@ public class NotificationsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println(FriendRequestDAO.getFriendRequests());
         List<Reactionnotif> reactionnotifs=new ArrayList<>(getreactionnotif());
-        List<Friendrequest> friendrequests=new ArrayList<>(getfriendrequestnotif());
+        List<Friendrequest> friendrequests= FriendRequestDAO.getFriendRequests();
         System.out.println("b");
         try {
             System.out.println("a");

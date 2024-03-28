@@ -1,18 +1,14 @@
 package com.fsb.linkedin.controllers.home;
 
-import com.fsb.linkedin.DAO.AccountDAO;
-import com.fsb.linkedin.DAO.NotificationDAO;
+import com.fsb.linkedin.DAO.FriendRequestDAO;
 import com.fsb.linkedin.DAO.OtherAccountDAO;
 import com.fsb.linkedin.entities.Experience;
 import com.fsb.linkedin.entities.OtherAccount;
-import com.fsb.linkedin.entities.PersonalAccount;
 import com.fsb.linkedin.entities.Project;
 import com.fsb.linkedin.utils.MediaConverter;
-import com.fsb.linkedin.utils.MediaUploader;
 import com.fsb.linkedin.utils.SceneSwitcher;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -23,8 +19,6 @@ import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -35,6 +29,8 @@ public class ProfileController implements Initializable {
     public Button profile;
 
     public Button home;
+    public Button decline = new Button("Decline Friend Request");
+
     public Button chatroom;
     public Button notifications;
 
@@ -106,8 +102,8 @@ public class ProfileController implements Initializable {
 
         //friend request button
         int otherAccountID = OtherAccountDAO.loadUserID(useremail.getText());
-        friendshipStatus = NotificationDAO.getFriendRequestStatus(otherAccountID);
-
+        friendshipStatus = FriendRequestDAO.getFriendRequestStatus(otherAccountID);
+        System.out.println(friendshipStatus);
         switch (friendshipStatus){
             case "AlreadyFriends":
                 addFriend.setText("Remove Friend");
@@ -117,12 +113,13 @@ public class ProfileController implements Initializable {
                 break;
             case "OtherAlreadyRequesting":
                 addFriend.setText("Accept Friend Request");
-                Button decline = new Button("Decline Friend Request");
                 decline.setId("decline");
                 decline.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
+                        int otherID = OtherAccountDAO.loadUserID(useremail.getText());
                         System.out.println("declining...");
+                        FriendRequestDAO.removeFriendRequest(otherID);
                         friendshipStatus = "None";
                         addFriend.setText("Add Friend");
                         addFriendContainer.getChildren().remove(decline);
@@ -167,26 +164,27 @@ public class ProfileController implements Initializable {
 
     public void onAddFriend() {
         int otherID = OtherAccountDAO.loadUserID(useremail.getText());
-        NotificationDAO.sendFriendRequest(otherID);
+        FriendRequestDAO.sendFriendRequest(otherID);
         switch (friendshipStatus){
             case ("None"):
-                NotificationDAO.sendFriendRequest(otherID);
+                FriendRequestDAO.sendFriendRequest(otherID);
                 friendshipStatus = "UserAlreadyRequesting";
                 addFriend.setText("Remove Friend Request");
                 break;
             case ("UserAlreadyRequesting"):
-                NotificationDAO.removeFriendRequest(otherID);
+                FriendRequestDAO.removeFriendRequest(otherID);
                 friendshipStatus = "None";
                 addFriend.setText("Add Friend");
                 break;
             case ("AlreadyFriends"):
-                NotificationDAO.removeFriend(otherID);
+                FriendRequestDAO.removeFriend(otherID);
                 friendshipStatus = "None";
                 addFriend.setText("Add Friend");
                 break;
             case ("OtherAlreadyRequesting"):
-                NotificationDAO.acceptFriendRequest(otherID);
+                FriendRequestDAO.acceptFriendRequest(otherID);
                 friendshipStatus = "AlreadyFriends";
+                addFriendContainer.getChildren().remove(decline);
                 addFriend.setText("Remove Friend");
                 break;
             default:
