@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="964.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.home.ProfileController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="737.0" prefWidth="1098.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.home.EntrepriseProfileController">
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="200.0" styleClass="white-background">
          <children>
@@ -98,16 +104,16 @@
       </HBox>
    </top>
    <left>
-      <VBox prefHeight="580.0" prefWidth="238.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="580.0" prefWidth="238.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="159.0" prefWidth="238.0" spacing="20.0">
                <children>
-                  <ImageView fx:id="userProfilePicture" fitHeight="75.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="75.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../imgs/user.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="username" text="username">
+                  <Label text="entreprise name">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
@@ -120,24 +126,11 @@
             <Pane prefHeight="54.0" prefWidth="238.0" />
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0">
                <children>
-                  <VBox fx:id="addFriendContainer">
-                     <children>
-                        <Button fx:id="addFriend" mnemonicParsing="false" onAction="#onAddFriend" prefHeight="36.0" prefWidth="243.0" styleClass="round-button" stylesheets="@../../../style.css" text="add friend">
-                           <graphic>
-                              <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../imgs/add-user.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </VBox>
-                  <Button fx:id="blockAccount" mnemonicParsing="false" onAction="#onBlockAccount" prefHeight="42.0" prefWidth="240.0" styleClass="round-button" stylesheets="@../../../style.css" text="block">
+                  <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="243.0" styleClass="round-button" stylesheets="@../../../style.css" text="follow entreprise">
                      <graphic>
-                        <ImageView fitHeight="33.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../imgs/block-user.png" />
+                              <Image url="@../../../imgs/follow.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -151,7 +144,7 @@
       </VBox>
    </left>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="327.0" prefWidth="356.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="726.0" spacing="100.0">
                <children>
@@ -160,20 +153,7 @@
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="userFirstName" text="user name" />
-               </children>
-               <padding>
-                  <Insets left="100.0" />
-               </padding>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="726.0" spacing="70.0">
-               <children>
-                  <Label text="Last Name : ">
-                     <font>
-                        <Font name="System Bold Italic" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="userlastname" text="user last name" />
+                  <Label fx:id="username" text="user name" />
                </children>
                <padding>
                   <Insets left="100.0" />
@@ -205,47 +185,51 @@
                   <Insets left="100.0" />
                </padding>
             </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="72.0" prefHeight="62.0" prefWidth="726.0" spacing="70.0">
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="72.0" prefHeight="62.0" prefWidth="726.0" spacing="120.0">
                <children>
-                  <Label text="Date of Birth :">
+                  <Label text="state">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="userbirthdate" text="user birth date" />
+                  <Label fx:id="userbirthdate" text="state" />
                </children>
                <padding>
                   <Insets left="100.0" />
                </padding>
             </HBox>
-            <VBox prefHeight="153.0" prefWidth="726.0">
+            <HBox prefHeight="427.0" prefWidth="860.0">
                <children>
-                  <Label text="Experience : ">
-                     <font>
-                        <Font name="Arial Black" size="22.0" />
-                     </font>
-                  </Label>
-                  <ScrollPane>
-                     <content>
-                        <VBox fx:id="experiencecontainer" prefHeight="123.0" prefWidth="710.0" />
-                     </content>
-                  </ScrollPane>
+                  <VBox prefHeight="302.0" prefWidth="751.0">
+                     <children>
+                        <Label text="Job offers :">
+                           <font>
+                              <Font name="Arial Black" size="22.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane>
+                           <content>
+                              <VBox fx:id="joboffercontainer" prefHeight="388.0" prefWidth="710.0" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="153.0" prefWidth="726.0">
+                     <children>
+                        <Label text="Stages: ">
+                           <font>
+                              <Font name="Arial Black" size="22.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane>
+                           <content>
+                              <VBox fx:id="stagecontainer" prefHeight="389.0" prefWidth="790.0" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
-            <VBox prefHeight="153.0" prefWidth="726.0">
-               <children>
-                  <Label text="Project: ">
-                     <font>
-                        <Font name="Arial Black" size="22.0" />
-                     </font>
-                  </Label>
-                  <ScrollPane>
-                     <content>
-                        <VBox fx:id="projectconainer" prefHeight="123.0" prefWidth="710.0" />
-                     </content>
-                  </ScrollPane>
-               </children>
-            </VBox>
+            </HBox>
          </children>
       </VBox>
    </center>

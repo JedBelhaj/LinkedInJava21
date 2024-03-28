@@ -1,6 +1,7 @@
 package com.fsb.linkedin;
 
 import com.fsb.linkedin.DAO.AccountDAO;
+import com.fsb.linkedin.DAO.OtherAccountDAO;
 import com.fsb.linkedin.entities.PersonalAccount;
 import com.fsb.linkedin.utils.FieldVerifier;
 import com.fsb.linkedin.utils.MediaConverter;
@@ -34,14 +35,8 @@ public class testController {
             FieldVerifier.isValid(pass, n -> AccountDAO.loginIsValid(user.getText(),pass.getText()));
             if (loginIsValid){
                 AccountDAO.loadUser(user.getText());
-                Blob videoBlob = PersonalAccount.getInstance().getVideoCV();
-                System.out.println("got the blob");
-                File videoFile = MediaConverter.convertBlobToFile(videoBlob);
-                Media media = new Media(videoFile.toURI().toString());
-                MediaPlayer mediaPlayer = new MediaPlayer(media);
-                video.setMediaPlayer(mediaPlayer);
-                mediaPlayer.play();
-                SceneSwitcher.setSaveHistory(false);
+                OtherAccountDAO.loadUser("vid@gmail.com");
+                SceneSwitcher.goTo(getClass(),"profile",login);
             }
         }
     }

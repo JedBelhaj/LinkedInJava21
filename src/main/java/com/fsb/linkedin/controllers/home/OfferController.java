@@ -71,11 +71,9 @@ public class OfferController {
     private Offer offer;
 
 
-    public void setData( Offer offer){
+    public void setData(Offer offer){
         this.offer = offer;
         Image img;
-        img = MediaConverter.getImage(offer.getImage());
-        imgProfile.setImage(img);
         username.setText(offer.getAccount().getName());
         if(offer.getAccount().isVerified()){
             imgVerified.setVisible(true);
@@ -85,13 +83,10 @@ public class OfferController {
 
         date.setText(offer.getDate());
 
-        audience.setImage(img);
 
 
 
         if(offer.getImage() != null){
-            img = MediaConverter.getImage(offer.getImage());
-            imgPost.setImage(img);
         }else{
             imgPost.setVisible(false);
             imgPost.setManaged(false);

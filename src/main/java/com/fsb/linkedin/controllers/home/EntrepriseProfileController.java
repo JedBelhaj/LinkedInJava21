@@ -1,11 +1,9 @@
 package com.fsb.linkedin.controllers.home;
 
-import com.fsb.linkedin.*;
 import com.fsb.linkedin.entities.Account;
 import com.fsb.linkedin.entities.Offer;
 import com.fsb.linkedin.entities.PostAudience;
 import com.fsb.linkedin.utils.MediaConverter;
-import com.fsb.linkedin.utils.MediaUploader;
 import com.fsb.linkedin.utils.SceneSwitcher;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,13 +12,14 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class EntreprisepPofileController implements Initializable {
+public class EntrepriseProfileController implements Initializable {
     @FXML
     public Button profile;
 
@@ -51,7 +50,7 @@ public class EntreprisepPofileController implements Initializable {
         SceneSwitcher.goTo(getClass(),"notifications",notifications);
 
     }
-    public List<Offer> getJoboffer(){
+    public List<Offer> getJoboffer() throws IOException {
         List<Offer> ls =new ArrayList<>();
         Offer offer;
         for(int i=0;i<10;i++){
@@ -59,7 +58,6 @@ public class EntreprisepPofileController implements Initializable {
             offer=new Offer();
             Account account = new Account();
             account.setName(" jed");
-            account.setProfileImg("/imgs/user.png".getBytes());
             account.setVerified(true);
             offer.setAccount(account);
             offer.setDate("Feb 18, 2021 at 12:00 PM");
@@ -74,7 +72,12 @@ public class EntreprisepPofileController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<Offer> offers =new ArrayList<>(getJoboffer());
+        List<Offer> offers = null;
+        try {
+            offers = new ArrayList<>(getJoboffer());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         try {
             for(Offer offer:offers){
                 System.out.println("a");

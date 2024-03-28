@@ -1,11 +1,17 @@
 package com.fsb.linkedin.controllers.home;
 
+import com.fsb.linkedin.DAO.AccountDAO;
+import com.fsb.linkedin.DAO.NotificationDAO;
+import com.fsb.linkedin.DAO.OtherAccountDAO;
 import com.fsb.linkedin.entities.Experience;
 import com.fsb.linkedin.entities.OtherAccount;
+import com.fsb.linkedin.entities.PersonalAccount;
 import com.fsb.linkedin.entities.Project;
 import com.fsb.linkedin.utils.MediaConverter;
 import com.fsb.linkedin.utils.MediaUploader;
 import com.fsb.linkedin.utils.SceneSwitcher;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,6 +29,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class ProfileController implements Initializable {
+    public VBox addFriendContainer;
+    private String friendshipStatus;
+
     public Button profile;
 
     public Button home;
@@ -43,6 +52,8 @@ public class ProfileController implements Initializable {
     public Text experiencediscription;
     public ImageView userProfilePicture;
     public Label userFirstName;
+    public Button addFriend;
+    public Button blockAccount;
 
 
     public void profile() throws IOException {
@@ -78,38 +89,13 @@ public class ProfileController implements Initializable {
 
     }
 
-    public List<Experience> getExperience(){
-        List<Experience> ls =new ArrayList<>();
-
-        Experience experience;
-
-        for(int i=0;i<10;i++){
-
-            experience=new Experience("wwowoow","apgjapgnapghapighapghapgihvpahpatbabfpanprbairbapfbapfbbapbiabfpabfap", LocalDate.of(2019, 6, 1),LocalDate.of(2024, 6, 1),"Developed web applications using Spring Boot framework.","Full-time","Develop scalable and efficient software solutions.");
-            System.out.println(experience.toString());
-            ls.add(experience);
-        }
-
-        return ls;
-    }
-    public List<Project> getProject(){
-        List<Project> ls =new ArrayList<>();
-
-        Project project;
-
-        for(int i=0;i<10;i++){
-
-            project=new Project("wwowoow","apgjapgnapghapighapghapgihvpahpatbabfpanprbairbapfbapfbbapbiabfpabfap");
-            System.out.println(project.toString());
-            ls.add(project);
-        }
-
-        return ls;
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         OtherAccount p = OtherAccount.getInstance();
+
+
         username.setText(p.getFirstName() + " " + p.getLastName());
         userFirstName.setText(p.getFirstName());
         userlastname.setText(p.getLastName());
@@ -118,12 +104,43 @@ public class ProfileController implements Initializable {
         userbirthdate.setText(p.getDateOfBirth().toString());
         userProfilePicture.setImage(MediaConverter.getImage(OtherAccount.getInstance().getProfilePicture()));
 
+        //friend request button
+        int otherAccountID = OtherAccountDAO.loadUserID(useremail.getText());
+        friendshipStatus = NotificationDAO.getFriendRequestStatus(otherAccountID);
+
+        switch (friendshipStatus){
+            case "AlreadyFriends":
+                addFriend.setText("Remove Friend");
+                break;
+            case "UserAlreadyRequesting":
+                addFriend.setText("Remove Friend Request");
+                break;
+            case "OtherAlreadyRequesting":
+                addFriend.setText("Accept Friend Request");
+                Button decline = new Button("Decline Friend Request");
+                decline.setId("decline");
+                decline.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        System.out.println("declining...");
+                        friendshipStatus = "None";
+                        addFriend.setText("Add Friend");
+                        addFriendContainer.getChildren().remove(decline);
+                    }
+                });
+                addFriendContainer.getChildren().add(decline);
+
+                break;
+            default:
+                break;
+        }
+
+
         List<Project> projects= OtherAccount.getInstance().getProjects();
         List<Experience> experiences= OtherAccount.getInstance().getExperiences();
-        System.out.println("x");
+
         try {
             for(Project project:projects){
-                System.out.println("a");
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/project.fxml"));
                 VBox vBox=fxmlLoader.load();
@@ -136,7 +153,6 @@ public class ProfileController implements Initializable {
         }
         try {
             for(Experience experience:experiences){
-                System.out.println("a");
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/project.fxml"));
                 VBox vBox=fxmlLoader.load();
@@ -147,5 +163,38 @@ public class ProfileController implements Initializable {
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    public void onAddFriend() {
+        int otherID = OtherAccountDAO.loadUserID(useremail.getText());
+        NotificationDAO.sendFriendRequest(otherID);
+        switch (friendshipStatus){
+            case ("None"):
+                NotificationDAO.sendFriendRequest(otherID);
+                friendshipStatus = "UserAlreadyRequesting";
+                addFriend.setText("Remove Friend Request");
+                break;
+            case ("UserAlreadyRequesting"):
+                NotificationDAO.removeFriendRequest(otherID);
+                friendshipStatus = "None";
+                addFriend.setText("Add Friend");
+                break;
+            case ("AlreadyFriends"):
+                NotificationDAO.removeFriend(otherID);
+                friendshipStatus = "None";
+                addFriend.setText("Add Friend");
+                break;
+            case ("OtherAlreadyRequesting"):
+                NotificationDAO.acceptFriendRequest(otherID);
+                friendshipStatus = "AlreadyFriends";
+                addFriend.setText("Remove Friend");
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void onBlockAccount(ActionEvent event) {
+
     }
 }

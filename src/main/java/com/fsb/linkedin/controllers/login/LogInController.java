@@ -1,6 +1,7 @@
 package com.fsb.linkedin.controllers.login;
 
 import com.fsb.linkedin.DAO.AccountDAO;
+import com.fsb.linkedin.DAO.OtherAccountDAO;
 import com.fsb.linkedin.entities.PersonalAccount;
 import com.fsb.linkedin.utils.FieldVerifier;
 import com.fsb.linkedin.utils.SceneSwitcher;
@@ -60,8 +61,9 @@ public class LogInController {
                 System.out.println("valid login!");
                 AccountDAO.loadUser(user.getText());
                 System.out.println(PersonalAccount.getInstance());
-                //image.setImage(PersonalAccount.getInstance().getProfileImage());
+
                 SceneSwitcher.setSaveHistory(false);
+
                 SceneSwitcher.goTo(getClass(),"homepage",login);
             }
             else {

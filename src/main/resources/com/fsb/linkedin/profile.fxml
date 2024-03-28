@@ -120,16 +120,20 @@
             <Pane prefHeight="54.0" prefWidth="238.0" />
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="243.0" styleClass="round-button" stylesheets="@../../../style.css" text="add friend">
-                     <graphic>
-                        <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../imgs/add-user.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="240.0" styleClass="round-button" stylesheets="@../../../style.css" text="block">
+                  <VBox fx:id="addFriendContainer">
+                     <children>
+                        <Button fx:id="addFriend" mnemonicParsing="false" onAction="#onAddFriend" prefHeight="36.0" prefWidth="243.0" styleClass="round-button" stylesheets="@../../../style.css" text="add friend">
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../imgs/add-user.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <Button fx:id="blockAccount" mnemonicParsing="false" onAction="#onBlockAccount" prefHeight="42.0" prefWidth="240.0" styleClass="round-button" stylesheets="@../../../style.css" text="block">
                      <graphic>
                         <ImageView fitHeight="33.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                            <image>
