@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="737.0" prefWidth="1098.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.home.EntrepriseProfileController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="737.0" prefWidth="1098.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.home.EnterpriseProfileController">
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="200.0" styleClass="white-background">
          <children>
@@ -113,7 +113,7 @@
                         <Image url="@../../../imgs/user.png" />
                      </image>
                   </ImageView>
-                  <Label text="entreprise name">
+                  <Label text="enterprise name">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
@@ -126,7 +126,7 @@
             <Pane prefHeight="54.0" prefWidth="238.0" />
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="243.0" styleClass="round-button" stylesheets="@../../../style.css" text="follow entreprise">
+                  <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="243.0" styleClass="round-button" stylesheets="@../../../style.css" text="follow enterprise">
                      <graphic>
                         <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                            <image>

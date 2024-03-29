@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class HomePageController implements Initializable {
@@ -47,7 +48,14 @@ public class HomePageController implements Initializable {
         String postType;
         Image profileImage = PersonalAccount.getInstance().getProfileImage();
         profilePicture.setImage(profileImage);
-        profileName.setText(PersonalAccount.getInstance().getFirstName()+ " " + PersonalAccount.getInstance().getLastName());
+        System.out.println(PersonalAccount.getInstance().getType());
+        if(Objects.equals(PersonalAccount.getInstance().getType(), "Enterprise")){
+            profileName.setText(PersonalAccount.getInstance().getFirstName()+" Corp.");
+        }
+        else{
+            profileName.setText(PersonalAccount.getInstance().getFirstName()+ " " + PersonalAccount.getInstance().getLastName());
+        }
+
         postProfilePicture.setImage(profileImage);
         List<Post> posts = HomePageDAO.getPosts();
         List<Offer> offers = HomePageDAO.getJobOffers();

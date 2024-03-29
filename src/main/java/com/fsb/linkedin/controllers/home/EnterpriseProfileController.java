@@ -3,23 +3,20 @@ package com.fsb.linkedin.controllers.home;
 import com.fsb.linkedin.entities.Account;
 import com.fsb.linkedin.entities.Offer;
 import com.fsb.linkedin.entities.PostAudience;
-import com.fsb.linkedin.utils.MediaConverter;
 import com.fsb.linkedin.utils.SceneSwitcher;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class EntrepriseProfileController implements Initializable {
+public class EnterpriseProfileController implements Initializable {
     @FXML
     public Button profile;
 

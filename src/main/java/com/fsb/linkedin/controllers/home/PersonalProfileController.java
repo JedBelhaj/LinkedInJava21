@@ -21,6 +21,7 @@ public class PersonalProfileController implements Initializable {
     public Label lastName;
     public Label email;
     public Label phoneNumber;
+    public Label lastNameLabel;
 
     public void editprofile() throws IOException {
         System.out.println("it is clicking");
@@ -35,6 +36,9 @@ public class PersonalProfileController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(PersonalAccount.getInstance().getType().equals("Enterprise")){
+            lastNameLabel.setText("Industry");
+        }
         PersonalAccount p = PersonalAccount.getInstance();
         profilePicture.setImage(p.getProfileImage());
         ProfileName.setText(p.getFirstName());

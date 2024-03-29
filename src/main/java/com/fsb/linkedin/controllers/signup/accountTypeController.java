@@ -18,7 +18,7 @@ public class accountTypeController implements Initializable {
     public Button back;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        accountType.getItems().addAll("Entreprise","Personal","Admin");
+        accountType.getItems().addAll("Enterprise","Personal","Admin");
     }
     @FXML
     protected void onNext() throws IOException {
@@ -28,8 +28,8 @@ public class accountTypeController implements Initializable {
                 case "Personal":
                     destination = "signup";
                     break;
-                case "Entreprise":
-                    destination = "signupEntreprise";
+                case "enterprise":
+                    destination = "signupenterprise";
                     break;
                 case "Admin":
                     destination = "signupAdmin";

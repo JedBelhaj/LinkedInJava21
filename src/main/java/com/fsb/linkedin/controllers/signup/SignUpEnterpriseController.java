@@ -14,9 +14,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Stream;
 
-public class SignUpEntrepriseController implements Initializable {
+public class SignUpEnterpriseController implements Initializable {
     private File profilePicture;
     public TextField companyName;
     public TextField Industry;
