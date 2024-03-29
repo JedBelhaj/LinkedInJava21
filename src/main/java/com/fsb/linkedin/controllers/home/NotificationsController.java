@@ -5,6 +5,7 @@ import com.fsb.linkedin.DAO.FriendRequestDAO;
 import com.fsb.linkedin.DAO.NotificationDAO;
 import com.fsb.linkedin.entities.Account;
 import com.fsb.linkedin.entities.Friendrequest;
+import com.fsb.linkedin.entities.Notification;
 import com.fsb.linkedin.entities.Reactionnotif;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,33 +32,20 @@ public class NotificationsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println(FriendRequestDAO.getFriendRequests());
-        List<Reactionnotif> reactionnotifs= NotificationDAO.getReactionNotifications();
-        System.out.println(reactionnotifs);
-        List<Friendrequest> friendrequests= FriendRequestDAO.getFriendRequests();
+        List<Notification> notifications= NotificationDAO.getNotifications();
         try {
-            for (Reactionnotif reactionnotif : reactionnotifs) {
+            for (Notification notification : notifications) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/reactionnotif.fxml"));
                 VBox vBox=fxmlLoader.load();
                 ReactionnotifController reactionnotifController=fxmlLoader.getController();
-                reactionnotifController.setData(reactionnotif);
+                reactionnotifController.setData(notification);
                 notificationcontainer.getChildren().add(vBox);
+
             }
         }catch (IOException e){
             e.printStackTrace();
         }
-        try {
-            for (Friendrequest friendrequest : friendrequests) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/friendrequest.fxml"));
-                VBox vBox=fxmlLoader.load();
-                FriendrequestController friendrequestController=fxmlLoader.getController();
-                friendrequestController.setData(friendrequest);
-                notificationcontainer.getChildren().add(vBox);
-            }
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-        notificationcontainer.getChildren().sorted();
+
     }
 }

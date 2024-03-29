@@ -1,6 +1,23 @@
 package com.fsb.linkedin.entities;
 
+import java.time.LocalDate;
+
 public class Notification {
+    private byte[] profilePicture;
+    private String firstName;
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public byte[] getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(byte[] profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
     private int post_id;
 
     public int getPost_id() {
@@ -10,7 +27,7 @@ public class Notification {
     public void setPost_id(int post_id) {
         this.post_id = post_id;
     }
-
+    private LocalDate date;
     private String message;
     private String type;
     private int source_id;
@@ -25,6 +42,12 @@ public class Notification {
     }
 
     public Notification() {
+    }
+
+    public Notification(String type, int source_id, int destination_id) {
+        this.type = type;
+        this.source_id = source_id;
+        this.destination_id = destination_id;
     }
 
     public Notification(String message, String type) {
@@ -70,5 +93,17 @@ public class Notification {
 
     public void setSource_id(int source_id) {
         this.source_id = source_id;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public String getDate() {
+        return this.date.toString();
+    }
+
+    public String getFirstName() {
+        return this.firstName;
     }
 }

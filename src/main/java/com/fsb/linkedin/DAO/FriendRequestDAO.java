@@ -2,6 +2,7 @@ package com.fsb.linkedin.DAO;
 
 import com.fsb.linkedin.entities.Account;
 import com.fsb.linkedin.entities.Friendrequest;
+import com.fsb.linkedin.entities.Notification;
 import com.fsb.linkedin.entities.PersonalAccount;
 import com.fsb.linkedin.utils.DataBaseConnection;
 import com.fsb.linkedin.utils.MediaConverter;
@@ -25,6 +26,7 @@ public class FriendRequestDAO {
                 pstmt.setInt(2, receiverID);
                 pstmt.executeUpdate();
                 System.out.println("Friend request sent successfully.");
+                NotificationDAO.createNotification(new Notification("Request",userID,receiverID));
             } catch (SQLException ex) {
                 System.out.println("Error sending friend request: " + ex.getMessage());
             }
@@ -71,6 +73,7 @@ public class FriendRequestDAO {
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
                 System.out.println("Friend request removed successfully.");
+                NotificationDAO.removeNotification(userID,receiverID,"Request");
             } else {
                 System.out.println("No friend request found to remove.");
             }
@@ -128,7 +131,7 @@ public class FriendRequestDAO {
     public static void acceptFriendRequest(int senderID) {
         // Add sender as a friend
         addFriend(senderID);
-
+        NotificationDAO.createNotification(new Notification("Accept",userID,senderID));
 
         // Remove the friend request
         removeFriendRequest(senderID);
@@ -141,6 +144,7 @@ public class FriendRequestDAO {
             pstmt.setInt(2, friendID);
             pstmt.executeUpdate();
             System.out.println("Friend added successfully.");
+            NotificationDAO.removeNotification(friendID,userID,"Request");
         } catch (SQLException ex) {
             System.out.println("Error adding friend: " + ex.getMessage());
         }

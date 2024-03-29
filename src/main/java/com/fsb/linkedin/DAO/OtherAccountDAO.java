@@ -201,6 +201,7 @@ public class OtherAccountDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        OtherAccount.setInstance(account);
     }
 
 
@@ -291,5 +292,20 @@ public class OtherAccountDAO {
         else {
             System.err.println("User not found.");
         }
+    }
+    public static byte[] getProfilePicture(int userID){
+        if (userID!=-1){
+            String sql = "SELECT profilePicture from accounts WHERE account_id = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)){
+                statement.setInt(1, userID);
+                ResultSet rs = statement.executeQuery();
+                if (rs.next()){
+                    return rs.getBytes("ProfilePicture");
+                }
+            } catch (SQLException e) {
+                System.err.println("Error updating profile: " + e.getMessage());
+            }
+        }
+        return null;
     }
 }

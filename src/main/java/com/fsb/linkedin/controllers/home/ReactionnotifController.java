@@ -1,35 +1,82 @@
 package com.fsb.linkedin.controllers.home;
 
 import com.fsb.linkedin.*;
+import com.fsb.linkedin.DAO.OtherAccountDAO;
+import com.fsb.linkedin.entities.Notification;
+import com.fsb.linkedin.entities.OtherAccount;
 import com.fsb.linkedin.entities.Reactionnotif;
 import com.fsb.linkedin.utils.MediaConverter;
+import com.fsb.linkedin.utils.SceneSwitcher;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+
+import java.io.IOException;
 
 public class ReactionnotifController {
     public Button profile;
     public Text captionLabel;
+    public VBox notificationContainer;
     @FXML
     private ImageView imgProfile;
     @FXML
     private Label username;
     @FXML
     private Label date;
-    private Reactionnotif reactionnotif;
 
-    public void setData( Reactionnotif reactionnotif){
-        this.reactionnotif=reactionnotif;
-        Image img;
-        img = MediaConverter.getImage(reactionnotif.getAccount().getProfileImg());
+    public void setData(Notification notification){
+        Image img = MediaConverter.getImage(notification.getProfilePicture());
         imgProfile.setImage(img);
-        username.setText(reactionnotif.getAccount().getName());
-        date.setText(reactionnotif.getDate());
-        captionLabel.setText(captionLabel.getText() + " \"" + reactionnotif.getCaption()+"\".");
-
+        username.setText(notification.getFirstName());
+        date.setText(notification.getDate());
+        switch (notification.getType()){
+            case ("Reaction"):
+                captionLabel.setText(captionLabel.getText() + " \"" + notification.getMessage()+"\".");
+                break;
+            case ("Request"):
+                System.out.println("SOURCE ID : "+notification.getSource_id());
+                OtherAccountDAO.loadUser(notification.getSource_id());
+                System.out.println("is this null? "+OtherAccount.getInstance());
+                if (OtherAccount.getInstance().getType().equals("Enterprise")){
+                    captionLabel.setText(notification.getFirstName()+ " Corp. sent you a Follow Request");
+                    notificationContainer.setOnMouseClicked(mouseEvent -> {
+                        try {
+                            OtherAccountDAO.loadUser(notification.getSource_id());
+                            SceneSwitcher.goTo(getClass(),"enterpriseprofile",notificationContainer);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
+                }
+                else {
+                    OtherAccountDAO.loadUser(notification.getSource_id());
+                    System.out.println(OtherAccount.getInstance().getFirstName()+" IM GOING HERE");
+                    captionLabel.setText(notification.getFirstName()+ " sent you a Friend Request");
+                    notificationContainer.setOnMouseClicked(mouseEvent -> {
+                        try {
+                            SceneSwitcher.goTo(getClass(),"profile",notificationContainer);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
+                }
+                break;
+            case ("Accepted"):
+                OtherAccountDAO.loadUser(notification.getSource_id());
+                if (OtherAccount.getInstance().getType().equals("Enterprise")){
+                    captionLabel.setText(notification.getFirstName()+ " Corp. accepted your Follow Request");
+                }
+                else {
+                    captionLabel.setText(notification.getFirstName()+ " accepted your Friend Request");
+                }
+                break;
+            default:
+                break;
+        }
     }
 
 
