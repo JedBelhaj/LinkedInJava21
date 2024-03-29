@@ -1,6 +1,7 @@
 package com.fsb.linkedin.controllers.home;
 
 import com.fsb.linkedin.DAO.AccountDAO;
+import com.fsb.linkedin.DAO.NotificationDAO;
 import com.fsb.linkedin.DAO.OtherAccountDAO;
 import com.fsb.linkedin.DAO.PostDAO;
 import com.fsb.linkedin.entities.*;
@@ -66,7 +67,6 @@ public class PostController{
     @FXML
     private Label reactionName;
 
-    private long startTime = 0;
     private Reactions currentReaction;
     private Post post;
 
@@ -77,8 +77,10 @@ public class PostController{
     public void onReactionImgPressed(MouseEvent me){
         if(currentReaction==Reactions.LIKE){
             setReaction(Reactions.NON);
+            NotificationDAO.removeReactionNotification(AccountDAO.loadUserID(), post.getPostID());
         }else{
             setReaction(Reactions.LIKE);
+            NotificationDAO.createNotification(new Notification(post.getCaption(), "Reaction",AccountDAO.loadUserID(), post.getPostID(), post.getAccount().getID()));
     }}
 
     public void setReaction(Reactions reaction){

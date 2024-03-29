@@ -148,6 +148,19 @@ public class AccountDAO {
         }
         return -1;
     }
+    public static int loadUserID(){
+        String sql = "SELECT account_id FROM accounts WHERE email = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, PersonalAccount.getInstance().getEmail());
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return -1;
+    }
     private static void retrieveProjects(int accountId) {
         if (accountId == -1) return;
 

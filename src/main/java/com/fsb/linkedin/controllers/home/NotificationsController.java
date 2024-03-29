@@ -39,7 +39,6 @@ public class NotificationsController implements Initializable {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/reactionnotif.fxml"));
                 VBox vBox=fxmlLoader.load();
-                System.out.println("i loaded it");
                 ReactionnotifController reactionnotifController=fxmlLoader.getController();
                 reactionnotifController.setData(reactionnotif);
                 notificationcontainer.getChildren().add(vBox);
@@ -59,5 +58,6 @@ public class NotificationsController implements Initializable {
         }catch (IOException e){
             e.printStackTrace();
         }
+        notificationcontainer.getChildren().sorted();
     }
 }
