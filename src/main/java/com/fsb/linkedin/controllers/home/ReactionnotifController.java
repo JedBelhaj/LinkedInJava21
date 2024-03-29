@@ -65,7 +65,7 @@ public class ReactionnotifController {
                     });
                 }
                 break;
-            case ("Accepted"):
+            case ("Accept"):
                 OtherAccountDAO.loadUser(notification.getSource_id());
                 if (OtherAccount.getInstance().getType().equals("Enterprise")){
                     captionLabel.setText(notification.getFirstName()+ " Corp. accepted your Follow Request");
