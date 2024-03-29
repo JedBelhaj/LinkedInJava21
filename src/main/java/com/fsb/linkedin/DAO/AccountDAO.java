@@ -19,7 +19,7 @@ public class AccountDAO {
         ResultSet rs = null;
 
         try {
-            String sql = "INSERT INTO accounts (first_name, last_name, email, password, phone_number, date_of_birth, gender, country, profilePicture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO accounts (first_name, last_name, email, password, phone_number, date_of_birth, gender, country, profilePicture, website, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
@@ -32,6 +32,8 @@ public class AccountDAO {
             pstmt.setString(7, account.getGender());
             pstmt.setString(8, account.getCountry());
             pstmt.setBytes(9, account.getProfilePicture());
+            pstmt.setString(10, account.getWebsite());
+            pstmt.setString(11, account.getType());
 
             pstmt.executeUpdate();
 

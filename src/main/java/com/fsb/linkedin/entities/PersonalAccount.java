@@ -10,7 +10,25 @@ import java.util.List;
 
 public class PersonalAccount {
     public PersonalAccount() {}
+    private String type;
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    private String website;
     private static PersonalAccount instance;
     private String gender;
 
