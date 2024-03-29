@@ -19,7 +19,7 @@ public class OtherAccountDAO {
         ResultSet rs = null;
 
         try {
-            String sql = "INSERT INTO accounts (first_name, last_name, email, password, phone_number, date_of_birth, gender, country, profilePicture) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO accounts (first_name, last_name, email, password, phone_number, date_of_birth, gender, country, profilePicture, type, website) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
@@ -32,6 +32,8 @@ public class OtherAccountDAO {
             pstmt.setString(7, account.getGender());
             pstmt.setString(8, account.getCountry());
             pstmt.setBytes(9, account.getProfilePicture());
+            pstmt.setString(10, account.getType());
+            pstmt.setString(11, account.getWebsite());
 
             pstmt.executeUpdate();
 
@@ -193,6 +195,8 @@ public class OtherAccountDAO {
                 account.setCountry(rs.getString("country"));
                 account.setProfilePicture(rs.getBytes("profilePicture"));
                 account.setVideoCV(rs.getBlob("videoCV"));
+                account.setType(rs.getString("type"));
+                account.setWebsite(rs.getString("website"));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

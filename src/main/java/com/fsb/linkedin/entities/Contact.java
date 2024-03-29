@@ -8,6 +8,12 @@ public class Contact {
     private String date;
     private int id;
 
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    private String type;
+
     public int getId() {
         return id;
     }
@@ -54,5 +60,9 @@ public class Contact {
 
     public int getID() {
         return id;
+    }
+
+    public String getType() {
+        return this.type;
     }
 }

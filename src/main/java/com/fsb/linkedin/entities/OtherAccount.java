@@ -21,6 +21,24 @@ public class OtherAccount {
     public void setGender(String gender) {
         this.gender = gender;
     }
+    private String type;
+    private String website;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
 
     private String firstName;
     private String lastName;

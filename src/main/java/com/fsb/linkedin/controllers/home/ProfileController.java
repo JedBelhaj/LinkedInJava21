@@ -4,6 +4,7 @@ import com.fsb.linkedin.DAO.FriendRequestDAO;
 import com.fsb.linkedin.DAO.OtherAccountDAO;
 import com.fsb.linkedin.entities.Experience;
 import com.fsb.linkedin.entities.OtherAccount;
+import com.fsb.linkedin.entities.PersonalAccount;
 import com.fsb.linkedin.entities.Project;
 import com.fsb.linkedin.utils.MediaConverter;
 import com.fsb.linkedin.utils.SceneSwitcher;
@@ -20,6 +21,7 @@ import org.w3c.dom.Text;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ProfileController implements Initializable {
@@ -51,6 +53,7 @@ public class ProfileController implements Initializable {
     public Button addFriend;
     public Button blockAccount;
 
+    private String followType = "Friend";
 
     public void profile() throws IOException {
         SceneSwitcher.goTo(getClass(),"PersonalProfile",profile);
@@ -89,7 +92,13 @@ public class ProfileController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        if (PersonalAccount.getInstance().getType().equals("Enterprise"))
+            followType="Follow";
+
+        decline.setText("Decline "+followType+" request");
+
         OtherAccount p = OtherAccount.getInstance();
+
 
 
         username.setText(p.getFirstName() + " " + p.getLastName());
@@ -104,15 +113,15 @@ public class ProfileController implements Initializable {
         int otherAccountID = OtherAccountDAO.loadUserID(useremail.getText());
         friendshipStatus = FriendRequestDAO.getFriendRequestStatus(otherAccountID);
         System.out.println(friendshipStatus);
-        switch (friendshipStatus){
+        switch (friendshipStatus) {
             case "AlreadyFriends":
-                addFriend.setText("Remove Friend");
+                addFriend.setText("Remove "+followType);
                 break;
             case "UserAlreadyRequesting":
-                addFriend.setText("Remove Friend Request");
+                addFriend.setText("Remove "+followType+" Request");
                 break;
             case "OtherAlreadyRequesting":
-                addFriend.setText("Accept Friend Request");
+                addFriend.setText("Accept "+followType+" Request");
                 decline.setId("decline");
                 decline.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
@@ -133,33 +142,34 @@ public class ProfileController implements Initializable {
         }
 
 
-        List<Project> projects= OtherAccount.getInstance().getProjects();
-        List<Experience> experiences= OtherAccount.getInstance().getExperiences();
+        List<Project> projects = OtherAccount.getInstance().getProjects();
+        List<Experience> experiences = OtherAccount.getInstance().getExperiences();
 
         try {
-            for(Project project:projects){
+            for (Project project : projects) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/project.fxml"));
-                VBox vBox=fxmlLoader.load();
-                ProjectController projectController=fxmlLoader.getController();
+                VBox vBox = fxmlLoader.load();
+                ProjectController projectController = fxmlLoader.getController();
                 projectController.setproject(project);
                 projectconainer.getChildren().add(vBox);
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         try {
-            for(Experience experience:experiences){
+            for (Experience experience : experiences) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/project.fxml"));
-                VBox vBox=fxmlLoader.load();
-                ProjectController projectController=fxmlLoader.getController();
+                VBox vBox = fxmlLoader.load();
+                ProjectController projectController = fxmlLoader.getController();
                 projectController.setproject(experience);
                 experiencecontainer.getChildren().add(vBox);
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     public void onAddFriend() {
@@ -169,23 +179,23 @@ public class ProfileController implements Initializable {
             case ("None"):
                 FriendRequestDAO.sendFriendRequest(otherID);
                 friendshipStatus = "UserAlreadyRequesting";
-                addFriend.setText("Remove Friend Request");
+                addFriend.setText("Remove "+followType+" Request");
                 break;
             case ("UserAlreadyRequesting"):
                 FriendRequestDAO.removeFriendRequest(otherID);
                 friendshipStatus = "None";
-                addFriend.setText("Add Friend");
+                addFriend.setText("Add "+followType);
                 break;
             case ("AlreadyFriends"):
                 FriendRequestDAO.removeFriend(otherID);
                 friendshipStatus = "None";
-                addFriend.setText("Add Friend");
+                addFriend.setText("Add "+followType);
                 break;
             case ("OtherAlreadyRequesting"):
                 FriendRequestDAO.acceptFriendRequest(otherID);
                 friendshipStatus = "AlreadyFriends";
                 addFriendContainer.getChildren().remove(decline);
-                addFriend.setText("Remove Friend");
+                addFriend.setText("Remove "+followType);
                 break;
             default:
                 break;

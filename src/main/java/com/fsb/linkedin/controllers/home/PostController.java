@@ -146,7 +146,12 @@ public class PostController{
 
     public void goToProfile() throws IOException {
         OtherAccountDAO.loadUser(post.getAccount().getID());
-        SceneSwitcher.goTo(getClass(),"profile",otherProfile);
+        if (OtherAccount.getInstance().getType().equals("Enterprise")){
+            SceneSwitcher.goTo(getClass(),"enterpriseprofile",otherProfile);
+        }
+        else {
+            SceneSwitcher.goTo(getClass(),"profile",otherProfile);
+        }
     }
 }
 

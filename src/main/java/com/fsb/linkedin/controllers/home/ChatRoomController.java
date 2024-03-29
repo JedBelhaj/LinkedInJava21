@@ -108,7 +108,11 @@ public class ChatRoomController implements Initializable {
     public void moreinfo() throws IOException {
         if (recieverID!=-1) {
             OtherAccountDAO.loadUser(recieverID);
-            SceneSwitcher.goTo(getClass(), "profile", moreinfo);
+            if (OtherAccount.getInstance().getType().equals("Enterprise")){
+                SceneSwitcher.goTo(getClass(), "enterpriseprofile", moreinfo);
+
+            }else
+                SceneSwitcher.goTo(getClass(), "profile", moreinfo);
         }
     }
 

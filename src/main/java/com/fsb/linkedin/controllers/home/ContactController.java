@@ -1,6 +1,7 @@
 package com.fsb.linkedin.controllers.home;
 
 import com.fsb.linkedin.entities.Contact;
+import com.fsb.linkedin.entities.OtherAccount;
 import com.fsb.linkedin.utils.MediaConverter;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

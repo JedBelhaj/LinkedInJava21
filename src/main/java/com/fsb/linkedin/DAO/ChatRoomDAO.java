@@ -20,10 +20,12 @@ public class ChatRoomDAO {
         List<Contact> contacts = new ArrayList<>();
 
         String sql = "SELECT DISTINCT " +
-                "    CONCAT(a.first_name, ' ', a.last_name) AS friend_name, " +
+                "    a.first_name AS friend_name, " +
+                "    a.last_name AS friend_last_name ," +
                 "    a.profilePicture AS friend_profile_image, " +
                 "    a.is_verified AS friend_verification_status ," +
-                "    a.account_id AS friend_id " +
+                "    a.account_id AS friend_id ," +
+                "    a.type AS friend_type " +
                 "FROM " +
                 "    friends f " +
                 "JOIN " +
@@ -39,10 +41,15 @@ public class ChatRoomDAO {
             while (rs.next()) {
                 Account account = new Account();
                 Contact contact = new Contact();
-                account.setName(rs.getString("friend_name"));
+                if (rs.getString("friend_type").equals("Enterprise")){
+                    account.setName(rs.getString("friend_name")+" Corp.");
+                }else {
+                    account.setName(rs.getString("friend_name")+" "+rs.getString("friend_last_name"));
+                }
                 account.setProfileImg(rs.getBytes("friend_profile_image"));
                 account.setVerified(rs.getBoolean("friend_verification_status"));
                 contact.setAccount(account);
+                contact.setType(rs.getString("friend_type"));
                 contact.setDate("date");
                 contact.setMsg("message");
                 contact.setId(rs.getInt("friend_id"));

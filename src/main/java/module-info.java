@@ -3,6 +3,7 @@ module com.fsb.linkedin {
     requires javafx.fxml;
     requires java.sql;
     requires javafx.media;
+    requires java.desktop;
 
 
     opens com.fsb.linkedin.utils to javafx.fxml;

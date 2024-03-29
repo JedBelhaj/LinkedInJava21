@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -108,12 +109,12 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="159.0" prefWidth="238.0" spacing="20.0">
                <children>
-                  <ImageView fitHeight="75.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="profilePicture" fitHeight="75.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../imgs/user.png" />
                      </image>
                   </ImageView>
-                  <Label text="enterprise name">
+                  <Label fx:id="enterpriseName" text="enterprise name">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
@@ -124,9 +125,9 @@
                </padding>
             </VBox>
             <Pane prefHeight="54.0" prefWidth="238.0" />
-            <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+            <VBox fx:id="followContainer" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="243.0" styleClass="round-button" stylesheets="@../../../style.css" text="follow enterprise">
+                  <Button fx:id="follow" mnemonicParsing="false" onAction="#onFollow" prefHeight="36.0" prefWidth="243.0" styleClass="round-button" stylesheets="@../../../style.css" text="follow enterprise">
                      <graphic>
                         <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -166,7 +167,7 @@
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="userphonenumber" text="user phone number" />
+                  <Label fx:id="userPhoneNumber" text="user phone number" />
                </children>
                <padding>
                   <Insets left="100.0" />
@@ -179,7 +180,7 @@
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="useremail" text="user e-mail" />
+                  <Label fx:id="userEmail" text="user e-mail" />
                </children>
                <padding>
                   <Insets left="100.0" />
@@ -187,12 +188,28 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="72.0" prefHeight="62.0" prefWidth="726.0" spacing="120.0">
                <children>
-                  <Label text="state">
+                  <Label text="date of Foundation">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="userbirthdate" text="state" />
+                  <Label fx:id="date" text="state" />
+               </children>
+               <padding>
+                  <Insets left="100.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="195.0" prefHeight="62.0" prefWidth="726.0" spacing="120.0">
+               <children>
+                  <Label text="website">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="website" text="state" textFill="#006aff" underline="true">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Label>
                </children>
                <padding>
                   <Insets left="100.0" />
