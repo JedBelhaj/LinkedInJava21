@@ -69,7 +69,7 @@ public class CVGenerator {
         contentStream.endText();
         contentStream.close();
 
-        document.save("C:\\Users\\jedbe\\Downloads\\cv.pdf");
+        document.save("C:\\Users\\jedbe\\Downloads\\"+p.getFirstName()+".pdf");
         document.close();
     }
     public static void main(String[] args) throws IOException {
@@ -88,6 +88,7 @@ public class CVGenerator {
             String word = words[i];
             counter += word.length();
             if(counter>lineLength || i == words.length-1){
+                line.append(word).append(" ");
                 lines.add(line.toString());
                 counter = word.length();
                 line = new StringBuilder("        ");
