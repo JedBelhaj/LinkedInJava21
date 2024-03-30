@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<TilePane alignment="CENTER" prefHeight="486.0" prefWidth="842.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.login.LogInController">
+<TilePane alignment="CENTER" prefHeight="486.0" prefWidth="842.0" styleClass="body-background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.login.LogInController">
    <children>
-      <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="903.0">
+      <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="903.0" stylesheets="@../../../style.css">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -19,7 +28,7 @@
           <RowConstraints maxHeight="266.8" minHeight="10.0" prefHeight="266.8" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <GridPane alignment="CENTER_RIGHT" maxHeight="400.0" maxWidth="600.0" minHeight="388.0" minWidth="388.0" prefHeight="400.0" prefWidth="600.0">
+            <GridPane alignment="CENTER_RIGHT" maxHeight="400.0" maxWidth="600.0" minHeight="388.0" minWidth="388.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../style.css">
                <columnConstraints>
                   <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="ALWAYS" maxWidth="383.19997787475586" minWidth="10.0" prefWidth="383.19997787475586" />
                </columnConstraints>
@@ -30,26 +39,38 @@
                   <RowConstraints maxHeight="179.2000030517578" minHeight="10.0" prefHeight="145.59996032714847" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="Welcome to Name" textAlignment="CENTER">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="88.0" prefWidth="265.0" styleClass="title" text="Welcome to Name" textAlignment="CENTER" textFill="#2990ff">
                      <font>
-                        <Font name="Raleway Medium" size="37.0" />
+                        <Font name="Arial Black" size="24.0" />
                      </font>
                   </Label>
-                  <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <VBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="225.0" stylesheets="@../../../style.css" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <children>
-                        <Label text="Email / Phone Number" />
-                        <TextField id="user" fx:id="user" alignment="TOP_LEFT" minWidth="164.0" prefHeight="26.0" prefWidth="164.0" text="gojosatoru@gmail.com" />
+                        <Label text="Email / Phone Number" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font></Label>
+                        <TextField id="user" fx:id="user" alignment="TOP_LEFT" minWidth="164.0" prefHeight="26.0" prefWidth="205.0" styleClass="text-field" stylesheets="@../../../style.css" text="gojosatoru@gmail.com">
+                           <font>
+                              <Font name="Arial" size="12.0" />
+                           </font></TextField>
                      </children>
                      <GridPane.margin>
                         <Insets right="20.0" />
                      </GridPane.margin>
                   </VBox>
-                  <VBox alignment="CENTER_LEFT" layoutX="110.0" layoutY="109.0" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+                  <VBox alignment="CENTER_LEFT" layoutX="110.0" layoutY="109.0" prefHeight="60.0" prefWidth="247.0" stylesheets="@../../../style.css" GridPane.rowIndex="2">
                      <children>
-                        <Label text="Password" />
+                        <Label text="Password" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font></Label>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <PasswordField id="pass" fx:id="pass" alignment="TOP_LEFT" minWidth="163.0" prefHeight="26.0" prefWidth="163.0" text="123456789" />
+                              <PasswordField id="pass" fx:id="pass" alignment="TOP_LEFT" minWidth="163.0" prefHeight="26.0" prefWidth="227.0" text="123456789">
+                                 <font>
+                                    <Font name="Arial" size="12.0" />
+                                 </font></PasswordField>
                               <ImageView id="showPassword" fx:id="showPassword" accessibleRole="BUTTON" fitHeight="16.0" fitWidth="16.0" onMouseClicked="#onShowPassword" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../imgs/eyebrow.png" />
@@ -60,7 +81,6 @@
                                  <effect>
                                     <Lighting bumpInput="$null">
                                        <light>
-                                          <Light.Distant />
                                        </light>
                                     </Lighting>
                                  </effect>
@@ -72,10 +92,10 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox alignment="TOP_CENTER" layoutX="110.0" layoutY="203.0" prefHeight="146.0" prefWidth="418.0" GridPane.rowIndex="3">
+                  <VBox alignment="TOP_CENTER" layoutX="110.0" layoutY="203.0" prefHeight="146.0" prefWidth="418.0" stylesheets="@../../../style.css" GridPane.rowIndex="3">
                      <children>
                         <Label fx:id="messageLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="316.0" textAlignment="CENTER" textFill="RED" />
-                        <Label id="forgot" fx:id="forgot" alignment="TOP_CENTER" text="Forgot Credentials?" textFill="#3a8cff" underline="true">
+                        <Label id="forgot" fx:id="forgot" alignment="TOP_CENTER" text="Forgot Credentials?" underline="true">
                            <padding>
                               <Insets top="10.0" />
                            </padding>
@@ -83,7 +103,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Label>
-                        <Button id="loginSubmit" fx:id="login" mnemonicParsing="false" onAction="#onSubmit" text="Login">
+                        <Button id="loginSubmit" fx:id="login" mnemonicParsing="false" onAction="#onSubmit" prefHeight="35.0" prefWidth="71.0" styleClass="round-button" stylesheets="@../../../application.css" text="Login" textFill="WHITE">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -94,7 +114,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Label id="signUp" fx:id="signup" alignment="TOP_CENTER" layoutX="152.0" layoutY="20.0" onMouseClicked="#onSignUp" text="Sign up?" textFill="#3a8cff" underline="true">
+                        <Label id="signUp" fx:id="signup" alignment="TOP_CENTER" layoutX="152.0" layoutY="20.0" onMouseClicked="#onSignUp" text="Sign up?" underline="true">
                            <padding>
                               <Insets top="5.0" />
                            </padding>

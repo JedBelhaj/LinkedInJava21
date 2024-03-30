@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -15,19 +16,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="662.0" prefWidth="912.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.signup.SignUpController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="662.0" prefWidth="912.0" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.signup.SignUpController">
    <children>
-      <Label alignment="CENTER" prefHeight="18.0" prefWidth="446.0" text="Sign Up">
+      <Label alignment="CENTER" prefHeight="18.0" prefWidth="446.0" styleClass="title" stylesheets="@../../../style.css" text="Sign Up">
          <font>
-            <Font size="51.0" />
+            <Font name="Arial Black" size="51.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="243.0" layoutY="103.0" prefHeight="18.0" prefWidth="446.0" text="- Personal Info -">
+      <Label alignment="CENTER" layoutX="243.0" layoutY="103.0" prefHeight="18.0" prefWidth="446.0" stylesheets="@../../../style.css" text="- Personal Info -" textFill="WHITE">
          <font>
-            <Font size="14.0" />
+            <Font name="Arial Black" size="13.0" />
          </font>
       </Label>
-      <GridPane hgap="20.0" maxWidth="700.0" prefHeight="538.0" prefWidth="700.0">
+      <GridPane hgap="20.0" maxWidth="700.0" prefHeight="538.0" prefWidth="700.0" stylesheets="@../../../style.css">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="351.2000244140625" minWidth="10.0" prefWidth="349.59998779296876" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="536.4000244140625" minWidth="10.0" prefWidth="351.2000122070312" />
@@ -38,8 +39,8 @@
           <RowConstraints maxHeight="158.79999544620514" minHeight="0.0" prefHeight="57.40001220703127" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="264.7999977111816" minHeight="0.0" prefHeight="53.800006103515614" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="253.40005798339843" minHeight="10.0" prefHeight="64.60001831054686" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="253.40005798339843" minHeight="10.0" prefHeight="57.00001220703126" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="234.2" minHeight="10.0" prefHeight="146.7999755859375" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="253.40005798339843" minHeight="10.0" prefHeight="73.99996337890627" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="234.2" minHeight="10.0" prefHeight="126.80003662109374" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="234.2" minHeight="10.0" prefHeight="49.200024414062455" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -47,8 +48,11 @@
                <children>
                   <Label text="First Name">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Arial Narrow" size="15.0" />
                      </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
                   </Label>
                   <TextField fx:id="firstName" />
                </children>
@@ -57,8 +61,11 @@
                <children>
                   <Label text="Last Name">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Arial Narrow" size="15.0" />
                      </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
                   </Label>
                   <TextField fx:id="lastName" />
                </children>
@@ -67,8 +74,11 @@
                <children>
                   <Label text="Phone Number">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Arial Narrow" size="15.0" />
                      </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
                   </Label>
                   <TextField fx:id="phoneNumber" />
                </children>
@@ -77,8 +87,11 @@
                <children>
                   <Label text="Date of Birth">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Arial Narrow" size="15.0" />
                      </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
                   </Label>
                   <DatePicker fx:id="dateOfBirth" />
                </children>
@@ -87,8 +100,11 @@
                <children>
                   <Label text="E-mail address">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Arial Narrow" size="15.0" />
                      </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
                   </Label>
                   <TextField fx:id="email" />
                </children>
@@ -97,20 +113,30 @@
                <children>
                   <Label text="Gender">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Arial Narrow" size="15.0" />
                      </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
                   </Label>
-                  <ComboBox fx:id="gender" prefWidth="150.0" />
+                  <ComboBox fx:id="gender" prefWidth="150.0" promptText="Male">
+                     <styleClass>
+                        <String fx:value="top-border" />
+                        <String fx:value="text-field" />
+                     </styleClass></ComboBox>
                </children>
             </VBox>
-            <Button fx:id="back" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onBack" text="Back" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
-            <Button fx:id="next" mnemonicParsing="false" onAction="#onNext" text="Next" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Button fx:id="back" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onBack" prefHeight="26.0" prefWidth="60.0" styleClass="round-button" text="Back   " textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
+            <Button fx:id="next" mnemonicParsing="false" onAction="#onNext" prefHeight="26.0" prefWidth="58.0" styleClass="round-button" text="Next" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
                <children>
                   <Label text="Create Password">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Arial Narrow" size="15.0" />
                      </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
                   </Label>
                   <PasswordField fx:id="password" />
                </children>
@@ -119,8 +145,11 @@
                <children>
                   <Label text="Confirm Password">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Arial Narrow" size="15.0" />
                      </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
                   </Label>
                   <PasswordField fx:id="confirmPassword" />
                </children>
@@ -130,24 +159,34 @@
                   <Label fx:id="messageLabel" textAlignment="CENTER" textFill="RED" />
                </children>
             </HBox>
-            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="5">
+            <VBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="339.0" spacing="10.0" GridPane.rowIndex="5">
                <children>
                   <Label text="Country of Residence">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Arial Narrow" size="15.0" />
                      </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
                   </Label>
-                  <ComboBox fx:id="country" prefWidth="150.0" />
+                  <ComboBox fx:id="country" prefWidth="150.0" promptText="Tunisia">
+                     <styleClass>
+                        <String fx:value="text-field" />
+                        <String fx:value="top-border" />
+                     </styleClass></ComboBox>
                </children>
             </VBox>
-            <VBox alignment="CENTER_LEFT" prefHeight="204.0" prefWidth="342.0" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.rowSpan="2">
+            <VBox alignment="CENTER_LEFT" prefHeight="204.0" prefWidth="342.0" spacing="8.0" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.rowSpan="2">
                <children>
                   <Label text="Profile Picture">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Arial Narrow" size="15.0" />
                      </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
                   </Label>
-                  <Button fx:id="uploadImg" mnemonicParsing="false" onAction="#onUploadImg" text="Upload Image" />
+                  <Button fx:id="uploadImg" mnemonicParsing="false" onAction="#onUploadImg" styleClass="round-button" text="Upload Image" />
                   <ImageView fx:id="profileImg" fitHeight="130.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true" />
                </children>
                <padding>

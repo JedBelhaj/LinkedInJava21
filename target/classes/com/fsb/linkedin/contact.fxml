@@ -8,16 +8,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="79.0" prefWidth="365.0" style="-fx-border-radius: 50;" styleClass="post-background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.home.ContactController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="101.0" prefWidth="313.0" style="-fx-border-radius: 50;" styleClass="post-background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.home.ContactController">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="177.0" spacing="30.0" styleClass="post-background" stylesheets="@../../../style.css">
+      <HBox alignment="CENTER_LEFT" prefHeight="92.0" prefWidth="340.0" spacing="30.0" styleClass="post-background" stylesheets="@../../../style.css">
          <children>
             <ImageView fx:id="imgProfile" fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../imgs/user.png" />
                </image>
             </ImageView>
-            <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="200.0" spacing="30.0">
+            <VBox alignment="CENTER_LEFT" prefHeight="82.0" prefWidth="150.0" spacing="30.0">
                <children>
                   <Label fx:id="username" text="username">
                      <font>

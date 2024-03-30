@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.home.FriendrequestController">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="108.0" prefWidth="600.0">
@@ -30,12 +29,26 @@
                            </children>
                         </VBox>
                         <Label text="send you a friend request" />
-                        <Button fx:id="accept" mnemonicParsing="false" text="accept">
+                        <Button fx:id="accept" mnemonicParsing="false" style="-fx-background-color: #FFFF;" text="accept">
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../imgs/verified-user.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </Button>
-                        <Button fx:id="refuse" mnemonicParsing="false" text="refuse" />
+                        <Button fx:id="refuse" mnemonicParsing="false" style="-fx-background-color: #FFFF;" text="refuse">
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../imgs/delete-account.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                      </children>
                   </HBox>
                </children>

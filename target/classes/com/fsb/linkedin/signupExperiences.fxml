@@ -41,7 +41,7 @@
                             <children>
                                 <VBox alignment="CENTER" GridPane.columnSpan="2">
                                     <children>
-                                        <Label text="Experiences">
+                                        <Label styleClass="title" stylesheets="@../../../style.css" text="Experiences">
                                             <font>
                                                 <Font name="Raleway Medium" size="30.0" />
                                             </font>
@@ -50,13 +50,12 @@
                                 </VBox>
                                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                     <children>
-                                        <Button fx:id="remove" mnemonicParsing="false" onAction="#onRemove" text="Remove" />
-                                        <Button fx:id="update" mnemonicParsing="false" onAction="#onUpdate" text="Update" />
+                                        <Button fx:id="update" mnemonicParsing="false" onAction="#onUpdate" styleClass="round-button" stylesheets="@../../../style.css" text="Update" />
                                     </children>
                                 </HBox>
                                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
                                     <children>
-                                        <Button fx:id="back" mnemonicParsing="false" onAction="#onBack" text="Back" />
+                                        <Button fx:id="back" mnemonicParsing="false" onAction="#onBack" styleClass="round-button" stylesheets="@../../../style.css" text="Back" />
                                     </children>
                                     <padding>
                                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -64,14 +63,17 @@
                                 </HBox>
                                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                     <children>
-                                        <Button fx:id="next" mnemonicParsing="false" onAction="#onNext" text="Next" />
+                                        <Button fx:id="next" mnemonicParsing="false" onAction="#onNext" styleClass="round-button" stylesheets="@../../../style.css" text="Next" />
                                     </children>
                                     <padding>
                                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                     </padding>
                                 </HBox>
                                 <ListView fx:id="experiencesList" prefHeight="267.0" prefWidth="474.0" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2" />
+                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+                           <children>
+                                        <Button fx:id="remove" mnemonicParsing="false" onAction="#onRemove" styleClass="round-button" stylesheets="@../../../style.css" text="Remove" />
+                           </children></VBox>
                             </children>
                         </GridPane>
                     </children>
@@ -94,7 +96,7 @@
                             <children>
                                 <HBox alignment="CENTER" prefHeight="76.0" prefWidth="600.0" GridPane.columnSpan="2">
                                     <children>
-                                        <Label text="Add Experience">
+                                        <Label styleClass="title" stylesheets="@../../../style.css" text="Add Experience">
                                             <font>
                                                 <Font name="Raleway Medium" size="20.0" />
                                             </font>
@@ -166,7 +168,7 @@
                                 </VBox>
                                 <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="5">
                                     <children>
-                                        <Button fx:id="clear" mnemonicParsing="false" onAction="#onClear" text="Clear" />
+                                        <Button fx:id="clear" mnemonicParsing="false" onAction="#onClear" styleClass="round-button" stylesheets="@../../../style.css" text="Clear" />
                                     </children>
                                     <padding>
                                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -174,7 +176,7 @@
                                 </VBox>
                                 <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                     <children>
-                                        <Button fx:id="add" mnemonicParsing="false" onAction="#onAdd" text="Add" />
+                                        <Button fx:id="add" mnemonicParsing="false" onAction="#onAdd" styleClass="round-button" stylesheets="@../../../style.css" text="Add" />
                                     </children>
                                     <padding>
                                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

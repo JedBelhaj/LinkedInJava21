@@ -14,7 +14,7 @@
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="662.0" prefWidth="912.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.signup.SignUpAdminController">
     <children>
-        <Label alignment="CENTER" prefHeight="18.0" prefWidth="446.0" text="Sign Up">
+        <Label alignment="CENTER" prefHeight="18.0" prefWidth="446.0" styleClass="title" stylesheets="@../../../style.css" text="Sign Up">
             <font>
                 <Font size="51.0" />
             </font>
@@ -122,8 +122,8 @@
                   <PasswordField fx:id="adminCode" />
                </children>
             </VBox>
-                <Button fx:id="back" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onBack" text="Back" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
-                <Button fx:id="next" mnemonicParsing="false" onAction="#onNext" text="Next" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <Button fx:id="back" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onBack" styleClass="round-button" stylesheets="@../../../style.css" text="Back" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+                <Button fx:id="next" mnemonicParsing="false" onAction="#onNext" styleClass="round-button" stylesheets="@../../../style.css" text="Next" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             </children>
         </GridPane>
     </children>

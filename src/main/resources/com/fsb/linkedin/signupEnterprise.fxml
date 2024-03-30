@@ -16,7 +16,7 @@
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="662.0" prefWidth="912.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.signup.SignUpEnterpriseController">
     <children>
-        <Label alignment="CENTER" prefHeight="18.0" prefWidth="446.0" text="Sign Up">
+        <Label alignment="CENTER" prefHeight="18.0" prefWidth="446.0" styleClass="title" stylesheets="@../../../style.css" text="Sign Up">
             <font>
                 <Font size="51.0" />
             </font>
@@ -117,8 +117,8 @@
                   <TextField fx:id="phoneNumber" />
                     </children>
                 </VBox>
-                <Button fx:id="back" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onBack" text="Back" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
-                <Button fx:id="next" mnemonicParsing="false" onAction="#onNext" text="Done" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                <Button fx:id="back" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onBack" styleClass="round-button" stylesheets="@../../../style.css" text="Back" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
+                <Button fx:id="next" mnemonicParsing="false" onAction="#onNext" styleClass="round-button" stylesheets="@../../../style.css" text="Done" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <VBox alignment="CENTER_LEFT" prefHeight="204.0" prefWidth="342.0" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.rowSpan="2">
                <children>
                   <Label text="Profile Picture">
@@ -126,7 +126,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="uploadImg" mnemonicParsing="false" onAction="#onUploadImg" text="Upload Image" />
+                  <Button fx:id="uploadImg" mnemonicParsing="false" onAction="#onUploadImg" styleClass="round-button" stylesheets="@../../../style.css" text="Upload Image" />
                   <ImageView fx:id="profileImg" fitHeight="130.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true" />
                </children>
                <padding>

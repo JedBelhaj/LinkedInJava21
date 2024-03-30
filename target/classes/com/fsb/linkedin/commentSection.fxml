@@ -21,11 +21,11 @@
                         <Image url="@../../../imgs/jedimage.jpg" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="commentCaption" prefHeight="26.0" prefWidth="454.0" promptText="What you want to comment ?" />
-                  <VBox alignment="CENTER" spacing="5.0">
+                  <TextField fx:id="commentCaption" prefHeight="26.0" prefWidth="374.0" promptText="What you want to comment ?" />
+                  <VBox alignment="CENTER" prefHeight="75.0" prefWidth="121.0" spacing="10.0">
                      <children>
-                        <Button fx:id="send" mnemonicParsing="false" onAction="#onSend" text="send" />
-                        <Button fx:id="attachment" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onAttachment" text="img" />
+                        <Button fx:id="send" mnemonicParsing="false" onAction="#onSend" styleClass="round-button" text="send" />
+                        <Button fx:id="attachment" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onAttachment" styleClass="round-button" text="import image" />
                      </children>
                   </VBox>
                </children>

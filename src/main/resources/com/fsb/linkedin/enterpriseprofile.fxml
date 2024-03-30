@@ -25,7 +25,7 @@
                   <Insets right="20.0" />
                </HBox.margin>
             </ImageView>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="round-button" stylesheets="@../../../style.css">
+            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #FFFF;" styleClass="round-button" stylesheets="@../../../style.css">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -37,9 +37,9 @@
             <Pane prefHeight="66.0" prefWidth="167.0" />
             <HBox alignment="CENTER_LEFT" prefHeight="66.0" prefWidth="430.0" spacing="5.0">
                <children>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="7.0">
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Button fx:id="home" mnemonicParsing="false" onMouseClicked="#home" prefHeight="35.0" prefWidth="35.0" styleClass="round-button" stylesheets="@../../../style.css">
+                        <Button fx:id="home" mnemonicParsing="false" onMouseClicked="#home" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #FFFF;" styleClass="round-button" stylesheets="@../../../style.css">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -50,10 +50,16 @@
                         </Button>
                         <Label text="home" />
                      </children>
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Button fx:id="profile" mnemonicParsing="false" onMouseClicked="#profile" prefHeight="35.0" prefWidth="35.0" styleClass="round-button" stylesheets="@../../../style.css">
+                        <Button fx:id="profile" mnemonicParsing="false" onMouseClicked="#profile" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #FFFF;" styleClass="round-button" stylesheets="@../../../style.css">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -67,7 +73,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Button fx:id="chatroom" mnemonicParsing="false" onMouseClicked="#chatroom" prefHeight="35.0" prefWidth="35.0" styleClass="round-button" stylesheets="@../../../style.css">
+                        <Button fx:id="chatroom" mnemonicParsing="false" onMouseClicked="#chatroom" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #FFFF;" styleClass="round-button" stylesheets="@../../../style.css">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -81,7 +87,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="66.0" prefWidth="67.0">
                      <children>
-                        <Button fx:id="notifications" mnemonicParsing="false" onMouseClicked="#notifications" prefHeight="35.0" prefWidth="35.0" styleClass="round-button" stylesheets="@../../../style.css">
+                        <Button fx:id="notifications" mnemonicParsing="false" onMouseClicked="#notifications" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #FFFF;" styleClass="round-button" stylesheets="@../../../style.css">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -127,7 +133,7 @@
             <Pane prefHeight="54.0" prefWidth="238.0" />
             <VBox fx:id="followContainer" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
                <children>
-                  <Button fx:id="follow" mnemonicParsing="false" onAction="#onFollow" prefHeight="36.0" prefWidth="243.0" styleClass="round-button" stylesheets="@../../../style.css" text="follow enterprise">
+                  <Button fx:id="follow" mnemonicParsing="false" onAction="#onFollow" prefHeight="36.0" prefWidth="182.0" style="-fx-background-color: #FFFF;" styleClass="round-button" stylesheets="@../../../style.css" text="follow enterprise">
                      <graphic>
                         <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -135,6 +141,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
                   </Button>
                </children>
                <padding>
@@ -186,7 +195,7 @@
                   <Insets left="100.0" />
                </padding>
             </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="72.0" prefHeight="62.0" prefWidth="726.0" spacing="120.0">
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="72.0" prefHeight="62.0" prefWidth="726.0" spacing="40.0">
                <children>
                   <Label text="date of Foundation">
                      <font>
@@ -199,14 +208,14 @@
                   <Insets left="100.0" />
                </padding>
             </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="195.0" prefHeight="62.0" prefWidth="726.0" spacing="120.0">
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="195.0" prefHeight="62.0" prefWidth="726.0" spacing="105.0">
                <children>
                   <Label text="website">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="website" text="state" textFill="#006aff" underline="true">
+                  <Label fx:id="website" text="website link" textFill="#006aff" underline="true">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Label>
@@ -219,7 +228,7 @@
                <children>
                   <VBox prefHeight="302.0" prefWidth="751.0">
                      <children>
-                        <Label text="Job offers :">
+                        <Label styleClass="title" stylesheets="@../../../style.css" text="Job offers :">
                            <font>
                               <Font name="Arial Black" size="22.0" />
                            </font>
@@ -233,7 +242,7 @@
                   </VBox>
                   <VBox prefHeight="153.0" prefWidth="726.0">
                      <children>
-                        <Label text="Stages: ">
+                        <Label styleClass="title" stylesheets="@../../../style.css" text="Stages: ">
                            <font>
                               <Font name="Arial Black" size="22.0" />
                            </font>

@@ -15,10 +15,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1121.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.home.ChatRoomController">
    <children>
-      <AnchorPane fx:id="an_menu" prefHeight="710.0" prefWidth="360.0" style="-fx-background-color: #BA2E49;">
+      <AnchorPane fx:id="an_menu" prefHeight="710.0" prefWidth="360.0" style="-fx-background-color: #FFFF;">
          <children>
             <Pane prefHeight="40.0" prefWidth="230.0" />
-            <Button layoutX="5.0" layoutY="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="219.0" style="-fx-background-color: #BA2E49;" text="CONTACT INBOX" textFill="WHITE">
+            <Button layoutX="5.0" layoutY="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="219.0" style="-fx-background-color: #FFFF;" text="CONTACT INBOX">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -26,10 +26,13 @@
                      </image>
                   </ImageView>
                </graphic>
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
             </Button>
             <ScrollPane layoutX="5.0" layoutY="80.0" prefHeight="630.0" prefWidth="352.0">
                <content>
-                  <VBox fx:id="contactcontainer" prefHeight="630.0" prefWidth="336.0" spacing="5.0" style="-fx-background-color: #BA2E49;">
+                  <VBox fx:id="contactcontainer" prefHeight="630.0" prefWidth="336.0" spacing="5.0" style="-fx-background-color: #FFFF;">
                      <padding>
                         <Insets top="5.0" />
                      </padding>
@@ -38,7 +41,7 @@
             </ScrollPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="an_account" layoutX="810.0" layoutY="2.0" prefHeight="710.0" prefWidth="250.0" style="-fx-background-color: white;">
+      <AnchorPane fx:id="an_account" layoutX="810.0" layoutY="2.0" prefHeight="710.0" prefWidth="270.0" style="-fx-background-color: white;">
          <children>
             <Pane layoutY="2.0" prefHeight="32.0" prefWidth="306.0" style="-fx-background-color: #88124E;" />
             <VBox layoutY="34.0" prefHeight="462.0" prefWidth="306.0">
@@ -91,19 +94,19 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="moreinfo" mnemonicParsing="false" onMouseClicked="#moreinfo" text="more informations" />
+                        <Button fx:id="moreinfo" mnemonicParsing="false" onMouseClicked="#moreinfo" styleClass="round-button" stylesheets="@../../../style.css" text="more informations" />
                      </children>
                   </HBox>
                </children>
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="360.0" prefHeight="578.0" prefWidth="446.0" style="-fx-background-color: #993333;">
+      <AnchorPane layoutX="360.0" prefHeight="578.0" prefWidth="446.0" style="-fx-background-color: #FFFF;">
          <children>
-            <Pane prefHeight="40.0" prefWidth="446.0" style="-fx-background-color: #BA2E49;" />
-            <ScrollPane fx:id="scrollPane" layoutY="142.0" prefHeight="443.0" prefWidth="446.0" style="-fx-background-color: #993333;" stylesheets="@../../../style.css">
+            <Pane prefHeight="40.0" prefWidth="446.0" style="-fx-background-color: #FFFF;" />
+            <ScrollPane fx:id="scrollPane" layoutY="142.0" prefHeight="443.0" prefWidth="446.0" style="-fx-background-color: #FFFF; -fx-border-radius: 20;" styleClass="post-background" stylesheets="@../../../style.css">
                <content>
-                  <VBox fx:id="messagecontainer" alignment="BOTTOM_CENTER" prefHeight="443.0" prefWidth="430.0" spacing="10.0" style="-fx-background-color: #993333;">
+                  <VBox fx:id="messagecontainer" alignment="BOTTOM_CENTER" prefHeight="427.0" prefWidth="430.0" spacing="10.0" style="-fx-background-color: #FFFF;">
                      <padding>
                         <Insets top="20.0" />
                      </padding>
@@ -112,7 +115,7 @@
             </ScrollPane>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="360.0" layoutY="586.0" prefHeight="127.0" prefWidth="446.0" style="-fx-background-color: #993333;">
+      <AnchorPane layoutX="360.0" layoutY="586.0" prefHeight="127.0" prefWidth="446.0" style="-fx-background-color: #FFFF;">
          <children>
             <VBox alignment="CENTER" layoutX="1.0" layoutY="6.0" prefHeight="77.0" prefWidth="434.0" styleClass="post-background" stylesheets="@../../../style.css">
                <children>

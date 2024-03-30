@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1030.0" styleClass="body-background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.home.HomePageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="500.0" prefHeight="715.0" prefWidth="1030.0" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.home.HomePageController">
    <top>
-      <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0" spacing="30.0" styleClass="white-background" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" minHeight="60.0" minWidth="600.0" prefHeight="65.0" prefWidth="200.0" spacing="30.0" styleClass="white-background" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -24,7 +24,7 @@
                   <Insets right="20.0" />
                </HBox.margin>
             </ImageView>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="round-button" stylesheets="@../../../style.css">
+            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #FFFF;" styleClass="round-button" stylesheets="@../../../style.css">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -32,12 +32,15 @@
                      </image>
                   </ImageView>
                </graphic>
+               <HBox.margin>
+                  <Insets bottom="15.0" top="10.0" />
+               </HBox.margin>
             </Button>
             <HBox alignment="CENTER_LEFT" prefHeight="66.0" prefWidth="430.0" spacing="5.0">
                <children>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="7.0">
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Button fx:id="home" mnemonicParsing="false" onMouseClicked="#home" prefHeight="35.0" prefWidth="35.0" styleClass="round-button" stylesheets="@../../../style.css">
+                        <Button fx:id="home" mnemonicParsing="false" onMouseClicked="#home" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #FFFF;" styleClass="round-button" stylesheets="@../../../style.css">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -51,7 +54,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Button fx:id="profile" mnemonicParsing="false" onMouseClicked="#profile" prefHeight="35.0" prefWidth="35.0" styleClass="round-button" stylesheets="@../../../style.css">
+                        <Button fx:id="profile" mnemonicParsing="false" onMouseClicked="#profile" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #FFFF;" styleClass="round-button" stylesheets="@../../../style.css">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -65,7 +68,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Button fx:id="chatroom" mnemonicParsing="false" onMouseClicked="#chatroom" prefHeight="35.0" prefWidth="35.0" styleClass="round-button" stylesheets="@../../../style.css">
+                        <Button fx:id="chatroom" mnemonicParsing="false" onMouseClicked="#chatroom" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #FFFF;" styleClass="round-button" stylesheets="@../../../style.css">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -79,7 +82,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="66.0" prefWidth="67.0">
                      <children>
-                        <Button fx:id="notifications" mnemonicParsing="false" onMouseClicked="#notifications" prefHeight="35.0" prefWidth="35.0" styleClass="round-button" stylesheets="@../../../style.css">
+                        <Button fx:id="notifications" mnemonicParsing="false" onMouseClicked="#notifications" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #FFFF;" styleClass="round-button" stylesheets="@../../../style.css">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -108,7 +111,7 @@
    <left>
       <ScrollPane maxWidth="1.7976931348623157E308" prefHeight="697.0" prefWidth="300.0" BorderPane.alignment="TOP_CENTER">
          <content>
-            <VBox prefHeight="694.0" prefWidth="239.0">
+            <VBox minWidth="200.0" prefHeight="700.0" prefWidth="264.0">
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="250.0" spacing="20.0">
                      <children>
@@ -137,7 +140,7 @@
                               <Font name="System Bold Italic" size="22.0" />
                            </font>
                         </Label>
-                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="57.0" styleClass="round-button" stylesheets="@../../../style.css">
+                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="57.0" style="-fx-background-color: #FFFF;" styleClass="round-button" stylesheets="@../../../style.css">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -185,7 +188,7 @@
    <right>
       <ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0" BorderPane.alignment="TOP_RIGHT">
          <content>
-            <VBox fx:id="offerContainer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#getoffer" prefHeight="730.0">
+            <VBox fx:id="offerContainer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="195.0" onMouseClicked="#getoffer" prefHeight="700.0" prefWidth="270.0">
                <children>
                   <Label maxWidth="-Infinity" minWidth="-Infinity" text="Job offers:">
                      <font>
@@ -201,9 +204,9 @@
       </ScrollPane>
    </right>
    <center>
-      <HBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="400.0" prefHeight="1014.0" prefWidth="1000.0" styleClass="post-background" stylesheets="@../../../style.css" BorderPane.alignment="CENTER">
+      <HBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1014.0" prefWidth="1000.0" styleClass="post-background" stylesheets="@../../../style.css" BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane hbarPolicy="NEVER" maxWidth="1.7976931348623157E308" vbarPolicy="ALWAYS">
+            <ScrollPane hbarPolicy="NEVER" maxWidth="1.7976931348623157E308" minWidth="400.0" vbarPolicy="ALWAYS">
                <content>
                   <VBox fx:id="postContainer" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="100.0" spacing="10.0">
                      <children>
