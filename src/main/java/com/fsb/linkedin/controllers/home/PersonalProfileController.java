@@ -1,13 +1,18 @@
 package com.fsb.linkedin.controllers.home;
 
 import com.fsb.linkedin.entities.PersonalAccount;
+import com.fsb.linkedin.utils.CVGenerator;
 import com.fsb.linkedin.utils.SceneSwitcher;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.stage.DirectoryChooser;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,6 +27,7 @@ public class PersonalProfileController implements Initializable {
     public Label email;
     public Label phoneNumber;
     public Label lastNameLabel;
+    public Button generateCV;
 
     public void editprofile() throws IOException {
         System.out.println("it is clicking");
@@ -46,5 +52,25 @@ public class PersonalProfileController implements Initializable {
         lastName.setText(p.getLastName());
         email.setText(p.getEmail());
         phoneNumber.setText(p.getPhoneNumber());
+    }
+
+    public void onGenerateCV(ActionEvent event) throws IOException {
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Choose a Location to Save your CV in.");
+        directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        File selectedDirectory = directoryChooser.showDialog(generateCV.getScene().getWindow());
+        String directory = selectedDirectory.getPath()+"\\"+PersonalAccount.getInstance().getFirstName()
+                +"_"+PersonalAccount.getInstance().getLastName()
+                +"_CV.pdf";
+        CVGenerator.createCV(directory);
+        try {
+            if (Desktop.isDesktopSupported()) {
+                Desktop.getDesktop().open(new File(directory));
+            } else {
+                System.out.println("Desktop is not supported.");
+            }
+        } catch (IOException e) {
+            System.out.println("Error opening directory: " + e.getMessage());
+        }
     }
 }

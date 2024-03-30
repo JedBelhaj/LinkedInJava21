@@ -32,7 +32,7 @@ public class CVGenerator {
     static PDPageContentStream contentStream;
     static PDFont helveticaFont = new PDType1Font(Standard14Fonts.FontName.HELVETICA);
     static PDFont helveticaFontBold = new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD);
-    public static void createCV() throws IOException {
+    public static void createCV(String path) throws IOException {
         AccountDAO.loadUser("gojosatoru@gmail.com");
         PersonalAccount p = PersonalAccount.getInstance();
 
@@ -69,11 +69,8 @@ public class CVGenerator {
         contentStream.endText();
         contentStream.close();
 
-        document.save("C:\\Users\\jedbe\\Downloads\\"+p.getFirstName()+".pdf");
+        document.save(path);
         document.close();
-    }
-    public static void main(String[] args) throws IOException {
-        createCV();
     }
     public static String formatDate(LocalDate date){
         return date.getDayOfMonth() + " " + date.getMonth().toString().toLowerCase()+ " " + date.getYear();

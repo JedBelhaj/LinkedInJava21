@@ -62,6 +62,16 @@
                         <Button fx:id="privacypolicy" mnemonicParsing="false" onAction="#privacypolicy" prefHeight="26.0" prefWidth="101.0" text="Privacy policy" textFill="WHITE" />
                      </children>
                   </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="153.0" prefHeight="35.0" prefWidth="226.0" spacing="15.0">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../imgs/insurance.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="generateCV" mnemonicParsing="false" onAction="#onGenerateCV" prefHeight="26.0" prefWidth="101.0" text="Generate CV" textFill="WHITE" />
+                     </children>
+                  </HBox>
                </children>
                <VBox.margin>
                   <Insets />
