@@ -37,8 +37,8 @@ public class testController {
             FieldVerifier.isValid(pass, n -> AccountDAO.loginIsValid(user.getText(),pass.getText()));
             if (loginIsValid){
                 AccountDAO.loadUser(user.getText());
-                OtherAccountDAO.loadUser("gojosatoru@gmail.com");
-                SceneSwitcher.goTo(getClass(),"profile",login);
+                OtherAccountDAO.loadUser("meed@gmail.com");
+                SceneSwitcher.goTo(getClass(),"enterpriseprofile",login);
             }
         }
     }

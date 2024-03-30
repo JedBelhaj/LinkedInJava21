@@ -4,6 +4,7 @@ module com.fsb.linkedin {
     requires java.sql;
     requires javafx.media;
     requires java.desktop;
+    requires org.apache.pdfbox;
 
 
     opens com.fsb.linkedin.utils to javafx.fxml;

@@ -4,6 +4,7 @@ import com.fsb.linkedin.*;
 import com.fsb.linkedin.DAO.OtherAccountDAO;
 import com.fsb.linkedin.entities.Notification;
 import com.fsb.linkedin.entities.OtherAccount;
+import com.fsb.linkedin.entities.PersonalAccount;
 import com.fsb.linkedin.entities.Reactionnotif;
 import com.fsb.linkedin.utils.MediaConverter;
 import com.fsb.linkedin.utils.SceneSwitcher;
@@ -51,8 +52,17 @@ public class ReactionnotifController {
                             throw new RuntimeException(e);
                         }
                     });
-                }
-                else {
+                } else if (PersonalAccount.getInstance().getType().equals("Enterprise")) {
+                    captionLabel.setText(notification.getFirstName()+ " sent you a Follow Request");
+                    notificationContainer.setOnMouseClicked(mouseEvent -> {
+                        try {
+                            OtherAccountDAO.loadUser(notification.getSource_id());
+                            SceneSwitcher.goTo(getClass(),"profile",notificationContainer);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
+                } else {
                     OtherAccountDAO.loadUser(notification.getSource_id());
                     System.out.println(OtherAccount.getInstance().getFirstName()+" IM GOING HERE");
                     captionLabel.setText(notification.getFirstName()+ " sent you a Friend Request");

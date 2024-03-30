@@ -1,6 +1,7 @@
 package com.fsb.linkedin.controllers.home;
 
 import com.fsb.linkedin.*;
+import com.fsb.linkedin.DAO.AccountDAO;
 import com.fsb.linkedin.DAO.FriendRequestDAO;
 import com.fsb.linkedin.DAO.NotificationDAO;
 import com.fsb.linkedin.entities.Account;
@@ -46,6 +47,6 @@ public class NotificationsController implements Initializable {
         }catch (IOException e){
             e.printStackTrace();
         }
-
+        NotificationDAO.removeAcceptNotifications(AccountDAO.loadUserID());
     }
 }
