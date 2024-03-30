@@ -18,7 +18,9 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class PostController{
+    private boolean applied = false;
     public HBox otherProfile;
+    public HBox applyContainer;
 
     @FXML
     private ImageView imgProfile;
@@ -105,6 +107,37 @@ public class PostController{
     }
     public void setData(Post post){
         this.post = post;
+        if (!Objects.equals(post.getPostType(), "Normal")){
+            applyContainer.setPrefWidth(200);
+            OfferApplication offerApplication = new OfferApplication();
+            if (OfferDAO.applied(post.getPostID())){
+                applied = true;
+            }
+            Button apply = new Button("Apply to "+post.getPostType());
+            if (applied)
+                apply.setText("Remove Application");
+            Button visit = new Button("Visit Profile");
+            apply.setOnMouseClicked(event -> {
+                if (applied){
+                    apply.setText("Apply to "+post.getPostType());
+                    OfferDAO.removeApplication(post.getPostID());
+                    applied = false;
+                }else {
+                    apply.setText("Remove Application");
+                    OfferDAO.insertApplication(post.getPostID());
+                    applied = true;
+                }
+            });
+            visit.setOnMouseClicked(event -> {
+                try {
+                    OtherAccountDAO.loadUser(PostDAO.getPostAuthorID(post.getPostID()));
+                    SceneSwitcher.goTo(getClass(),"enterpriseprofile",visit);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            applyContainer.getChildren().addAll(apply,visit);
+        }
         Image img = new Image(MediaConverter.convertByteArrayToInputStream(post.getAccount().getProfileImg()));
         imgProfile.setImage(img);
         if (imgPost == null){

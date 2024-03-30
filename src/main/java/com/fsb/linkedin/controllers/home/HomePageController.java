@@ -9,6 +9,7 @@ import com.fsb.linkedin.utils.SceneSwitcher;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -28,6 +29,7 @@ import java.util.ResourceBundle;
 public class HomePageController implements Initializable {
     public HBox uploadImage;
     public HBox uploadVideo;
+    public HBox buttonContainer;
     private File createPostImage;
     private File createPostVideo;
     private Post createPost = new Post();
@@ -41,11 +43,18 @@ public class HomePageController implements Initializable {
     public VBox postContainer;
     public VBox offerContainer;
     public TextField postField;
-
+    public ComboBox<String> postTypeCombo = new ComboBox<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String postType;
+        if (PersonalAccount.getInstance().getType().equals("Enterprise")){
+            postTypeCombo.getItems().addAll("Normal Post","Job Offer","Enternship Offer");
+            postTypeCombo.setPromptText("Post Type");
+            buttonContainer.getChildren().add(postTypeCombo);
+        }else{
+            postContainer.getChildren().remove(postTypeCombo);
+        }
+        String postTypeFXML;
         Image profileImage = PersonalAccount.getInstance().getProfileImage();
         profilePicture.setImage(profileImage);
         System.out.println(PersonalAccount.getInstance().getType());
@@ -63,10 +72,10 @@ public class HomePageController implements Initializable {
             for (Post post : posts) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 System.out.println(Arrays.toString(post.getImage()).equals("null"));
-                if (Arrays.toString(post.getImage()).equals("null")) postType = "imagelessPost";
-                else postType = "post";
-                System.out.println(postType);
-                fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/"+postType+".fxml"));
+                if (Arrays.toString(post.getImage()).equals("null")) postTypeFXML = "imagelessPost";
+                else postTypeFXML = "post";
+                System.out.println(postTypeFXML);
+                fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/"+postTypeFXML+".fxml"));
                 VBox vBox=fxmlLoader.load();
                 System.out.println("im here");
 
@@ -114,7 +123,13 @@ public class HomePageController implements Initializable {
     }
 
     public void onPost() throws IOException {
-        if (FieldVerifier.isValid(postField)){
+        boolean validFields = true;
+        if (postTypeCombo != null){
+            validFields = FieldVerifier.choiceBoxIsValid(postTypeCombo);
+        }
+        if (FieldVerifier.isValid(postField) && validFields){
+            if (postTypeCombo != null)
+                createPost.setPostType(postTypeCombo.getValue());
             createPost.setCaption(postField.getText());
             postField.setText("");
             createPostImage = null;

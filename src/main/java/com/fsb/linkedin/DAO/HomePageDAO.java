@@ -14,13 +14,14 @@ public class HomePageDAO {
     private static final Connection connection = DataBaseConnection.getInstance();
 
     public static void createPost(Post post) {
-        String sql = "INSERT INTO posts (account_id, date, audience, caption, image_url) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO posts (account_id, date, audience, caption, image_url, post_type) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setInt(1, AccountDAO.loadUserID(PersonalAccount.getInstance().getEmail()));
             pstmt.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
             pstmt.setString(3, post.getAudience().getAudienceAsString());
             pstmt.setString(4, post.getCaption());
             pstmt.setBytes(5, post.getImage());
+            pstmt.setString(6, post.getPostType());
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -42,7 +43,6 @@ public class HomePageDAO {
                 "friends f ON (a.account_id = f.account_id1 OR a.account_id = f.account_id2) " +
                 "WHERE " +
                 "(f.account_id1 = ? OR f.account_id2 = ? OR a.account_id = ?) " +
-                "AND p.is_comment = false " +
                 "ORDER BY " +
                 "p.date DESC " +
                 "LIMIT 10;";
@@ -63,6 +63,7 @@ public class HomePageDAO {
                 post.setTotalReactions(rs.getInt("total_reactions"));
                 post.setNbComments(CommentDAO.getCommentCount(post.getPostID()));
                 post.setNbShares(rs.getInt("nb_shares"));
+                post.setPostType(rs.getString("post_type"));
 
                 Account account = new Account();
                 account.setID(rs.getInt("account_id"));

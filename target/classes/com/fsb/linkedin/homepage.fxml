@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="500.0" prefHeight="715.0" prefWidth="1030.0" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.home.HomePageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="500.0" prefHeight="715.0" prefWidth="1030.0" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.home.HomePageController">
    <top>
       <HBox alignment="CENTER" minHeight="60.0" minWidth="600.0" prefHeight="65.0" prefWidth="200.0" spacing="30.0" styleClass="white-background" BorderPane.alignment="CENTER">
          <children>
@@ -229,7 +223,7 @@
                                     <Insets top="10.0" />
                                  </VBox.margin>
                               </HBox>
-                              <HBox alignment="CENTER" prefHeight="85.0" prefWidth="390.0" spacing="50.0" VBox.vgrow="ALWAYS">
+                              <HBox fx:id="buttonContainer" alignment="CENTER" prefHeight="85.0" prefWidth="390.0" spacing="50.0" VBox.vgrow="ALWAYS">
                                  <children>
                                     <HBox fx:id="uploadImage" onMouseClicked="#onUploadImage" prefHeight="150.0" prefWidth="107.0" spacing="5.0">
                                        <children>

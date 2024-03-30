@@ -2,6 +2,15 @@ package com.fsb.linkedin.entities;
 
 public class Post {
     private int postID;
+    private String postType;
+
+    public String getPostType() {
+        return postType;
+    }
+
+    public void setPostType(String postType) {
+        this.postType = postType;
+    }
 
     public Post(Message m) {
         setCaption(m.getCaption());
