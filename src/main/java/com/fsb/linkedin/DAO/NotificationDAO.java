@@ -15,6 +15,8 @@ public class NotificationDAO {
     private static final Connection connection = DataBaseConnection.getInstance();
 
     public static void createNotification(Notification notification) {
+        if (notification.getSource_id() == notification.getDestination_id())
+            return;
         String sql = "INSERT INTO notifications (source_id, message, type, post_id, destination_id) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setInt(1, notification.getSource_id());
@@ -77,6 +79,24 @@ public class NotificationDAO {
                 break;
             default:
                 break;
+        }
+    }
+    public static void removeNotification(int sourceID, int destinationID,int commentID, String type){
+
+        String sql = "DELETE FROM notifications WHERE source_id = ? AND destination_id = ? and type = ? and post_id = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setInt(1, sourceID);
+            pstmt.setInt(2, destinationID);
+            pstmt.setString(3, type);
+            pstmt.setInt(4, commentID);
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Notification removed successfully.");
+            } else {
+                System.out.println("No notification found to remove.");
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error removing notification: " + ex.getMessage());
         }
     }
     public static void removeRequestNotification(int sourceID,int destinationID){

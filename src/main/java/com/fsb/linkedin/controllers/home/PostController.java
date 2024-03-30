@@ -70,7 +70,7 @@ public class PostController{
     public void commentsection() throws IOException {
         CommentSectionDAO.setIsReply(false);
         CommentSectionDAO.setPost_id(post.getPostID());
-        CommentSectionDAO.setParent_id(post.getPostID());
+        CommentSectionDAO.setParent_id(-1);
         SceneSwitcher.openNewWindow(getClass(),"commentSection","Comments");
     }
     @FXML

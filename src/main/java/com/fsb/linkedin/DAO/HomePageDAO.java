@@ -2,6 +2,7 @@ package com.fsb.linkedin.DAO;
 
 import com.fsb.linkedin.entities.*;
 import com.fsb.linkedin.utils.DataBaseConnection;
+import com.fsb.linkedin.utils.SceneSwitcher;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -28,17 +29,26 @@ public class HomePageDAO {
 
     public static List<Post> getPosts() {
         List<Post> posts = new ArrayList<>();
-        String sql = "SELECT p.*, a.first_name AS account_name, " +
+        String sql = "SELECT DISTINCT " +
+                "p.*, " +
+                "a.first_name AS account_name, " +
                 "a.profilePicture AS account_profile_img, " +
                 "a.is_verified AS account_verified " +
-                "FROM posts p " +
-                "INNER JOIN accounts a ON p.account_id = a.account_id " +
-                "INNER JOIN friends f ON (a.account_id = f.account_id1 OR a.account_id = f.account_id2) " +
-                "WHERE ((f.account_id1 = ? OR f.account_id2 = ?) AND p.is_comment = false)" +
-                "AND (a.account_id != ?) " +
-                "ORDER BY p.date DESC";
+                "FROM " +
+                "posts p " +
+                "INNER JOIN " +
+                "accounts a ON p.account_id = a.account_id " +
+                "LEFT JOIN " +
+                "friends f ON (a.account_id = f.account_id1 OR a.account_id = f.account_id2) " +
+                "WHERE " +
+                "(f.account_id1 = ? OR f.account_id2 = ? OR a.account_id = ?) " +
+                "AND p.is_comment = false " +
+                "ORDER BY " +
+                "p.date DESC " +
+                "LIMIT 10;";
+
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            int userId = AccountDAO.loadUserID(PersonalAccount.getInstance().getEmail());
+            int userId = AccountDAO.loadUserID();
             pstmt.setInt(1, userId);
             pstmt.setInt(2, userId);
             pstmt.setInt(3, userId);
@@ -51,7 +61,7 @@ public class HomePageDAO {
                 post.setCaption(rs.getString("caption"));
                 post.setImage(rs.getBytes("image_url"));
                 post.setTotalReactions(rs.getInt("total_reactions"));
-                post.setNbComments(rs.getInt("nb_comments"));
+                post.setNbComments(CommentDAO.getCommentCount(post.getPostID()));
                 post.setNbShares(rs.getInt("nb_shares"));
 
                 Account account = new Account();

@@ -124,6 +124,7 @@ public class HomePageController implements Initializable {
             //TODO add video uploading
             System.out.println(createPost);
             HomePageDAO.createPost(createPost);
+            SceneSwitcher.goTo(getClass(),"homepage",home);
         }
     }
 

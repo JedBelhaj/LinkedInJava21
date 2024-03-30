@@ -68,5 +68,31 @@ public class PostDAO {
         }
         return false;
     }
+    public static int getPostAuthorID(int post_id){
+        String sql = "SELECT account_id FROM posts WHERE post_id = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setInt(1, post_id);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return  rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error getting post author id: " + ex.getMessage());
+        }
+        return -1;
+    }
 
+    public static String getPostCaption(int postId) {
+        String sql = "SELECT caption FROM posts WHERE post_id = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setInt(1, postId);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return  rs.getString(1);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error getting post author id: " + ex.getMessage());
+        }
+        return "";
+    }
 }

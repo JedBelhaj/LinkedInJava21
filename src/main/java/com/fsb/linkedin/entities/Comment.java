@@ -37,6 +37,24 @@ public class Comment {
     private Account account;
     private String date;
     private byte[] image;
+    private boolean isLiked;
+    private int likeCount;
+
+    public int getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(int likeCount) {
+        this.likeCount = likeCount;
+    }
+
+    public boolean isLiked() {
+        return isLiked;
+    }
+
+    public void setLiked(boolean liked) {
+        isLiked = liked;
+    }
 
     public Comment(Account account, String date, byte[] image, String caption) {
         this.account = account;
@@ -91,4 +109,6 @@ public class Comment {
     public void setImage(byte[] image) {
         this.image = image;
     }
+
+
 }

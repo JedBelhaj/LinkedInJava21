@@ -84,6 +84,33 @@ public class ReactionnotifController {
                     captionLabel.setText(notification.getFirstName()+ " accepted your Friend Request");
                 }
                 break;
+            case ("CommentLike"):
+                OtherAccountDAO.loadUser(notification.getSource_id());
+                if (OtherAccount.getInstance().getType().equals("Enterprise")){
+                    captionLabel.setText(notification.getFirstName()+ " Corp. liked your comment \""+ notification.getMessage()+"\"");
+                }
+                else {
+                    captionLabel.setText(notification.getFirstName()+ " liked your comment \""+ notification.getMessage()+"\"");
+                }
+                break;
+            case ("CommentReply"):
+                OtherAccountDAO.loadUser(notification.getSource_id());
+                if (OtherAccount.getInstance().getType().equals("Enterprise")){
+                    captionLabel.setText(notification.getFirstName()+ " Corp. replied to your comment \""+ notification.getMessage()+"\"");
+                }
+                else {
+                    captionLabel.setText(notification.getFirstName()+ " replied to your comment \""+ notification.getMessage()+"\"");
+                }
+                break;
+            case ("Comment"):
+                OtherAccountDAO.loadUser(notification.getSource_id());
+                if (OtherAccount.getInstance().getType().equals("Enterprise")){
+                    captionLabel.setText(notification.getFirstName()+ " Corp. commented on your post \""+ notification.getMessage()+"\"");
+                }
+                else {
+                    captionLabel.setText(notification.getFirstName()+ " commented on your post \""+ notification.getMessage()+"\"");
+                }
+                break;
             default:
                 break;
         }
