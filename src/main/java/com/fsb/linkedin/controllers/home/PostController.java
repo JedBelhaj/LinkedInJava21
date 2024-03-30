@@ -1,9 +1,6 @@
 package com.fsb.linkedin.controllers.home;
 
-import com.fsb.linkedin.DAO.AccountDAO;
-import com.fsb.linkedin.DAO.NotificationDAO;
-import com.fsb.linkedin.DAO.OtherAccountDAO;
-import com.fsb.linkedin.DAO.PostDAO;
+import com.fsb.linkedin.DAO.*;
 import com.fsb.linkedin.entities.*;
 import com.fsb.linkedin.utils.MediaConverter;
 import com.fsb.linkedin.utils.SceneSwitcher;
@@ -71,7 +68,10 @@ public class PostController{
     private Post post;
 
     public void commentsection() throws IOException {
-        SceneSwitcher.openNewWindow(getClass(),"comment","Comments");
+        CommentSectionDAO.setIsReply(false);
+        CommentSectionDAO.setPost_id(post.getPostID());
+        CommentSectionDAO.setParent_id(post.getPostID());
+        SceneSwitcher.openNewWindow(getClass(),"commentSection","Comments");
     }
     @FXML
     public void onReactionImgPressed(MouseEvent me){

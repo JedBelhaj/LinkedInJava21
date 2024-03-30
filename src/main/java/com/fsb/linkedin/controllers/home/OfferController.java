@@ -94,7 +94,7 @@ public class OfferController {
     }
     public void offerbutton() throws IOException {
         System.out.println("it is clicking");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("comment.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("commentSection.fxml"));
         Parent root = loader.load();
 
         // Create a new stage for the comment scene
