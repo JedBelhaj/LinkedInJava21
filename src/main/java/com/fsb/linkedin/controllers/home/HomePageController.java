@@ -130,12 +130,20 @@ public class HomePageController implements Initializable {
 
     public void onPost() throws IOException {
         boolean validFields = true;
-        if (postTypeCombo != null){
+        if (!postTypeCombo.getItems().isEmpty()){
+            System.out.println(postTypeCombo.getItems());
+            System.out.println("checking if combobox is good");
             validFields = FieldVerifier.choiceBoxIsValid(postTypeCombo);
         }
-        if (FieldVerifier.isValid(postField) && validFields){
-            if (postTypeCombo != null)
+        if (FieldVerifier.isValid(postField) || validFields){
+            if (!postTypeCombo.getItems().isEmpty()) {
+                System.out.println("Enterprise post");
                 createPost.setPostType(postTypeCombo.getValue());
+            }
+            else{
+                createPost.setPostType("Normal");
+                System.out.println("normal post");
+            }
             createPost.setCaption(postField.getText());
             postField.setText("");
             createPostImage = null;
