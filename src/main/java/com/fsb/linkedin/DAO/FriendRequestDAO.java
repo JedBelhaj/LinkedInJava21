@@ -156,7 +156,7 @@ public class FriendRequestDAO {
         if (OtherAccount.getInstance().getType().equals("Enterprise") || PersonalAccount.getInstance().getType().equals("Enterprises")){
             return;
         }
-        MessageDAO.createConversation(friendID, OtherAccount.getInstance().getFirstName());
+        MessageDAO.createConversation(friendID, null);
     }
     public static List<Friendrequest> getFriendRequests() {
         List<Friendrequest> friendRequests = new ArrayList<>();
