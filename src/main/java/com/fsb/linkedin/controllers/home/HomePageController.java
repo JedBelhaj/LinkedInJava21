@@ -86,6 +86,8 @@ public class HomePageController implements Initializable {
             throw new RuntimeException(e);
         }
 
+
+
         Button bannedUsers = new Button("Banned Users");
         if (PersonalAccount.getInstance().getType().equals("Admin")) {
             navContainer.getChildren().add(bannedUsers);
@@ -134,6 +136,28 @@ public class HomePageController implements Initializable {
                     PostController postController = fxmlLoader.getController();
                     postController.setData(post);
                     postContainer.getChildren().add(vBox);
+                }
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+        List<Post> offers = HomePageDAO.getJobOffers();
+        try {
+            for (Post offer : offers) {
+                if (!OtherAccountDAO.isBanned(offer.getAccount().getID())) {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    System.out.println(Arrays.toString(offer.getImage()).equals("null"));
+                    if (Arrays.toString(offer.getImage()).equals("null")) postTypeFXML = "imagelessPost";
+                    else postTypeFXML = "post";
+                    System.out.println(postTypeFXML);
+                    fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/" + postTypeFXML + ".fxml"));
+                    VBox vBox = fxmlLoader.load();
+                    System.out.println("im here");
+
+                    PostController postController = fxmlLoader.getController();
+                    postController.setData(offer);
+                    offerContainer.getChildren().add(vBox);
                 }
             }
         }catch (IOException e){

@@ -82,8 +82,57 @@ public class HomePageDAO {
     }
 
 
-    public static List<Offer> getJobOffers() {
-        List<Offer> jobOffers = new ArrayList<>();
+    public static List<Post> getJobOffers() {
+        List<Post> jobOffers = new ArrayList<>();
+        String sql = "SELECT DISTINCT " +
+                "p.*, " +
+                "a.first_name AS account_name, " +
+                "a.profilePicture AS account_profile_img, " +
+                "a.is_verified AS account_verified " +
+                "FROM " +
+                "posts p " +
+                "INNER JOIN " +
+                "accounts a ON p.account_id = a.account_id " +
+                "LEFT JOIN " +
+                "friends f ON (a.account_id = f.account_id1 OR a.account_id = f.account_id2) " +
+                "WHERE " +
+                "(f.account_id1 = ? OR f.account_id2 = ? OR a.account_id = ?) " +
+                "AND p.post_type = 'Job Offer' " +
+                "ORDER BY " +
+                "p.date DESC " +
+                "LIMIT 10;";
+
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            int userId = AccountDAO.loadUserID();
+            pstmt.setInt(1, userId);
+            pstmt.setInt(2, userId);
+            pstmt.setInt(3, userId);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                Post post = new Post();
+
+                post.setPostID(rs.getInt("post_id"));
+                post.setDate(rs.getString("date"));
+                post.setCaption(rs.getString("caption"));
+                post.setImage(rs.getBytes("image_url"));
+                post.setTotalReactions(rs.getInt("total_reactions"));
+                post.setNbComments(CommentDAO.getCommentCount(post.getPostID()));
+                post.setNbShares(rs.getInt("nb_shares"));
+                post.setPostType(rs.getString("post_type"));
+
+                Account account = new Account();
+                account.setID(rs.getInt("account_id"));
+                account.setName(rs.getString("account_name"));
+                account.setProfileImg(rs.getBytes("account_profile_img"));
+                account.setVerified(rs.getBoolean("account_verified"));
+
+                post.setAccount(account);
+                jobOffers.add(post);
+                System.out.println(post.getCaption()+ " "+ post.getAccount().getName());
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
         return jobOffers;
     }
 
