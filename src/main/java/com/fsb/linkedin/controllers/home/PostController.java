@@ -140,6 +140,11 @@ public class PostController{
                     message.setSenderID(AccountDAO.loadUserID());
                     message.setCaption("Hey, I applied to your "+post.getPostType());
                     MessageDAO.sendMessage(message, convID);
+                    try {
+                        SceneSwitcher.openNewWindow(getClass(),"chatroom","Chatroom");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             });
             visit.setOnMouseClicked(event -> {
