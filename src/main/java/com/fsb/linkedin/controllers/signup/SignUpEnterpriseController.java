@@ -64,6 +64,7 @@ public class SignUpEnterpriseController implements Initializable {
             p.setWebsite(websiteURL.getText());
             PersonalAccount.setInstance(p);
             AccountDAO.save(p);
+            SceneSwitcher.goTo(getClass(),"login",next);
         }else {
             if (!AccountDAO.AttributeIsUnique("email",email.getText()) || !AccountDAO.AttributeIsUnique("phone_number",phoneNumber.getText()) && FieldVerifier.emailIsValid(email) && FieldVerifier.phoneIsValid(phoneNumber)){
                 messageLabel.setText("Email or Phone number is already in use");

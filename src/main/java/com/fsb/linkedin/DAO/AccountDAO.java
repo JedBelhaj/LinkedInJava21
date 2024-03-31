@@ -33,7 +33,11 @@ public class AccountDAO {
             pstmt.setString(8, account.getCountry());
             pstmt.setBytes(9, account.getProfilePicture());
             pstmt.setString(10, account.getWebsite());
-            pstmt.setString(11, account.getType());
+            if (account.getType()==null){
+                pstmt.setString(11, "Normal");
+            }else{
+                pstmt.setString(11, account.getType());
+            }
 
             pstmt.executeUpdate();
 

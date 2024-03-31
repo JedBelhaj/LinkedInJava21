@@ -173,7 +173,7 @@ public class EnterpriseProfileController implements Initializable {
         }catch (IOException e){
             e.printStackTrace();
         }
-        offers = OfferDAO.getOffers(OtherAccountDAO.loadUserID(userEmail.getText()),"Enternship Offer");
+        offers = OfferDAO.getOffers(OtherAccountDAO.loadUserID(userEmail.getText()),"Internship Offer");
         System.out.println(offers);
         try {
             for (Post post : offers) {

@@ -67,6 +67,7 @@ public class SignUpVideo {
             PersonalAccount p = PersonalAccount.getInstance();
             PersonalAccount.setInstance(p);
             AccountDAO.saveAccount(p);
+            SceneSwitcher.goTo(getClass(),"login",done);
         }
     }
 }
