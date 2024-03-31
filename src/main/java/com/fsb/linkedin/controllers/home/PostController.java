@@ -51,7 +51,7 @@ public class PostController{
 
     @FXML
     private Label nbShares;
-
+    private int convID;
     @FXML
     private HBox reactionsContainer;
 
@@ -119,13 +119,27 @@ public class PostController{
             Button visit = new Button("Visit Profile");
             apply.setOnMouseClicked(event -> {
                 if (applied){
-                    apply.setText("Apply to "+post.getPostType());
+                    System.out.println("removing..");
                     OfferDAO.removeApplication(post.getPostID());
                     applied = false;
+                    OfferDAO.insertApplication(post.getPostID());
+                    apply.setText("Apply to "+post.getPostType());
+
+
+                    OfferDAO.removeApplication(post.getPostID());
+                    MessageDAO.removeConversation(convID);
                 }else {
-                    apply.setText("Remove Application");
+                    System.out.println("applying..");
                     OfferDAO.insertApplication(post.getPostID());
                     applied = true;
+                    apply.setText("Remove Application");
+
+                    convID = MessageDAO.createConversation(PostDAO.getPostAuthorID(post.getPostID()), post.getPostType()+" "+ post.getAccount().getName());
+                    Message message = new Message();
+                    message.setConvID(convID);
+                    message.setSenderID(AccountDAO.loadUserID());
+                    message.setCaption("Hey, I applied to your "+post.getPostType());
+                    MessageDAO.sendMessage(message, convID);
                 }
             });
             visit.setOnMouseClicked(event -> {

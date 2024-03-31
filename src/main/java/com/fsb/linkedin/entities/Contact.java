@@ -2,8 +2,13 @@ package com.fsb.linkedin.entities;
 
 public class Contact {
     private Account account;
-
     private String msg;
+
+    private int convID;
+
+    public int getConvID() {
+        return convID;
+    }
 
     private String date;
     private int id;
@@ -64,5 +69,9 @@ public class Contact {
 
     public String getType() {
         return this.type;
+    }
+
+    public void setConvID(int conversationId) {
+        this.convID = conversationId;
     }
 }

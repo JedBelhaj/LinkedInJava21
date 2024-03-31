@@ -48,7 +48,7 @@ public class HomePageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (PersonalAccount.getInstance().getType().equals("Enterprise")){
-            postTypeCombo.getItems().addAll("Normal Post","Job Offer","Enternship Offer");
+            postTypeCombo.getItems().addAll("Normal Post","Job Offer","Internship Offer");
             postTypeCombo.setPromptText("Post Type");
             buttonContainer.getChildren().add(postTypeCombo);
         }else{

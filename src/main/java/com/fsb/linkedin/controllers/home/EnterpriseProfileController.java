@@ -1,11 +1,9 @@
 package com.fsb.linkedin.controllers.home;
 
 import com.fsb.linkedin.DAO.FriendRequestDAO;
+import com.fsb.linkedin.DAO.OfferDAO;
 import com.fsb.linkedin.DAO.OtherAccountDAO;
-import com.fsb.linkedin.entities.Account;
-import com.fsb.linkedin.entities.Offer;
-import com.fsb.linkedin.entities.OtherAccount;
-import com.fsb.linkedin.entities.PostAudience;
+import com.fsb.linkedin.entities.*;
 import com.fsb.linkedin.utils.BrowserOpener;
 import com.fsb.linkedin.utils.MediaConverter;
 import com.fsb.linkedin.utils.SceneSwitcher;
@@ -25,6 +23,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -70,25 +69,6 @@ public class EnterpriseProfileController implements Initializable {
     public void notifications() throws IOException {
         SceneSwitcher.goTo(getClass(),"notifications",notifications);
 
-    }
-    public List<Offer> getJoboffer() throws IOException {
-        List<Offer> ls =new ArrayList<>();
-        Offer offer;
-        for(int i=0;i<10;i++){
-
-            offer=new Offer();
-            Account account = new Account();
-            account.setName(" jed");
-            account.setVerified(true);
-            offer.setAccount(account);
-            offer.setDate("Feb 18, 2021 at 12:00 PM");
-            offer.setAudience(PostAudience.PUBLIC);
-            offer.setCaption("i like kids .");
-
-            ls.add(offer);
-        }
-
-        return ls;
     }
 
     @Override
@@ -147,33 +127,45 @@ public class EnterpriseProfileController implements Initializable {
 
 
 
-        List<Offer> offers = null;
+        List<Post> offers = null;
+        offers = OfferDAO.getOffers(OtherAccountDAO.loadUserID(userEmail.getText()),"Job Offer");
+
         try {
-            offers = new ArrayList<>(getJoboffer());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            for(Offer offer:offers){
-                System.out.println("a");
+            for (Post post : offers) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/offer.fxml"));
-                VBox hBox=fxmlLoader.load();
-                OfferController offerController=fxmlLoader.getController();
-                offerController.setData(offer);
-                joboffercontainer.getChildren().add(hBox);
+                System.out.println(Arrays.toString(post.getImage()).equals("null"));
+                String postTypeFXML;
+                if (Arrays.toString(post.getImage()).equals("null")) postTypeFXML = "imagelessPost";
+                else postTypeFXML = "post";
+                System.out.println(postTypeFXML);
+                fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/"+postTypeFXML+".fxml"));
+                VBox vBox=fxmlLoader.load();
+                System.out.println("im here");
+
+                PostController postController=fxmlLoader.getController();
+                postController.setData(post);
+                joboffercontainer.getChildren().add(vBox);
             }
         }catch (IOException e){
             e.printStackTrace();
         }
+        offers = OfferDAO.getOffers(OtherAccountDAO.loadUserID(userEmail.getText()),"Enternship Offer");
+        System.out.println(offers);
         try {
-            for (Offer offer : offers) {
+            for (Post post : offers) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/offer.fxml"));
-                VBox hBox = fxmlLoader.load();
-                OfferController offerController = fxmlLoader.getController();
-                offerController.setData(offer);
-                stagecontainer.getChildren().add(hBox);
+                System.out.println(Arrays.toString(post.getImage()).equals("null"));
+                String postTypeFXML;
+                if (Arrays.toString(post.getImage()).equals("null")) postTypeFXML = "imagelessPost";
+                else postTypeFXML = "post";
+                System.out.println(postTypeFXML);
+                fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/"+postTypeFXML+".fxml"));
+                VBox vBox=fxmlLoader.load();
+                System.out.println("im here");
+
+                PostController postController=fxmlLoader.getController();
+                postController.setData(post);
+                stagecontainer.getChildren().add(vBox);
             }
         }catch (IOException e){
             e.printStackTrace();

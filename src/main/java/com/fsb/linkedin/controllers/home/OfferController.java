@@ -2,6 +2,7 @@ package com.fsb.linkedin.controllers.home;
 
 import com.fsb.linkedin.*;
 import com.fsb.linkedin.entities.Offer;
+import com.fsb.linkedin.entities.Post;
 import com.fsb.linkedin.entities.Reactions;
 import com.fsb.linkedin.utils.MediaConverter;
 import javafx.fxml.FXML;
@@ -71,8 +72,7 @@ public class OfferController {
     private Offer offer;
 
 
-    public void setData(Offer offer){
-        this.offer = offer;
+    public void setData(Post offer){
         Image img;
         username.setText(offer.getAccount().getName());
         if(offer.getAccount().isVerified()){

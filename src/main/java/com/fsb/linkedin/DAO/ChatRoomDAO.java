@@ -19,29 +19,42 @@ public class ChatRoomDAO {
         int userID = AccountDAO.loadUserID(PersonalAccount.getInstance().getEmail());
         List<Contact> contacts = new ArrayList<>();
 
-        String sql = "SELECT DISTINCT " +
-                "    a.first_name AS friend_name, " +
-                "    a.last_name AS friend_last_name ," +
-                "    a.profilePicture AS friend_profile_image, " +
-                "    a.is_verified AS friend_verification_status ," +
-                "    a.account_id AS friend_id ," +
-                "    a.type AS friend_type " +
+        String sql = "SELECT " +
+                "m.conversation_id, " +
+                "m.message as message, " +
+                "c.name as conversation_name , " +
+                "MAX(m.sent_at) AS date, " +
+                "IF(c.user1_id = ?, c.user2_id, c.user1_id) AS friend_id, " +
+                "a.first_name AS friend_name, " +
+                "a.last_name AS friend_last_name, " +
+                "a.profilePicture AS friend_profile_image, " +
+                "a.is_verified AS friend_verification_status, " +
+                "a.type AS friend_type " +
                 "FROM " +
-                "    friends f " +
-                "JOIN " +
-                "    accounts a ON (f.account_id1 = a.account_id OR f.account_id2 = a.account_id) " +
+                "messages m " +
+                "INNER JOIN " +
+                "conversations c ON m.conversation_id = c.conversation_id " +
+                "INNER JOIN " +
+                "accounts a ON IF(c.user1_id = ?, c.user2_id, c.user1_id) = a.account_id " +
                 "WHERE " +
-                "    (f.account_id1 = ? OR f.account_id2 = ?) " +
-                "    AND a.account_id <> ?";
+                "c.user1_id = ? OR c.user2_id = ? " +
+                "GROUP BY " +
+                "m.conversation_id " +
+                "ORDER BY date DESC;";
+
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setInt(1, userID);
             pstmt.setInt(2, userID);
             pstmt.setInt(3, userID);
+            pstmt.setInt(4, userID);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 Account account = new Account();
                 Contact contact = new Contact();
-                if (rs.getString("friend_type").equals("Enterprise")){
+                if (!(rs.getString("conversation_name") == null)){
+                    account.setName(rs.getString("conversation_name"));
+                }
+                else if (rs.getString("friend_type").equals("Enterprise")){
                     account.setName(rs.getString("friend_name")+" Corp.");
                 }else {
                     account.setName(rs.getString("friend_name")+" "+rs.getString("friend_last_name"));
@@ -50,9 +63,10 @@ public class ChatRoomDAO {
                 account.setVerified(rs.getBoolean("friend_verification_status"));
                 contact.setAccount(account);
                 contact.setType(rs.getString("friend_type"));
-                contact.setDate("date");
-                contact.setMsg("message");
+                contact.setDate(String.valueOf(rs.getDate("date")));
+                contact.setMsg("");
                 contact.setId(rs.getInt("friend_id"));
+                contact.setConvID(rs.getInt("conversation_id"));
                 contacts.add(contact);
             }
         } catch (SQLException ex) {

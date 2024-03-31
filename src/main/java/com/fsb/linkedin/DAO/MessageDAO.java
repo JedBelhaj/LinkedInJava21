@@ -17,7 +17,12 @@ public class MessageDAO {
         String sql = "INSERT INTO messages (sender_id, conversation_id, message, sent_at) VALUES (?, ?, ?, ?)";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setInt(1, senderId);
-            pstmt.setInt(2, getConversationId(senderId, receiverId));
+            if (message.getConvID() == -1){
+                pstmt.setInt(2, getConversationId(senderId, receiverId));
+            }
+            else {
+                pstmt.setInt(2, message.getConvID());
+            }
             pstmt.setString(3, message.getCaption());
             pstmt.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
             pstmt.executeUpdate();
@@ -83,4 +88,61 @@ public class MessageDAO {
         return messages;
     }
 
+    public static int createConversation(int party_id, String conversationName) {
+        // Assuming you have a Connection object named 'connection' for database connection
+
+        String sql = "INSERT INTO conversations (user1_id ,user2_id, name) VALUES (?, ?, ?)";
+
+        try {
+            // Create a PreparedStatement with an additional argument to return generated keys
+            PreparedStatement statement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+
+            // Set the values for the parameters
+            statement.setInt(1, AccountDAO.loadUserID());
+            statement.setInt(2, party_id);
+            statement.setString(3, conversationName);
+
+            // Execute the query
+            int rowsInserted = statement.executeUpdate();
+
+            if (rowsInserted > 0) {
+                // Get the generated keys (in this case, just one key)
+                ResultSet rs = statement.getGeneratedKeys();
+                if (rs.next()) {
+                    // Return the generated conversation ID
+                    return rs.getInt(1);
+                }
+            }
+        } catch (SQLException e) {
+            // Handle any errors
+            e.printStackTrace();
+        }
+
+        // If no conversation ID was generated or an exception occurred, return -1 or handle accordingly
+        return -1;
+    }
+    public static void removeConversation(int conversationId) {
+
+        String sql = "DELETE FROM conversations WHERE conversation_id = ?";
+
+        try {
+            // Create a PreparedStatement
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            // Set the conversation ID as parameter
+            statement.setInt(1, conversationId);
+
+            // Execute the query
+            int rowsDeleted = statement.executeUpdate();
+
+            if (rowsDeleted > 0) {
+                System.out.println("Conversation deleted successfully!");
+            } else {
+                System.out.println("No conversation found with ID: " + conversationId);
+            }
+        } catch (SQLException e) {
+            // Handle any errors
+            e.printStackTrace();
+        }
+    }
 }

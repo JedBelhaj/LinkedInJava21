@@ -4,6 +4,15 @@ import java.util.Arrays;
 
 public class Message {
     int senderID;
+    private int convID = -1;
+
+    public int getConvID() {
+        return convID;
+    }
+
+    public void setConvID(int convID) {
+        this.convID = convID;
+    }
 
     public int getSenderID() {
         return senderID;
