@@ -166,4 +166,8 @@ public class HomePageController implements Initializable {
         System.out.println("clicked");
         SceneSwitcher.openNewWindow(getClass(),"recherche", "Search for Job or Internship Offers");
     }
+
+    public void onLogOut(MouseEvent mouseEvent) throws IOException {
+        SceneSwitcher.goTo(getClass(),"login",postField);
+    }
 }
