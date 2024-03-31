@@ -18,7 +18,7 @@ public class MessageDAO {
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setInt(1, senderId);
             if (message.getConvID() == -1){
-                pstmt.setInt(2, getConversationId(senderId, receiverId));
+                pstmt.setInt(2, getConversationId(receiverId));
             }
             else {
                 pstmt.setInt(2, message.getConvID());
@@ -32,15 +32,15 @@ public class MessageDAO {
         }
     }
 
-    public static int getConversationId(int senderId, int receiverId) {
+    public static int getConversationId(int receiverId) {
         // Check if a conversation between the sender and receiver already exists
         String checkConversationSql = "SELECT conversation_id FROM conversations " +
                 "WHERE (user1_id = ? AND user2_id = ?) OR (user1_id = ? AND user2_id = ?)";
         try (PreparedStatement pstmt = connection.prepareStatement(checkConversationSql)) {
-            pstmt.setInt(1, senderId);
+            pstmt.setInt(1, AccountDAO.loadUserID());
             pstmt.setInt(2, receiverId);
             pstmt.setInt(3, receiverId);
-            pstmt.setInt(4, senderId);
+            pstmt.setInt(4, AccountDAO.loadUserID());
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 // If a conversation exists, return its ID
@@ -53,7 +53,7 @@ public class MessageDAO {
         // If no conversation exists, create a new conversation and return its ID
         String createConversationSql = "INSERT INTO conversations (user1_id, user2_id) VALUES (?, ?)";
         try (PreparedStatement pstmt = connection.prepareStatement(createConversationSql, Statement.RETURN_GENERATED_KEYS)) {
-            pstmt.setInt(1, senderId);
+            pstmt.setInt(1, AccountDAO.loadUserID());
             pstmt.setInt(2, receiverId);
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {

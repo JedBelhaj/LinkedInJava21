@@ -2,6 +2,7 @@ package com.fsb.linkedin.controllers.login;
 
 import com.fsb.linkedin.DAO.AccountDAO;
 import com.fsb.linkedin.DAO.OtherAccountDAO;
+import com.fsb.linkedin.entities.OtherAccount;
 import com.fsb.linkedin.entities.PersonalAccount;
 import com.fsb.linkedin.utils.FieldVerifier;
 import com.fsb.linkedin.utils.SceneSwitcher;
@@ -71,6 +72,7 @@ public class LogInController {
             }
             if (OtherAccountDAO.isBanned(AccountDAO.loadUserID())){
                 messageLabel.setText("Sorry, But your account is Banned!");
+                OtherAccount.setInstance(null);
             }
         }
     }

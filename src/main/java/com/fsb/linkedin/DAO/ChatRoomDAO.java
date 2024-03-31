@@ -20,10 +20,9 @@ public class ChatRoomDAO {
         List<Contact> contacts = new ArrayList<>();
 
         String sql = "SELECT " +
-                "m.conversation_id, " +
-                "m.message as message, " +
-                "c.name as conversation_name , " +
-                "MAX(m.sent_at) AS date, " +
+                "c.conversation_id, " +
+                "COALESCE(MAX(m.sent_at), c.created_at) AS date, " +
+                "c.name AS conversation_name, " +
                 "IF(c.user1_id = ?, c.user2_id, c.user1_id) AS friend_id, " +
                 "a.first_name AS friend_name, " +
                 "a.last_name AS friend_last_name, " +
@@ -31,16 +30,19 @@ public class ChatRoomDAO {
                 "a.is_verified AS friend_verification_status, " +
                 "a.type AS friend_type " +
                 "FROM " +
-                "messages m " +
-                "INNER JOIN " +
-                "conversations c ON m.conversation_id = c.conversation_id " +
-                "INNER JOIN " +
+                "conversations c " +
+                "LEFT JOIN " +
+                "messages m ON m.conversation_id = c.conversation_id " +
+                "LEFT JOIN " +
                 "accounts a ON IF(c.user1_id = ?, c.user2_id, c.user1_id) = a.account_id " +
                 "WHERE " +
                 "c.user1_id = ? OR c.user2_id = ? " +
                 "GROUP BY " +
-                "m.conversation_id " +
-                "ORDER BY date DESC;";
+                "c.conversation_id " +
+                "ORDER BY " +
+                "date DESC;";
+
+
 
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setInt(1, userID);
@@ -49,6 +51,7 @@ public class ChatRoomDAO {
             pstmt.setInt(4, userID);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
+                System.out.println(rs.getString("conversation_name"));
                 Account account = new Account();
                 Contact contact = new Contact();
                 if (!(rs.getString("conversation_name") == null)){
@@ -67,6 +70,7 @@ public class ChatRoomDAO {
                 contact.setMsg("");
                 contact.setId(rs.getInt("friend_id"));
                 contact.setConvID(rs.getInt("conversation_id"));
+
                 contacts.add(contact);
             }
         } catch (SQLException ex) {

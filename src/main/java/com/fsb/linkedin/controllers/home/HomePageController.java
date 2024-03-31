@@ -212,6 +212,8 @@ public class HomePageController implements Initializable {
     }
 
     public void onLogOut(MouseEvent mouseEvent) throws IOException {
+        PersonalAccount.setInstance(null);
+        OtherAccount.setInstance(null);
         SceneSwitcher.goTo(getClass(),"login",postField);
     }
 

@@ -1,9 +1,6 @@
 package com.fsb.linkedin.DAO;
 
-import com.fsb.linkedin.entities.Account;
-import com.fsb.linkedin.entities.Friendrequest;
-import com.fsb.linkedin.entities.Notification;
-import com.fsb.linkedin.entities.PersonalAccount;
+import com.fsb.linkedin.entities.*;
 import com.fsb.linkedin.utils.DataBaseConnection;
 import com.fsb.linkedin.utils.MediaConverter;
 
@@ -129,6 +126,7 @@ public class FriendRequestDAO {
         } catch (SQLException ex) {
             System.out.println("Error removing friend: " + ex.getMessage());
         }
+        MessageDAO.removeConversation(MessageDAO.getConversationId(receiverID));
     }
     public static void acceptFriendRequest(int senderID) {
         // Add sender as a friend
@@ -149,7 +147,11 @@ public class FriendRequestDAO {
             NotificationDAO.removeNotification(friendID,userID,"Request");
         } catch (SQLException ex) {
             System.out.println("Error adding friend: " + ex.getMessage());
+        } OtherAccountDAO.loadUser(friendID);
+        if (OtherAccount.getInstance().getType().equals("Enterprise") || PersonalAccount.getInstance().getType().equals("Enterprises")){
+            return;
         }
+        MessageDAO.createConversation(friendID, OtherAccount.getInstance().getFirstName());
     }
     public static List<Friendrequest> getFriendRequests() {
         List<Friendrequest> friendRequests = new ArrayList<>();
