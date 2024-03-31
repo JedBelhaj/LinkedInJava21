@@ -36,8 +36,7 @@ public class testController {
             boolean loginIsValid = FieldVerifier.isValid(user, n -> AccountDAO.loginIsValid(user.getText(),pass.getText()));
             FieldVerifier.isValid(pass, n -> AccountDAO.loginIsValid(user.getText(),pass.getText()));
             if (loginIsValid){
-                AccountDAO.loadUser(user.getText());
-                SceneSwitcher.goTo(getClass(),"recherche",login);
+                SceneSwitcher.goTo(getClass(),"bannedUsersContainer",login);
             }
         }
     }

@@ -25,6 +25,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ProfileController implements Initializable {
+    boolean banned = false;
     public VBox addFriendContainer;
     private String friendshipStatus;
 
@@ -99,7 +100,26 @@ public class ProfileController implements Initializable {
 
         OtherAccount p = OtherAccount.getInstance();
 
-
+        if (PersonalAccount.getInstance().getType().equals("Admin")){
+            if(PersonalAccount.getInstance().getType().equals("Admin")){
+                Button banUser = new Button("Ban User");
+                if (banned)
+                    banUser.setText("Unban User");
+                banUser.setStyle("-fx-border-color: red");
+                banUser.setOnMouseClicked(event -> {
+                    if (banned){
+                        banUser.setText("Ban User");
+                        banned = false;
+                        OtherAccountDAO.unbanUser(OtherAccountDAO.loadUserID(p.getEmail()));
+                    }else {
+                        banUser.setText("UnBan User");
+                        banned = true;
+                        OtherAccountDAO.banUser(OtherAccountDAO.loadUserID(p.getEmail()));
+                    }
+                });
+                addFriendContainer.getChildren().add(banUser);
+            }
+        }
 
         username.setText(p.getFirstName() + " " + p.getLastName());
         userFirstName.setText(p.getFirstName());

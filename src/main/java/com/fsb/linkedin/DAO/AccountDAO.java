@@ -121,7 +121,8 @@ public class AccountDAO {
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 int count = rs.getInt(1);
-                return count > 0;
+                AccountDAO.loadUser(email);
+                return count > 0 && !PersonalAccount.getInstance().getType().equals("BANNED");
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

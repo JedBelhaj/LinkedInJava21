@@ -69,6 +69,9 @@ public class LogInController {
             else {
                 messageLabel.setText("Incorrect Credentials!");
             }
+            if (OtherAccountDAO.isBanned(AccountDAO.loadUserID())){
+                messageLabel.setText("Sorry, But your account is Banned!");
+            }
         }
     }
     @FXML

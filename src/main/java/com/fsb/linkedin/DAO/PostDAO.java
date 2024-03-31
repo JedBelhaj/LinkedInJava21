@@ -96,4 +96,14 @@ public class PostDAO {
         return "";
     }
 
+    public static void removePost(int postID) {
+            String sql = "DELETE FROM posts WHERE post_id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+            preparedStatement.setInt(1, postID);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }

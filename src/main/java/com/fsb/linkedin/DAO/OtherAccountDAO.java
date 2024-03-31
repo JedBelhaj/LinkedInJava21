@@ -28,7 +28,7 @@ public class OtherAccountDAO {
             pstmt.setString(3, account.getEmail());
             pstmt.setString(4, account.getPassword());
             pstmt.setString(5, account.getPhoneNumber());
-            pstmt.setDate(6, java.sql.Date.valueOf(account.getDateOfBirth()));
+            pstmt.setDate(6, Date.valueOf(account.getDateOfBirth()));
             pstmt.setString(7, account.getGender());
             pstmt.setString(8, account.getCountry());
             pstmt.setBytes(9, account.getProfilePicture());
@@ -56,8 +56,8 @@ public class OtherAccountDAO {
                 pstmt.setString(3, qualification.getTitle());
                 pstmt.setString(4, qualification.getInstitution());
                 pstmt.setString(5, qualification.getTechnology());
-                pstmt.setDate(6, java.sql.Date.valueOf(qualification.getStartDate()));
-                pstmt.setDate(7, java.sql.Date.valueOf(qualification.getFinishDate()));
+                pstmt.setDate(6, Date.valueOf(qualification.getStartDate()));
+                pstmt.setDate(7, Date.valueOf(qualification.getFinishDate()));
                 pstmt.setString(8, qualification.getDescription());
 
                 pstmt.executeUpdate();
@@ -74,8 +74,8 @@ public class OtherAccountDAO {
             for (Project project : account.getProjects()) {
                 pstmt.setInt(1, accountId);
                 pstmt.setString(2, project.getTitle());
-                pstmt.setDate(3, java.sql.Date.valueOf(project.getStartDate()));
-                pstmt.setDate(4, java.sql.Date.valueOf(project.getFinishDate()));
+                pstmt.setDate(3, Date.valueOf(project.getStartDate()));
+                pstmt.setDate(4, Date.valueOf(project.getFinishDate()));
                 pstmt.setString(5, project.getDescription());
 
                 pstmt.executeUpdate();
@@ -95,8 +95,8 @@ public class OtherAccountDAO {
                 pstmt.setString(3, experience.getType());
                 pstmt.setString(4, experience.getMission());
                 pstmt.setString(5, experience.getTechnology());
-                pstmt.setDate(6, java.sql.Date.valueOf(experience.getStartDate()));
-                pstmt.setDate(7, java.sql.Date.valueOf(experience.getFinishDate()));
+                pstmt.setDate(6, Date.valueOf(experience.getStartDate()));
+                pstmt.setDate(7, Date.valueOf(experience.getFinishDate()));
                 pstmt.setString(8, experience.getDescription());
 
                 pstmt.executeUpdate();
@@ -307,5 +307,120 @@ public class OtherAccountDAO {
             }
         }
         return null;
+    }
+
+    public static void banUser(int account_id) {
+        if (account_id != -1) {
+            String sql = "INSERT INTO banned_accounts (account_id, previous_type) VALUES (?, ?)";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setInt(1, account_id);
+                statement.setString(2, OtherAccount.getInstance().getType());
+                int rowsAffected = statement.executeUpdate();
+                if (rowsAffected > 0) {
+                    System.out.println("User with account ID " + account_id + " has been inserted into the banned accounts successfully.");
+                } else {
+                    System.out.println("No user found with the account ID " + account_id);
+                }
+            } catch (SQLException e) {
+                System.err.println("Error banning user: " + e.getMessage());
+            }
+
+            sql = "UPDATE accounts SET type = 'BANNED' WHERE account_id = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setInt(1, account_id);
+                int rowsAffected = statement.executeUpdate();
+                if (rowsAffected > 0) {
+                    System.out.println("User with account ID " + account_id + " has been banned successfully.");
+                } else {
+                    System.out.println("No user found with the account ID " + account_id);
+                }
+            } catch (SQLException e) {
+                System.err.println("Error banning user: " + e.getMessage());
+            }
+
+        }
+    }
+
+    public static void unbanUser(int account_id) {
+        String type = "BANNED";
+        if (account_id != -1) {
+            String sql = "SELECT previous_type From banned_accounts WHERE account_id = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setInt(1, account_id);
+                ResultSet rs = statement.executeQuery();
+                while (rs.next()){
+                    type = rs.getString("previous_type");
+                }
+            } catch (SQLException e) {
+                System.err.println("Error banning user: " + e.getMessage());
+            }
+            sql = "UPDATE accounts SET type = ? WHERE account_id = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1, type);
+                statement.setInt(2, account_id);
+                int rowsAffected = statement.executeUpdate();
+                if (rowsAffected > 0) {
+                    System.out.println("User with account ID " + account_id + " has been banned successfully.");
+                } else {
+                    System.out.println("No user found with the account ID " + account_id);
+                }
+            } catch (SQLException e) {
+                System.err.println("Error banning user: " + e.getMessage());
+            }
+            sql = "DELETE FROM banned_accounts WHERE account_id = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setInt(1, account_id);
+                int rowsAffected = statement.executeUpdate();
+                if (rowsAffected > 0) {
+                    System.out.println("User with account ID " + account_id + " has been unbanned successfully.");
+                } else {
+                    System.out.println("No user found with the account ID " + account_id);
+                }
+            } catch (SQLException e) {
+                System.err.println("Error unbanning user: " + e.getMessage());
+            }
+        }
+    }
+
+    public static List<Integer> getBannedUsers() {
+        String sql = "SELECT account_id FROM banned_accounts";
+        List<Integer> banned_ids = new ArrayList<>();
+        try(PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                banned_ids.add(rs.getInt("account_id"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return banned_ids;
+    }
+
+    public static String getBanDate(int account_id){
+        String sql = "SELECT created_at FROM banned_accounts where account_id = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, account_id);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                return String.valueOf(rs.getDate("created_at"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return "";
+    }
+
+    public static boolean isBanned(int account_id){
+        String sql = "SELECT count(*) FROM banned_accounts where account_id = ?";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, account_id);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                return rs.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
     }
 }

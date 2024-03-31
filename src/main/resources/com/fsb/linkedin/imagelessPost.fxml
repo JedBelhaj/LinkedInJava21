@@ -52,12 +52,7 @@
                         </HBox>
                     </children>
                 </VBox>
-                <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../../imgs/ic_more.png" />
-                    </image>
-                </ImageView>
+            <HBox fx:id="removeContainer" alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="353.0" />
             </children>
             <padding>
                 <Insets left="20.0" right="20.0" />

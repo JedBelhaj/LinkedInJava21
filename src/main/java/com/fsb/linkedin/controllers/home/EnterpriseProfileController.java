@@ -3,6 +3,7 @@ package com.fsb.linkedin.controllers.home;
 import com.fsb.linkedin.DAO.FriendRequestDAO;
 import com.fsb.linkedin.DAO.OfferDAO;
 import com.fsb.linkedin.DAO.OtherAccountDAO;
+import com.fsb.linkedin.DAO.PostDAO;
 import com.fsb.linkedin.entities.*;
 import com.fsb.linkedin.utils.BrowserOpener;
 import com.fsb.linkedin.utils.MediaConverter;
@@ -28,6 +29,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class EnterpriseProfileController implements Initializable {
+    private boolean banned = false;
     @FXML
     public Button profile;
 
@@ -75,6 +77,28 @@ public class EnterpriseProfileController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         OtherAccount o = OtherAccount.getInstance();
+
+        if (PersonalAccount.getInstance().getType().equals("Admin")){
+            if(PersonalAccount.getInstance().getType().equals("Admin")){
+                Button banUser = new Button("Ban User");
+                if (banned)
+                    banUser.setText("Unban User");
+                banUser.setStyle("-fx-border-color: red");
+                banUser.setOnMouseClicked(event -> {
+                    if (banned){
+                        banUser.setText("Ban User");
+                        banned = false;
+                        OtherAccountDAO.unbanUser(OtherAccountDAO.loadUserID(o.getEmail()));
+                    }else {
+                        banUser.setText("UnBan User");
+                        banned = true;
+                        OtherAccountDAO.banUser(OtherAccountDAO.loadUserID(o.getEmail()));
+                    }
+                });
+                followContainer.getChildren().add(banUser);
+            }
+        }
+
         username.setText(o.getFirstName()+" Corp.");
         userEmail.setText(o.getEmail());
         userPhoneNumber.setText(o.getPhoneNumber());

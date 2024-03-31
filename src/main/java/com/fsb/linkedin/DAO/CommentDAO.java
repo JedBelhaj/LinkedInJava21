@@ -176,4 +176,14 @@ public class CommentDAO {
             e.printStackTrace();
         }
     }
+
+    public static void removeComment(int commentID) {
+        String sql = "DELETE FROM comments WHERE comment_id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+            preparedStatement.setInt(1, commentID);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

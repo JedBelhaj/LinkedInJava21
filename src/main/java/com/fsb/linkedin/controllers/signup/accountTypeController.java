@@ -28,8 +28,8 @@ public class accountTypeController implements Initializable {
                 case "Personal":
                     destination = "signup";
                     break;
-                case "enterprise":
-                    destination = "signupenterprise";
+                case "Enterprise":
+                    destination = "signupEnterprise";
                     break;
                 case "Admin":
                     destination = "signupAdmin";

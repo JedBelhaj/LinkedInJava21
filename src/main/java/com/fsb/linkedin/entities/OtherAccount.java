@@ -14,6 +14,8 @@ public class OtherAccount {
     private static OtherAccount instance;
     private String gender;
 
+
+
     public String getGender() {
         return gender;
     }

@@ -8,7 +8,7 @@
 
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="565.0" spacing="10.0" styleClass="post-background" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.home.PostController">
    <children>
-      <HBox fx:id="otherProfile" alignment="CENTER_LEFT" onMouseClicked="#goToProfile" prefHeight="60.0" spacing="10.0">
+      <HBox fx:id="otherProfile" alignment="CENTER_LEFT" onMouseClicked="#goToProfile" prefHeight="60.0" prefWidth="265.0" spacing="10.0">
          <children>
             <ImageView fx:id="imgProfile" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -52,12 +52,7 @@
                   </HBox>
                </children>
             </VBox>
-            <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../imgs/ic_more.png" />
-               </image>
-            </ImageView>
+            <HBox fx:id="removeContainer" alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="351.0" />
          </children>
          <padding>
             <Insets left="20.0" right="20.0" />

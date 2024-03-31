@@ -1,6 +1,7 @@
 package com.fsb.linkedin.controllers.home;
 
 import com.fsb.linkedin.DAO.HomePageDAO;
+import com.fsb.linkedin.DAO.OtherAccountDAO;
 import com.fsb.linkedin.entities.*;
 import com.fsb.linkedin.utils.FieldVerifier;
 import com.fsb.linkedin.utils.MediaConverter;
@@ -31,6 +32,7 @@ public class HomePageController implements Initializable {
     public HBox uploadVideo;
     public HBox buttonContainer;
     public ImageView recherche;
+    public HBox navContainer;
     private File createPostImage;
     private File createPostVideo;
     private Post createPost = new Post();
@@ -48,6 +50,19 @@ public class HomePageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Button bannedUsers = new Button("Banned Users");
+        if (PersonalAccount.getInstance().getType().equals("Admin")) {
+            navContainer.getChildren().add(bannedUsers);
+            bannedUsers.setStyle("-fx-border-color: red");
+            bannedUsers.setOnMouseClicked(event -> {
+                try {
+                    SceneSwitcher.openNewWindow(getClass(),"bannedUsersContainer","Banned Users");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+        }
+
         if (PersonalAccount.getInstance().getType().equals("Enterprise")){
             postTypeCombo.getItems().addAll("Normal Post","Job Offer","Internship Offer");
             postTypeCombo.setPromptText("Post Type");
@@ -68,37 +83,27 @@ public class HomePageController implements Initializable {
 
         postProfilePicture.setImage(profileImage);
         List<Post> posts = HomePageDAO.getPosts();
-        List<Offer> offers = HomePageDAO.getJobOffers();
         try {
             for (Post post : posts) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                System.out.println(Arrays.toString(post.getImage()).equals("null"));
-                if (Arrays.toString(post.getImage()).equals("null")) postTypeFXML = "imagelessPost";
-                else postTypeFXML = "post";
-                System.out.println(postTypeFXML);
-                fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/"+postTypeFXML+".fxml"));
-                VBox vBox=fxmlLoader.load();
-                System.out.println("im here");
+                if (!OtherAccountDAO.isBanned(post.getAccount().getID())) {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    System.out.println(Arrays.toString(post.getImage()).equals("null"));
+                    if (Arrays.toString(post.getImage()).equals("null")) postTypeFXML = "imagelessPost";
+                    else postTypeFXML = "post";
+                    System.out.println(postTypeFXML);
+                    fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/" + postTypeFXML + ".fxml"));
+                    VBox vBox = fxmlLoader.load();
+                    System.out.println("im here");
 
-                PostController postController=fxmlLoader.getController();
-                postController.setData(post);
-                postContainer.getChildren().add(vBox);
+                    PostController postController = fxmlLoader.getController();
+                    postController.setData(post);
+                    postContainer.getChildren().add(vBox);
+                }
             }
         }catch (IOException e){
             e.printStackTrace();
         }
-        /*try {
-            for (Offer offer : offers) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/offer.fxml"));
-                VBox vBox=fxmlLoader.load();
-                OfferController offerController=fxmlLoader.getController();
-                offerController.setData(offer);
-                offerContainer.getChildren().add(vBox);
-            }
-        }catch (IOException e){
-            e.printStackTrace();
-        }*/
+
 
 
     }

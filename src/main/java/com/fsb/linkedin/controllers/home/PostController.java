@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class PostController{
+    public HBox removeContainer;
     private boolean applied = false;
     public HBox otherProfile;
     public HBox applyContainer;
@@ -106,6 +107,14 @@ public class PostController{
         nbReactions.setText(String.valueOf(post.getTotalReactions()));
     }
     public void setData(Post post){
+        if(PersonalAccount.getInstance().getType().equals("Admin")){
+            Button removePost = new Button("remove");
+            removePost.setStyle("-fx-border-color: red");
+            removePost.setOnMouseClicked(event -> {
+                PostDAO.removePost(post.getPostID());
+            });
+            removeContainer.getChildren().add(removePost);
+        }
         this.post = post;
         if (!Objects.equals(post.getPostType(), "Normal")){
             applyContainer.setPrefWidth(200);

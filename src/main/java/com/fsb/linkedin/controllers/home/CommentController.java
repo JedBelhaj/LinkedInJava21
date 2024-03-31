@@ -1,10 +1,7 @@
 package com.fsb.linkedin.controllers.home;
 
 import com.fsb.linkedin.DAO.*;
-import com.fsb.linkedin.entities.Account;
-import com.fsb.linkedin.entities.Comment;
-import com.fsb.linkedin.entities.Notification;
-import com.fsb.linkedin.entities.PersonalAccount;
+import com.fsb.linkedin.entities.*;
 import com.fsb.linkedin.utils.MediaConverter;
 import com.fsb.linkedin.utils.SceneSwitcher;
 import javafx.fxml.FXML;
@@ -33,6 +30,7 @@ public class CommentController {
     public Label replyButton;
     public Label likes;
     public ImageView image;
+    public HBox buttonsContainer;
     private boolean isLiked;
     private int likeCount;
     @FXML
@@ -57,10 +55,24 @@ public class CommentController {
     private ImageView audience;
 
     public void goToProfile() throws IOException {
-        OtherAccountDAO.loadUser(commentWithImage.getAccount().getID());
-        SceneSwitcher.goTo(getClass(),"profile",otherProfile);
+        OtherAccountDAO.loadUser(CommentDAO.getAuthorID(commentID));
+        SceneSwitcher.openNewWindow(getClass(),"profile", OtherAccount.getInstance().getFirstName());
     }
     public void setData(Comment comment){
+        if(PersonalAccount.getInstance().getType().equals("Admin")){
+            Button removeComment = new Button("remove");
+            removeComment.setStyle("-fx-border-color: red");
+            removeComment.setOnMouseClicked(event -> {
+                CommentDAO.removeComment(comment.getCommentID());
+                try {
+                    SceneSwitcher.goTo(getClass(),"commentSection",removeComment);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            buttonsContainer.getChildren().add(removeComment);
+        }
+
         if (image != null){
             image.setImage(MediaConverter.getImage(comment.getImage()));
         }
