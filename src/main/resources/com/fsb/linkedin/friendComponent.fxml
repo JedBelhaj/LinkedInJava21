@@ -5,6 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <HBox fx:id="contactContainer" alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="250.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fsb.linkedin.controllers.home.FriendComponentController">
@@ -17,11 +18,16 @@
                 <Insets bottom="5.0" left="20.0" top="5.0" />
             </HBox.margin>
         </ImageView>
-        <Label fx:id="userName" prefHeight="35.0" prefWidth="168.0" text="username ">
-            <font>
-                <Font name="System Bold" size="12.0" />
-            </font>
-        </Label>
+      <VBox>
+         <children>
+              <Label fx:id="userName" prefHeight="35.0" prefWidth="168.0" text="username ">
+                  <font>
+                      <Font name="System Bold" size="12.0" />
+                  </font>
+              </Label>
+            <Label fx:id="country" />
+         </children>
+      </VBox>
     </children>
     <opaqueInsets>
         <Insets />

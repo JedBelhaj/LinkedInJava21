@@ -101,4 +101,38 @@ public class HomePageDAO {
         }
         return friends;
     }
+
+    public static List<Integer> getAccounts(String country, String type, String keyword) throws SQLException {
+        List<Integer> friends = new ArrayList<>();
+        String sql = "SELECT account_id, type " +
+                "FROM accounts " +
+                "WHERE (country = ? OR ? = '') " +
+                "  AND (type = ? OR ? = '') " +
+                "  AND (CONCAT(first_name, ' ', last_name) LIKE ? OR ? = '');";
+
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, country);
+            preparedStatement.setString(2, country);
+            preparedStatement.setString(3, type);
+            preparedStatement.setString(4, type);
+            preparedStatement.setString(5, "%" + keyword + "%");
+            preparedStatement.setString(6, "%" + keyword + "%");
+
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("account_id");
+                // Assuming AccountDAO.loadUserID() returns the current user's ID
+                if (id != AccountDAO.loadUserID() && !rs.getString("type").equals("BANNED")) {
+                    friends.add(id);
+                }
+            }
+        } catch (SQLException e) {
+            // Error handling: print or log any exceptions that occur
+            e.printStackTrace();
+        }
+        return friends;
+    }
+
+
 }

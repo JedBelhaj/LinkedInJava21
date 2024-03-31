@@ -8,6 +8,7 @@ import com.fsb.linkedin.utils.FieldVerifier;
 import com.fsb.linkedin.utils.MediaConverter;
 import com.fsb.linkedin.utils.MediaUploader;
 import com.fsb.linkedin.utils.SceneSwitcher;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -212,5 +213,9 @@ public class HomePageController implements Initializable {
 
     public void onLogOut(MouseEvent mouseEvent) throws IOException {
         SceneSwitcher.goTo(getClass(),"login",postField);
+    }
+
+    public void onSearchFriends(ActionEvent event) throws IOException {
+        SceneSwitcher.openNewWindow(getClass(),"searchFriends","Search For Accounts");
     }
 }
