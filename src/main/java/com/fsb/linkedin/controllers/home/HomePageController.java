@@ -30,6 +30,7 @@ public class HomePageController implements Initializable {
     public HBox uploadImage;
     public HBox uploadVideo;
     public HBox buttonContainer;
+    public ImageView recherche;
     private File createPostImage;
     private File createPostVideo;
     private Post createPost = new Post();
@@ -145,12 +146,19 @@ public class HomePageController implements Initializable {
 
     public void onUploadImage() throws IOException {
         createPostImage = MediaUploader.getMediaAsFile(uploadImage);
-        System.out.println("got the image "+createPostImage.getPath());
-        createPost.setImage(MediaConverter.convertFileToByteArray(createPostImage));
+        if (createPostImage!=null) {
+            System.out.println("got the image " + createPostImage.getPath());
+            createPost.setImage(MediaConverter.convertFileToByteArray(createPostImage));
+        }
     }
 
     public void onUploadVideo(MouseEvent mouseEvent) {
         createPostVideo = MediaUploader.getMediaAsFile(uploadVideo);
 
+    }
+
+    public void onRecherche(MouseEvent mouseEvent) throws IOException {
+        System.out.println("clicked");
+        SceneSwitcher.openNewWindow(getClass(),"recherche", "Search for Job or Internship Offers");
     }
 }
