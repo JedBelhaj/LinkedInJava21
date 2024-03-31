@@ -203,13 +203,8 @@ public class EnterpriseProfileController implements Initializable {
         switch (friendshipStatus){
             case ("None"):
                 FriendRequestDAO.sendFriendRequest(otherID);
-                friendshipStatus = "UserAlreadyRequesting";
-                follow.setText("Remove Follow Request");
-                break;
-            case ("UserAlreadyRequesting"):
-                FriendRequestDAO.removeFriendRequest(otherID);
-                friendshipStatus = "None";
-                follow.setText("Follow "+o.getFirstName());
+                friendshipStatus = "AlreadyFriends";
+                follow.setText("Unfollow "+o.getFirstName());
                 break;
             case ("AlreadyFriends"):
                 FriendRequestDAO.removeFriend(otherID);
@@ -220,7 +215,7 @@ public class EnterpriseProfileController implements Initializable {
                 FriendRequestDAO.acceptFriendRequest(otherID);
                 friendshipStatus = "AlreadyFriends";
                 followContainer.getChildren().remove(decline);
-                follow.setText("Unfollow");
+                follow.setText("Unfollow "+o.getFirstName());
                 break;
             default:
                 break;

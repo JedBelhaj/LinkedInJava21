@@ -16,7 +16,8 @@ public class FriendRequestDAO {
     private static final int userID = AccountDAO.loadUserID(PersonalAccount.getInstance().getEmail());
 
     public static void sendFriendRequest(int receiverID) {
-        if (!isFriendRequestSent(receiverID)) {
+        OtherAccountDAO.loadUser(receiverID);
+        if (!isFriendRequestSent(receiverID) && !OtherAccount.getInstance().getType().equals("Enterprise")) {
             String sql = "INSERT INTO friend_requests (sender_id, receiver_id) VALUES (?, ?)";
             try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
                 pstmt.setInt(1, userID);
@@ -27,7 +28,11 @@ public class FriendRequestDAO {
             } catch (SQLException ex) {
                 System.out.println("Error sending friend request: " + ex.getMessage());
             }
-        } else {
+        }
+        else if (OtherAccount.getInstance().getType().equals("Enterprise")){
+            addFriend(receiverID);
+            }
+        else {
             System.out.println("Friend request already sent.");
         }
     }
