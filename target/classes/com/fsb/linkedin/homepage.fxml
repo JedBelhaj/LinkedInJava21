@@ -124,7 +124,7 @@
    <left>
       <ScrollPane maxWidth="1.7976931348623157E308" prefHeight="697.0" prefWidth="300.0" BorderPane.alignment="TOP_CENTER">
          <content>
-            <VBox minWidth="200.0" prefHeight="700.0" prefWidth="264.0">
+            <VBox fx:id="friendsContainer" minWidth="200.0" prefHeight="700.0" prefWidth="264.0">
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="250.0" spacing="20.0">
                      <children>
@@ -153,28 +153,15 @@
                               <Font name="System Bold Italic" size="22.0" />
                            </font>
                         </Label>
-                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="57.0" style="-fx-background-color: #FFFF;" styleClass="round-button" stylesheets="@../../../style.css" />
+                        <Button fx:id="searchFriends" mnemonicParsing="false" prefHeight="35.0" prefWidth="57.0" style="-fx-background-color: #FFFF;" styleClass="round-button" stylesheets="@../../../style.css">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" onMouseClicked="#onRecherche" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../imgs/search.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                      </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="250.0" spacing="20.0">
-                     <children>
-                        <ImageView fitHeight="54.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../imgs/user.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets bottom="5.0" left="20.0" top="5.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <Label prefHeight="35.0" prefWidth="168.0" text="username ">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
                   </HBox>
                </children>
                <opaqueInsets>

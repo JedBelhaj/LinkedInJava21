@@ -86,4 +86,19 @@ public class HomePageDAO {
         List<Offer> jobOffers = new ArrayList<>();
         return jobOffers;
     }
+
+    public static List<Integer> getFriends() throws SQLException {
+        List<Integer> friends = new ArrayList<>();
+        String sql = "SELECT account_id, type from accounts";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)){
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                int id = rs.getInt("account_id");
+                if (FriendRequestDAO.areAlreadyFriends(id) && !rs.getString("type").equals("BANNED")){
+                    friends.add(id);
+                }
+            }
+        }
+        return friends;
+    }
 }

@@ -1,5 +1,6 @@
 package com.fsb.linkedin.controllers.home;
 
+import com.fsb.linkedin.DAO.ChatRoomDAO;
 import com.fsb.linkedin.DAO.HomePageDAO;
 import com.fsb.linkedin.DAO.OtherAccountDAO;
 import com.fsb.linkedin.entities.*;
@@ -7,6 +8,7 @@ import com.fsb.linkedin.utils.FieldVerifier;
 import com.fsb.linkedin.utils.MediaConverter;
 import com.fsb.linkedin.utils.MediaUploader;
 import com.fsb.linkedin.utils.SceneSwitcher;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -22,6 +24,7 @@ import javafx.scene.layout.VBox;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -33,6 +36,8 @@ public class HomePageController implements Initializable {
     public HBox buttonContainer;
     public ImageView recherche;
     public HBox navContainer;
+    public Button searchFriends;
+    public VBox friendsContainer;
     private File createPostImage;
     private File createPostVideo;
     private Post createPost = new Post();
@@ -50,6 +55,36 @@ public class HomePageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            for (int friendID : HomePageDAO.getFriends()) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/com/fsb/linkedin/friendComponent.fxml"));
+                HBox vBox=fxmlLoader.load();
+                vBox.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent mouseEvent) {
+                        OtherAccountDAO.loadUser(friendID);
+                        try {
+                            if (OtherAccount.getInstance().getType().equals("Enterprise"))
+                                SceneSwitcher.openNewWindow(getClass(),"enterpriseprofile","profile");
+                            else
+                                SceneSwitcher.openNewWindow(getClass(),"profile","profile");
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                });
+                FriendComponentController controller=fxmlLoader.getController();
+                controller.setData(friendID);
+                friendsContainer.getChildren().add(vBox);
+            }
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         Button bannedUsers = new Button("Banned Users");
         if (PersonalAccount.getInstance().getType().equals("Admin")) {
             navContainer.getChildren().add(bannedUsers);

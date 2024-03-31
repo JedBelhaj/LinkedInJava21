@@ -83,6 +83,8 @@ public class FriendRequestDAO {
     }
 
     public static boolean areAlreadyFriends(int accountID2) {
+        if (accountID2 == AccountDAO.loadUserID())
+            return false;
         String sql = "SELECT COUNT(*) FROM friends WHERE (account_id1 = ? AND account_id2 = ?) OR (account_id1 = ? AND account_id2 = ?)";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setInt(1, userID);
